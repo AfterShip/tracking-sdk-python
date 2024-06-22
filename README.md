@@ -2,7 +2,7 @@
 
 This library allows you to quickly and easily use the AfterShip Tracking API via Python.
 
-For updates to this library, see our GitHub release page.
+For updates to this library, see our [GitHub release page](https://github.com/AfterShip/tracking-sdk-python/releases).
 
 If you need support using AfterShip products, please contact support@aftership.com.
 
@@ -24,6 +24,7 @@ If you need support using AfterShip products, please contact support@aftership.c
     - [/couriers](#couriers)
     - [/last\_checkpoint](#last_checkpoint)
     - [/notifications](#notifications)
+    - [/estimated-delivery-date](#estimated-delivery-date)
   - [Help](#help)
   - [License](#license)
 
@@ -83,7 +84,7 @@ Create AfterShip instance with options
 
 ### Example
 
-```javascript
+```python
 import tracking
 
 sdk = tracking.Client(
@@ -143,10 +144,11 @@ The SDK will return an error object when there is any error during the request, 
 
 The AfterShip instance has the following properties which are exactly the same as the API endpoints:
 
-courier - Get a list of our supported couriers.
-tracking - Create trackings, update trackings, and get tracking results.
-last_checkpoint - Get tracking information of the last checkpoint of a tracking.
-notification - Get, add or remove contacts (sms or email) to be notified when the status of a tracking has changed.
+- courier - Get a list of our supported couriers.
+- tracking - Create trackings, update trackings, and get tracking results.
+- last_checkpoint - Get tracking information of the last checkpoint of a tracking.
+- notification - Get, add or remove contacts (sms or email) to be notified when the status of a tracking has changed.
+- estimated-delivery-date - Get estimated delivery date for your order.
 
 
 ### /trackings
@@ -190,20 +192,6 @@ print(result)
 **GET** /trackings/:id
 
 ```python
-result = sdk.tracking.get_tracking_by_id("rft4xu2rs1um1lwhm8j1p02r")
-print(result)
-```
-
-```python
-# GET /trackings/:slug/:tracking_number?tracking_postal_code=:postal_code&tracking_ship_date=:ship_date
-result = sdk.tracking.get_tracking_by_slug_tracking_number(slug="usps", tracking_number="9434609105464265845274")
-print(result)
-```
-
-
-> Pro Tip: You can always use /:id to replace /:slug/:tracking_number.
-```python
-# GET /trackings/:id
 result = sdk.tracking.get_tracking_by_id("rft4xu2rs1um1lwhm8j1p02r")
 print(result)
 ```
@@ -290,6 +278,19 @@ print(result)
 data = tracking.NotificationRequestV1()
 data.emails = ["123@gmail.com"]
 result = sdk.notification.delete_notification_by_tracking_id("kponlnb1w64fmlxlakyln00l", data)
+print(result)
+```
+
+### /estimated-delivery-date
+
+**POST** /estimated-delivery-date/predict-batch
+
+```python
+req = tracking.PredictBatchRequest()
+date = tracking.EstimatedDeliveryDateRequest()
+date.slug = 'usps'
+req.estimated_delivery_dates = [date]
+result = sdk.estimated_delivery_date.predict_batch(req)
 print(result)
 ```
 
