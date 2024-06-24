@@ -25,11 +25,8 @@ class CourierApi(ApiClient):
     ) -> DetectCourierResponse:
         """
         Return a list of matched couriers based on tracking number format and  or a list of couriers.
-
         :param detect_courier_request:
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -51,10 +48,7 @@ class CourierApi(ApiClient):
     def get_all_couriers(self, **kwargs) -> GetAllCouriersResponse:
         """
         Return a list of all couriers.
-
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -71,10 +65,7 @@ class CourierApi(ApiClient):
     def get_user_couriers(self, **kwargs) -> GetUserCouriersResponse:
         """
         Return a list of .
-
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to

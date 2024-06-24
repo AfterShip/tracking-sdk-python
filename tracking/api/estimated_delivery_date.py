@@ -23,11 +23,8 @@ class EstimatedDeliveryDateApi(ApiClient):
     ) -> PredictBatchResponse:
         """
         > The estimated delivery date is provided by AfterShip, based on its AI-predictive model. You can display the EDD on the product page, cart, and order checkout page. It indicates when a customer will receive the order.You can use  to activate this feature.Supported functionalities require:1. One `EstimatedDeliveryDate` object for one prediction result.2. Maximum 5 `EstimatedDeliveryDate` objects are allowed.3. API call will fail if any of the requests `EstimatedDeliveryDate` objects do not meet the specification requirement.
-
         :param predict_batch_request:
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to

@@ -28,11 +28,16 @@ class NotificationApi(ApiClient):
     ) -> Notification:
         """
         Add notification receivers to a tracking number.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param add_notification_by_slug_tracking_number_request:
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **tracking_account_number**: str. Additional field required by some carriers to retrieve the tracking info. The shipper’s carrier account number. Refer to our article on  for more details.
                 **tracking_origin_country**: str. Additional field required by some carriers to retrieve the tracking info. The origin country/region of the shipment. Refer to our article on  for more details.
@@ -41,13 +46,6 @@ class NotificationApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/notifications/{slug}/{tracking_number}/add"
         params_keys = {
@@ -78,12 +76,9 @@ class NotificationApi(ApiClient):
     ) -> Notification:
         """
         Add notification receivers to a tracking number.
-
         :param tracking_id: str. tracking id.
         :param add_notification_by_tracking_id_request:
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -111,11 +106,16 @@ class NotificationApi(ApiClient):
     ) -> Notification:
         """
         Remove notification receivers from a tracking number.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param delete_notification_by_slug_tracking_number_request:
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **tracking_account_number**: str. Additional field required by some carriers to retrieve the tracking info. The shipper’s carrier account number. Refer to our article on  for more details.
                 **tracking_origin_country**: str. Additional field required by some carriers to retrieve the tracking info. The origin country/region of the shipment. Refer to our article on  for more details.
@@ -124,13 +124,6 @@ class NotificationApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/notifications/{slug}/{tracking_number}/remove"
         params_keys = {
@@ -161,12 +154,9 @@ class NotificationApi(ApiClient):
     ) -> Notification:
         """
         Remove notification receivers from a tracking number.
-
         :param tracking_id: str. tracking id.
         :param delete_notification_by_tracking_id_request:
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -193,10 +183,15 @@ class NotificationApi(ApiClient):
     ) -> Notification:
         """
         Get contact information for the users to notify when the tracking changes. Please note that only customer receivers will be returned. Any `email`, `sms` or `webhook` that belongs to the Store will not be returned.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **tracking_account_number**: str. Additional field required by some carriers to retrieve the tracking info. The shipper’s carrier account number. Refer to our article on  for more details.
                 **tracking_origin_country**: str. Additional field required by some carriers to retrieve the tracking info. The origin country/region of the shipment. Refer to our article on  for more details.
@@ -205,13 +200,6 @@ class NotificationApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/notifications/{slug}/{tracking_number}"
         params_keys = {
@@ -234,11 +222,8 @@ class NotificationApi(ApiClient):
     ) -> Notification:
         """
         Get contact information for the users to notify when the tracking changes. Please note that only customer receivers will be returned. Any `email`, `sms` or `webhook` that belongs to the Store will not be returned.
-
         :param tracking_id: str. tracking id.
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to

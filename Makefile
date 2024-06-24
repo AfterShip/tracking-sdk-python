@@ -9,7 +9,7 @@ test:
 record:
 	poetry run pytest tests/ --vcr-record=new_episodes
 
-lint:
+format:
 	poetry run ruff check --fix
 	poetry run ruff format
 

@@ -31,11 +31,8 @@ class TrackingApi(ApiClient):
     ) -> Tracking:
         """
         Create a tracking.<div style="visibility:hidden; height: 0"></div>
-
         :param create_tracking_request:
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -59,11 +56,8 @@ class TrackingApi(ApiClient):
     ) -> PartialDeleteTracking:
         """
         Delete a tracking.
-
         :param tracking_id: str. tracking ID.
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -85,10 +79,15 @@ class TrackingApi(ApiClient):
     ) -> PartialDeleteTracking:
         """
         Delete a tracking.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **tracking_account_number**: str. Additional field required by some carriers to retrieve the tracking info. The shipper’s carrier account number. Refer to our article on  for more details.
                 **tracking_origin_country**: str. Additional field required by some carriers to retrieve the tracking info. The origin country/region of the shipment. Refer to our article on  for more details.
@@ -97,13 +96,6 @@ class TrackingApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/trackings/{slug}/{tracking_number}"
         params_keys = {
@@ -126,19 +118,17 @@ class TrackingApi(ApiClient):
     ) -> Tracking:
         """
         Get tracking results of a single tracking.
-
         :param tracking_id: str. tracking ID.
         :param kwargs:
-            query params:
-                **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `tracking_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `tracking_origin_country`, `tracking_destination_country`, `tracking_state`, `title`, `order_id`, `tag`, `checkpoints`
-                **lang**: str. Translate checkpoint messages from the carrier’s provided language to the target language. Supported target languages include:</br>&nbsp;&nbsp;&nbsp;&nbsp;- English (en)</br>&nbsp;&nbsp;&nbsp;&nbsp;- French (fr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- French Canadian (fr-CA)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Arabic (ar)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Bulgarian (bg)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Catalan (ca)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Croatian (hr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Czech (cs)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Danish (da)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Dutch (nl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Estonian (et)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Filipino (tl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Finnish (fi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- German (de)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Greek (el)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hebrew (he)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hindi (hi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hungarian (hu)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Indonesian (id)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Italian (it)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Japanese (ja)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Korean (ko)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Latvian (lv)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Lithuanian (lt)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Malay (ms)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Polish (pl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Portuguese (pt)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Romanian (ro)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Russian (ru)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Serbian (sr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Slovak (sk)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Slovenian (sl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Spanish (es)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Swedish (sv)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Thai (th)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Turkish (tr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Ukrainian (uk)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Vietnamese (vi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Simplified Chinese (zh-Hans)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Traditional Chinese (zh-Hant)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Norwegian (nb)</br>
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
                     verify the identity of requested hosts. Either `True` (default CA bundle),
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
+            query params:
+                **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `tracking_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `tracking_origin_country`, `tracking_destination_country`, `tracking_state`, `title`, `order_id`, `tag`, `checkpoints`
+                **lang**: str. Translate checkpoint messages from the carrier’s provided language to the target language. Supported target languages include:</br>&nbsp;&nbsp;&nbsp;&nbsp;- English (en)</br>&nbsp;&nbsp;&nbsp;&nbsp;- French (fr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- French Canadian (fr-CA)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Arabic (ar)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Bulgarian (bg)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Catalan (ca)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Croatian (hr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Czech (cs)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Danish (da)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Dutch (nl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Estonian (et)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Filipino (tl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Finnish (fi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- German (de)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Greek (el)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hebrew (he)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hindi (hi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hungarian (hu)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Indonesian (id)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Italian (it)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Japanese (ja)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Korean (ko)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Latvian (lv)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Lithuanian (lt)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Malay (ms)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Polish (pl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Portuguese (pt)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Romanian (ro)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Russian (ru)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Serbian (sr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Slovak (sk)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Slovenian (sl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Spanish (es)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Swedish (sv)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Thai (th)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Turkish (tr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Ukrainian (uk)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Vietnamese (vi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Simplified Chinese (zh-Hans)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Traditional Chinese (zh-Hant)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Norwegian (nb)</br>
         """
         url = f"/tracking/2024-04/trackings/{tracking_id}"
         params_keys = {
@@ -159,10 +149,15 @@ class TrackingApi(ApiClient):
     ) -> Tracking:
         """
         Get tracking results of a single tracking.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `tracking_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `tracking_origin_country`, `tracking_destination_country`, `tracking_state`, `title`, `order_id`, `tag`, `checkpoints`
                 **lang**: str. Support Chinese to English translation for `china-ems` and  `china-post`  only
@@ -173,13 +168,6 @@ class TrackingApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/trackings/{slug}/{tracking_number}"
         params_keys = {
@@ -202,8 +190,13 @@ class TrackingApi(ApiClient):
     def get_trackings(self, **kwargs) -> GetTrackingsResponse:
         """
         Get tracking results of multiple trackings.<div style="visibility:hidden; height: 0"></div>
-
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **page**: int. The page to query. Maximum page number is bounded by total number of queried trackings which cannot exceed 160,000 trackings. (Default: 1)
                 **limit**: int. Number of trackings each page contain. (Default: 100, Max: 200)
@@ -223,13 +216,6 @@ class TrackingApi(ApiClient):
                 **courier_destination_country_iso3**: str. Destination country/region of trackings returned by courier. Use ISO Alpha-3 (three letters). Use comma for multiple values. (Example: USA,HKG)
                 **shipment_tags**: str. Tags you added to your shipments to help categorize and filter them easily. Use a comma to separate multiple values (Example: a,b)
                 **order_id**: str. A globally-unique identifier for the order. Use comma for multiple values.(Example: 6845a095a27a4caeb27487806f058add,4845a095a27a4caeb27487806f058abc)
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = "/tracking/2024-04/trackings"
         params_keys = {
@@ -275,12 +261,9 @@ class TrackingApi(ApiClient):
     ) -> Tracking:
         """
         Mark a tracking as completed. The tracking won't auto update until retrack it.
-
         :param tracking_id: str. tracking id.
         :param mark_tracking_completed_by_id_request:
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -310,11 +293,16 @@ class TrackingApi(ApiClient):
     ) -> Tracking:
         """
         Mark a tracking as completed. The tracking won't auto update until retrack it.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param mark_tracking_completed_by_slug_tracking_number_request:
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **tracking_account_number**: str. Additional field required by some carriers to retrieve the tracking info. The shipper’s carrier account number. Refer to our article on  for more details.
                 **tracking_origin_country**: str. Additional field required by some carriers to retrieve the tracking info. The origin country/region of the shipment. Refer to our article on  for more details.
@@ -323,13 +311,6 @@ class TrackingApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/trackings/{slug}/{tracking_number}/mark-as-completed"
         params_keys = {
@@ -359,11 +340,8 @@ class TrackingApi(ApiClient):
     ) -> PartialUpdateTracking:
         """
         Retrack an expired tracking. Max 3 times per tracking.
-
         :param tracking_id: str. tracking id.
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -385,10 +363,15 @@ class TrackingApi(ApiClient):
     ) -> PartialUpdateTracking:
         """
         Retrack an expired tracking. Max 3 times per tracking.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **tracking_account_number**: str. Additional field required by some carriers to retrieve the tracking info. The shipper’s carrier account number. Refer to our article on  for more details.
                 **tracking_origin_country**: str. Additional field required by some carriers to retrieve the tracking info. The origin country/region of the shipment. Refer to our article on  for more details.
@@ -397,13 +380,6 @@ class TrackingApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/trackings/{slug}/{tracking_number}/retrack"
         params_keys = {
@@ -429,12 +405,9 @@ class TrackingApi(ApiClient):
     ) -> Tracking:
         """
         Update a tracking.
-
         :param tracking_id: str. tracking ID.
         :param update_tracking_by_id_request:
         :param kwargs:
-
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
@@ -464,11 +437,16 @@ class TrackingApi(ApiClient):
     ) -> Tracking:
         """
         Update a tracking.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param update_tracking_by_slug_tracking_number_request:
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **tracking_account_number**: str. Additional field required by some carriers to retrieve the tracking info. The shipper’s carrier account number. Refer to our article on  for more details.
                 **tracking_origin_country**: str. Additional field required by some carriers to retrieve the tracking info. The origin country/region of the shipment. Refer to our article on  for more details.
@@ -477,13 +455,6 @@ class TrackingApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/trackings/{slug}/{tracking_number}"
         params_keys = {

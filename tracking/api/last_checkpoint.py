@@ -26,10 +26,15 @@ class LastCheckpointApi(ApiClient):
     ) -> GetCheckpointBySlugTrackingNumberResponse:
         """
         Return the tracking information of the last checkpoint of a single tracking.
-
         :param slug: str. Tracking slug.
         :param tracking_number: str. Tracking number.
         :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
             query params:
                 **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `slug`, `created_at`, `checkpoint_time`, `city`, `coordinates`, `country_iso3`, `country_name`, `message`, `state`, `tag`, `zip`
                 **lang**: str. Support Chinese to English translation for `china-ems` and `china-post` only
@@ -40,13 +45,6 @@ class LastCheckpointApi(ApiClient):
                 **tracking_postal_code**: str. Additional field required by some carriers to retrieve the tracking info. The postal code of the recipient’s address. Refer to our article on  for more details.
                 **tracking_ship_date**: str. Additional field required by some carriers to retrieve the tracking info. The date the shipment was sent, using the format YYYYMMDD. Refer to our article on  for more details.
                 **tracking_state**: str. Additional field required by some carriers to retrieve the tracking info. The state/province of the recipient’s address. Refer to our article on  for more details.
-
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
         """
         url = f"/tracking/2024-04/last_checkpoint/{slug}/{tracking_number}"
         params_keys = {
@@ -71,19 +69,17 @@ class LastCheckpointApi(ApiClient):
     ) -> GetCheckpointByTrackingIdResponse:
         """
         Return the tracking information of the last checkpoint of a single tracking.
-
         :param tracking_id: str. tracking id.
         :param kwargs:
-            query params:
-                **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `slug`, `created_at`, `checkpoint_time`, `city`, `coordinates`, `country_iso3`, `country_name`, `message`, `state`, `tag`, `zip`
-                **lang**: str. Support Chinese to English translation for `china-ems` and `china-post` only
-
             request options:
                 **headers** (dict): support custom headers.
                 **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
                     verify the identity of requested hosts. Either `True` (default CA bundle),
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
+            query params:
+                **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `slug`, `created_at`, `checkpoint_time`, `city`, `coordinates`, `country_iso3`, `country_name`, `message`, `state`, `tag`, `zip`
+                **lang**: str. Support Chinese to English translation for `china-ems` and `china-post` only
         """
         url = f"/tracking/2024-04/last_checkpoint/{tracking_id}"
         params_keys = {
