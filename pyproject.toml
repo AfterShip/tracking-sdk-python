@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "tracking-sdk"
-version = "2.0.0"
-description = "python SDK for AfterShip Tracking"
+name = "aftership-tracking-sdk"
+version = "2.0.1"
+description = "The official AfterShip Tracking Python API library"
 authors = ["AfterShip <support@aftership.com>"]
 license = "MIT"
 readme = "README.md"
-keywords = ["aftership", "api", "logistics"]
+keywords = ["aftership", "tracking", "track", "fedex", "ups", "usps", "dhl", "shipping", "fulfillment", "couriers", "carriers", "logistics"]
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",
