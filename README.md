@@ -162,8 +162,8 @@ from tracking import exceptions
 try:
     sdk = tracking.Client(
         tracking.Configuration(
-            api_key="asak_da8a673f24ff4475a44defe7bd3d2de7",
-            api_secret="assk_33532102503846b28e879455d0e0122e",
+            api_key="YOUR_API_KEY",
+            api_secret="YOUR_API_SECRET",
             authentication_type=tracking.Aes,
         )
     )
