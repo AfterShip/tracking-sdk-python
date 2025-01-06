@@ -1,10 +1,4 @@
-# AfterShip Tracking API library for Python
 
-This library allows you to quickly and easily use the AfterShip Tracking API via Python.
-
-For updates to this library, see our [GitHub release page](https://github.com/AfterShip/tracking-sdk-python/releases).
-
-If you need support using AfterShip products, please contact support@aftership.com.
 
 ## Table of Contents
 
