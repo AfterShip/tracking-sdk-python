@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "aftership-tracking-sdk"
-version = "4.0.0"
+name = "aftership-sdk-python"
+version = "0.0.1"
 description = "The official AfterShip Tracking Python API library"
 authors = ["AfterShip <support@aftership.com>"]
 license = "MIT"
@@ -19,7 +19,7 @@ classifiers = [
 ]
 
 packages = [
-    { include = "tracking" },
+    { include = "aftership" },
     { include = "*.md" },
     { include = "LICENSE" },
 ]
