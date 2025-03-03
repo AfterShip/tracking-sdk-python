@@ -11,4 +11,4 @@ from .configuration import Configuration
 from . import exceptions
 from .models import *
 
-__version__ = "5.0.0"
+__version__ = "5.0.1"

@@ -4,7 +4,7 @@
 # Do not edit the class manually.
 
 import json
-from typing import Union
+from typing import Dict, Union
 
 import httpx
 

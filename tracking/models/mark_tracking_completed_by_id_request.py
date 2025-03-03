@@ -6,8 +6,8 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 
@@ -17,6 +17,7 @@ class MarkTrackingCompletedByIdRequest(BaseModel):
     """  # noqa: E501
 
     reason: Optional[str] = None
+    event_datetime: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

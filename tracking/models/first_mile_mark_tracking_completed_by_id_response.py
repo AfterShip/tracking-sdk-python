@@ -6,8 +6,8 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 
@@ -18,7 +18,7 @@ class FirstMileMarkTrackingCompletedByIdResponse(BaseModel):
 
     tracking_number: Optional[str] = None
     slug: Optional[str] = None
-    transit_time: Optional[str] = None
+    transit_time: Optional[int] = None
     courier_redirect_link: Optional[str] = None
     courier_tracking_link: Optional[str] = None
 

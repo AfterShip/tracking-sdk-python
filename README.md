@@ -41,9 +41,9 @@ Each SDK version is designed to work with a specific API version. Please refer t
 
 | SDK Version | Supported API Version | Branch                                                        |
 | ----------- | --------------------- | ------------------------------------------------------------- |
-| 5.x.x       | 2025-01               | https://github.com/AfterShip/tracking-sdk-python/tree/2025-01 |
-| 4.x.x       | 2024-10               | https://github.com/AfterShip/tracking-sdk-python/tree/2024-10 |
-| 3.x.x       | 2024-07               | https://github.com/AfterShip/tracking-sdk-python/tree/2024-07 |
+| 5.x.x      | 2025-01               | https://github.com/AfterShip/tracking-sdk-python/tree/2025-01 |
+| 4.x.x      | 2024-10               | https://github.com/AfterShip/tracking-sdk-python/tree/2024-10 |
+| 3.x.x      | 2024-07               | https://github.com/AfterShip/tracking-sdk-python/tree/2024-07 |
 | 2.x.x       | 2024-04               | https://github.com/AfterShip/tracking-sdk-python/tree/2024-04 |
 | <=1.x.x     | Legacy API            | https://github.com/AfterShip/aftership-sdk-python             |
 
@@ -62,8 +62,8 @@ Create AfterShip instance with options
 | Name       | Type   | Required | Description                                                                                                                       |
 | ---------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | api_key    | string | ✔        | Your AfterShip API key                                                                                                            |
-| auth_type  | enum   |          | Default value: `auth.ApiKey` <br > AES authentication: `auth.Aes` <br > RSA authentication: `auth.Rsa`                            |
-| api_secret | string |          | Required if the authentication type is `auth.Aes` or `auth.Rsa`                                                                   |
+| auth_type  | enum   |          | Default value: `auth.ApiKey` <br > AES authentication: `auth.Aes` <br > RSA authentication: `auth.Rsa`               |
+| api_secret | string |          | Required if the authentication type is `auth.Aes` or `auth.Rsa`                                                           |
 | domain     | string |          | AfterShip API domain. Default value: https://api.aftership.com                                                                    |
 | user_agent | string |          | User-defined user-agent string, please follow [RFC9110](https://www.rfc-editor.org/rfc/rfc9110#field.user-agent) format standard. |
 | proxy      | string |          | HTTP proxy URL to use for requests. <br > Default value: `null` <br > Example: `http://192.168.0.100:8888`                        |
@@ -96,7 +96,7 @@ except exceptions.RateLimitExceedError:
 
 ## Rate Limiter
 
-See the [Rate Limit](https://www.aftership.com/docs/tracking/2024-10/quickstart/api-quick-start) to understand the AfterShip rate limit policy.
+See the [Rate Limit](https://www.aftership.com/docs/tracking/2025-01/quickstart/api-quick-start) to understand the AfterShip rate limit policy.
 
 ## Error Handling
 

@@ -6,8 +6,8 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 from tracking.models.reason_events_checkpoint import ReasonEventsCheckpoint

@@ -4,8 +4,9 @@
 # Do not edit the class manually.
 
 import json
-from typing import Union
+from typing import Union, Annotated
 
+from pydantic import Field
 
 from tracking.models import (
     PredictRequest,
