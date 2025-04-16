@@ -6,23 +6,20 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.pagination_data_tracking_response_get_multiple_v1 import (
-    PaginationDataTrackingResponseGetMultipleV1,
-)
-from tracking.models.tracking import Tracking
+from tracking.models.courier import Courier
 
 
-class DataTrackingResponseGetMultipleV1(BaseModel):
+class DataCourierResponse(BaseModel):
     """
-    DataTrackingResponseGetMultipleV1
+    DataCourierResponse
     """  # noqa: E501
 
-    pagination: Optional[PaginationDataTrackingResponseGetMultipleV1] = None
-    trackings: Optional[List[Tracking]] = None
+    total: Optional[int] = None
+    couriers: Optional[List[Courier]] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

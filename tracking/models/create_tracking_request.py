@@ -6,11 +6,11 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.slug_group_v1 import SlugGroupV1
+from tracking.models.slug_group import SlugGroup
 from tracking.models.last_mile_create_tracking_request import LastMileCreateTrackingRequest
 from tracking.models.customers_create_tracking_request import CustomersCreateTrackingRequest
 
@@ -20,12 +20,13 @@ class CreateTrackingRequest(BaseModel):
     CreateTrackingRequest
     """  # noqa: E501
 
+    id: Optional[str] = None
     tracking_number: Optional[str] = None
     slug: Optional[str] = None
     title: Optional[str] = None
     order_id: Optional[str] = None
-    order_id_path: Optional[str] = None
     custom_fields: Optional[Any] = None
+    order_id_path: Optional[str] = None
     language: Optional[str] = None
     order_promised_delivery_date: Optional[str] = None
     delivery_type: Optional[str] = None
@@ -45,16 +46,12 @@ class CreateTrackingRequest(BaseModel):
     destination_postal_code: Optional[str] = None
     destination_raw_location: Optional[str] = None
     note: Optional[str] = None
-    slug_group: Optional[SlugGroupV1] = None
+    slug_group: Optional[SlugGroup] = None
     order_date: Optional[str] = None
     order_number: Optional[str] = None
     shipment_type: Optional[str] = None
     shipment_tags: Optional[List[str]] = None
     courier_connection_id: Optional[str] = None
-    tracking_origin_country_region: Optional[str] = None
-    tracking_destination_country_region: Optional[str] = None
-    tracking_postal_code: Optional[str] = None
-    tracking_state: Optional[str] = None
     location_id: Optional[str] = None
     shipping_method: Optional[str] = None
     last_mile: Optional[LastMileCreateTrackingRequest] = None

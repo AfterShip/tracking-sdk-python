@@ -4,9 +4,8 @@
 # Do not edit the class manually.
 
 import json
-from typing import Union, Annotated
+from typing import Union
 
-from pydantic import Field
 
 from tracking.models import (
     PredictRequest,
@@ -33,7 +32,7 @@ class EstimatedDeliveryDateApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2025-01/estimated-delivery-date/predict"
+        url = "/tracking/2025-04/estimated-delivery-date/predict"
 
         body = predict_request
         if not isinstance(body, dict):
@@ -58,7 +57,7 @@ class EstimatedDeliveryDateApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2025-01/estimated-delivery-date/predict-batch"
+        url = "/tracking/2025-04/estimated-delivery-date/predict-batch"
 
         body = predict_batch_request
         if not isinstance(body, dict):

@@ -5,10 +5,12 @@
 
 __all__ = [
     "CourierApi",
+    "CourierConnectionApi",
     "EstimatedDeliveryDateApi",
     "TrackingApi",
 ]
 
 from .courier import CourierApi
+from .courier_connection import CourierConnectionApi
 from .estimated_delivery_date import EstimatedDeliveryDateApi
 from .tracking import TrackingApi

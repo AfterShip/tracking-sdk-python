@@ -22,6 +22,7 @@ If you need support using AfterShip products, please contact support@aftership.c
   - [Endpoints](#endpoints)
     - [/trackings](#trackings)
     - [/couriers](#couriers)
+    - [/courier-connections](#courier-connections)
     - [/estimated-delivery-date](#estimated-delivery-date)
   - [Help](#help)
   - [License](#license)
@@ -41,6 +42,7 @@ Each SDK version is designed to work with a specific API version. Please refer t
 
 | SDK Version | Supported API Version | Branch                                                        |
 | ----------- | --------------------- | ------------------------------------------------------------- |
+| 6.x.x      | 2025-04               | https://github.com/AfterShip/tracking-sdk-python/tree/2025-04 |
 | 5.x.x      | 2025-01               | https://github.com/AfterShip/tracking-sdk-python/tree/2025-01 |
 | 4.x.x      | 2024-10               | https://github.com/AfterShip/tracking-sdk-python/tree/2024-10 |
 | 3.x.x      | 2024-07               | https://github.com/AfterShip/tracking-sdk-python/tree/2024-07 |
@@ -96,7 +98,7 @@ except exceptions.RateLimitExceedError:
 
 ## Rate Limiter
 
-See the [Rate Limit](https://www.aftership.com/docs/tracking/2025-01/quickstart/api-quick-start) to understand the AfterShip rate limit policy.
+See the [Rate Limit](https://www.aftership.com/docs/tracking/2025-04/quickstart/api-quick-start) to understand the AfterShip rate limit policy.
 
 ## Error Handling
 
@@ -145,6 +147,7 @@ The AfterShip instance has the following properties which are exactly the same a
 
 - courier - Get a list of our supported couriers.
 - tracking - Create trackings, update trackings, and get tracking results.
+- courier-connection - Create courier connections, update courier connections, and get courier connections results.
 - estimated-delivery-date - Get estimated delivery date for your order.
 
 
@@ -225,14 +228,7 @@ print(result)
 **GET** /couriers
 
 ```python
-result = sdk.courier.get_user_couriers()
-print(result)
-```
-
-**GET** /couriers/all
-
-```python
-result = sdk.courier.get_all_couriers()
+result = sdk.courier.get_couriers()
 print(result)
 ```
 
@@ -242,6 +238,47 @@ print(result)
 data = tracking.DetectCourierRequest()
 data.tracking_number = "<tracking_number>"
 result = sdk.courier.detect_courier(data)
+print(result)
+```
+
+### /courier-connections
+**GET** /courier-connections
+
+```python
+result = sdk.courier_connection.get_courier_connections()
+print(result)
+```
+
+**POST** /courier-connections
+
+```python
+data = tracking.PostCourierConnectionsRequest()
+data.courier_slug = "dhl-api"
+data.credentials = {"api_key": "<api_key>"}
+result = sdk.courier_connection.post_courier_connections(data)
+print(result)
+```
+
+**GET** /courier-connections/:id
+
+```python
+result = sdk.courier_connection.get_courier_connections_by_id("<courier_connection_id>")
+print(result)
+```
+
+**PATCH** /courier-connections/:id
+
+```python
+data = PutCourierConnectionsByIdRequest()
+data.credentials={"api_key": "<api_key>"}
+result = sdk.courier_connection.put_courier_connections_by_id("<courier_connection_id>", data)
+print(result)
+```
+
+**DELETE** /courier-connections/:id
+
+```python
+result = sdk.courier_connection.delete_courier_connections_by_id("<courier_connection_id>")
 print(result)
 ```
 
