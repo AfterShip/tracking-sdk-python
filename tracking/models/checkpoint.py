@@ -6,12 +6,12 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 from tracking.models.coordinate_checkpoint import CoordinateCheckpoint
-from tracking.models.tag_v1 import TagV1
+from tracking.models.tag import Tag
 from tracking.models.events_checkpoint import EventsCheckpoint
 
 
@@ -31,7 +31,7 @@ class Checkpoint(BaseModel):
     country_region: Optional[str] = None
     country_region_name: Optional[str] = None
     message: Optional[str] = None
-    tag: Optional[TagV1] = None
+    tag: Optional[Tag] = None
     subtag: Optional[str] = None
     subtag_message: Optional[str] = None
     raw_tag: Optional[str] = None

@@ -6,9 +6,11 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
+
+from tracking.models.credentials_courier import CredentialsCourier
 
 
 class Courier(BaseModel):
@@ -26,6 +28,7 @@ class Courier(BaseModel):
     default_language: Optional[str] = None
     support_languages: Optional[List[str]] = None
     service_from_country_regions: Optional[List[str]] = None
+    credentials: Optional[CredentialsCourier] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

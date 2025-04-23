@@ -6,7 +6,7 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
@@ -16,7 +16,7 @@ from tracking.models.courier_estimated_delivery_date_delete_tracking_by_id_respo
 from tracking.models.shipment_weight_delete_tracking_by_id_response import (
     ShipmentWeightDeleteTrackingByIdResponse,
 )
-from tracking.models.tag_v1 import TagV1
+from tracking.models.tag import Tag
 from tracking.models.checkpoint import Checkpoint
 from tracking.models.aftership_estimated_delivery_date_delete_tracking_by_id_response import (
     AftershipEstimatedDeliveryDateDeleteTrackingByIdResponse,
@@ -83,7 +83,7 @@ class DeleteTrackingByIdResponse(BaseModel):
     shipment_weight: Optional[ShipmentWeightDeleteTrackingByIdResponse] = None
     signed_by: Optional[str] = None
     source: Optional[str] = None
-    tag: Optional[TagV1] = None
+    tag: Optional[Tag] = None
     subtag: Optional[str] = None
     subtag_message: Optional[str] = None
     title: Optional[str] = None
@@ -119,10 +119,6 @@ class DeleteTrackingByIdResponse(BaseModel):
     latest_estimated_delivery: Optional[LatestEstimatedDeliveryDeleteTrackingByIdResponse] = None
     shipment_tags: Optional[List[str]] = None
     courier_connection_id: Optional[str] = None
-    tracking_origin_country_region: Optional[str] = None
-    tracking_destination_country_region: Optional[str] = None
-    tracking_postal_code: Optional[str] = None
-    tracking_state: Optional[str] = None
     carbon_emissions: Optional[CarbonEmissionsDeleteTrackingByIdResponse] = None
     location_id: Optional[str] = None
     shipping_method: Optional[str] = None

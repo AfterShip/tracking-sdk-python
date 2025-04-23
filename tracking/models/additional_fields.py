@@ -7,7 +7,7 @@ from enum import Enum, unique
 
 
 @unique
-class AdditionalFieldsV1(Enum):
+class AdditionalFields(Enum):
     """
     All available additional fields
 
@@ -15,9 +15,9 @@ class AdditionalFieldsV1(Enum):
     """
 
     TRACKING_ACCOUNT_NUMBER = "tracking_account_number"
-    TRACKING_POSTAL_CODE = "tracking_postal_code"
-    TRACKING_SHIP_DATE = "tracking_ship_date"
+    DESTINATION_POSTAL_CODE = "destination_postal_code"
+    DESTINATION_STATE = "destination_state"
     TRACKING_KEY = "tracking_key"
-    TRACKING_ORIGIN_COUNTRY_REGION = "tracking_origin_country_region"
-    TRACKING_DESTINATION_COUNTRY_REGION = "tracking_destination_country_region"
-    TRACKING_STATE = "tracking_state"
+    ORIGIN_COUNTRY_REGION = "origin_country_region"
+    DESTINATION_COUNTRY_REGION = "destination_country_region"
+    TRACKING_SHIP_DATE = "tracking_ship_date"

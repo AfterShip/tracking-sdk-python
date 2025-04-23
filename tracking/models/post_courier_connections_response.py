@@ -6,20 +6,21 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.courier import Courier
 
-
-class GetUserCouriersResponse(BaseModel):
+class PostCourierConnectionsResponse(BaseModel):
     """
-    GetUserCouriersResponse
+    This model represents user-created courier connection details. AfterShip will use this information to retrieve tracking updates from carriers based on the provided tracking numbers.
     """  # noqa: E501
 
-    total: Optional[int] = None
-    couriers: Optional[List[Courier]] = None
+    id: Optional[str] = None
+    courier_slug: Optional[str] = None
+    credentials: Optional[Any] = None
+    created_at: Optional[str] = None
+    updated_at: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

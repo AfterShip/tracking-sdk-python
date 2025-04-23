@@ -6,8 +6,8 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
 
@@ -21,6 +21,7 @@ class LatestEstimatedDeliveryMarkTrackingCompletedByIdResponse(BaseModel):
     datetime: Optional[str] = None
     datetime_min: Optional[str] = None
     datetime_max: Optional[str] = None
+    revise_reason: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

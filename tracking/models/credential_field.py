@@ -6,20 +6,19 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.courier import Courier
 
-
-class GetAllCouriersResponse(BaseModel):
+class CredentialField(BaseModel):
     """
-    GetAllCouriersResponse
+    CredentialField
     """  # noqa: E501
 
-    total: Optional[int] = None
-    couriers: Optional[List[Courier]] = None
+    name: Optional[str] = None
+    type: Optional[str] = None
+    required: Optional[bool] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

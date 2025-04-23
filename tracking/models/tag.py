@@ -7,7 +7,7 @@ from enum import Enum, unique
 
 
 @unique
-class TagV1(Enum):
+class Tag(Enum):
     """
     Current status of tracking. (
 

@@ -6,14 +6,14 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
 
-class PaginationDataTrackingResponseGetMultipleV1(BaseModel):
+class PaginationDataCourierConnectionResponseForGetCourierConnections(BaseModel):
     """
-    PaginationDataTrackingResponseGetMultipleV1
+    PaginationDataCourierConnectionResponseForGetCourierConnections
     """  # noqa: E501
 
     total: Optional[int] = None

@@ -4,7 +4,7 @@
 # Do not edit the class manually.
 
 __all__ = [
-    "AdditionalFieldsV1",
+    "AdditionalFields",
     "AftershipEstimatedDeliveryDateCreateTrackingResponse",
     "AftershipEstimatedDeliveryDateDeleteTrackingByIdResponse",
     "AftershipEstimatedDeliveryDateGetTrackingByIdResponse",
@@ -22,6 +22,8 @@ __all__ = [
     "Checkpoint",
     "CoordinateCheckpoint",
     "Courier",
+    "CourierConnection",
+    "CourierConnectionResponseForGetCourierConnections",
     "CourierEstimatedDeliveryDateCreateTrackingResponse",
     "CourierEstimatedDeliveryDateDeleteTrackingByIdResponse",
     "CourierEstimatedDeliveryDateGetTrackingByIdResponse",
@@ -29,9 +31,11 @@ __all__ = [
     "CourierEstimatedDeliveryDateRetrackTrackingByIdResponse",
     "CourierEstimatedDeliveryDateTracking",
     "CourierEstimatedDeliveryDateUpdateTrackingByIdResponse",
-    "CourierResponseV1",
+    "CourierResponse",
     "CreateTrackingRequest",
     "CreateTrackingResponse",
+    "CredentialField",
+    "CredentialsCourier",
     "CustomEstimatedDeliveryDateCreateTrackingResponse",
     "CustomEstimatedDeliveryDateDeleteTrackingByIdResponse",
     "CustomEstimatedDeliveryDateGetTrackingByIdResponse",
@@ -48,8 +52,10 @@ __all__ = [
     "CustomersTracking",
     "CustomersUpdateTrackingByIdRequest",
     "CustomersUpdateTrackingByIdResponse",
-    "DataCourierResponseV1",
-    "DataTrackingResponseGetMultipleV1",
+    "DataCourierConnectionResponseForGetCourierConnections",
+    "DataCourierResponse",
+    "DataTrackingResponseForGetTrackings",
+    "DeleteCourierConnectionsByIdResponse",
     "DeleteTrackingByIdResponse",
     "DestinationAddressEstimatedDeliveryDateRequest",
     "DestinationAddressEstimatedDeliveryDateResponse",
@@ -78,10 +84,11 @@ __all__ = [
     "FirstMileRetrackTrackingByIdResponse",
     "FirstMileTracking",
     "FirstMileUpdateTrackingByIdResponse",
-    "GetAllCouriersResponse",
+    "GetCourierConnectionsByIdResponse",
+    "GetCourierConnectionsResponse",
+    "GetCouriersResponse",
     "GetTrackingByIdResponse",
     "GetTrackingsResponse",
-    "GetUserCouriersResponse",
     "LastMileCreateTrackingRequest",
     "LastMileCreateTrackingResponse",
     "LastMileDeleteTrackingByIdResponse",
@@ -99,7 +106,7 @@ __all__ = [
     "LatestEstimatedDeliveryUpdateTrackingByIdResponse",
     "MarkTrackingCompletedByIdRequest",
     "MarkTrackingCompletedByIdResponse",
-    "MetaV1",
+    "Meta",
     "OrderProcessingTimeEstimatedPickupEstimatedDeliveryDateRequest",
     "OrderProcessingTimeEstimatedPickupEstimatedDeliveryDateResponse",
     "OrderProcessingTimeEstimatedPickupPredictRequest",
@@ -109,12 +116,18 @@ __all__ = [
     "OriginAddressPredictRequest",
     "OriginAddressPredictResponse",
     "Pagination",
-    "PaginationDataTrackingResponseGetMultipleV1",
+    "PaginationDataCourierConnectionResponseForGetCourierConnections",
+    "PaginationDataTrackingResponseForGetTrackings",
+    "PaginationGetCourierConnectionsResponse",
     "PaginationGetTrackingsResponse",
+    "PostCourierConnectionsRequest",
+    "PostCourierConnectionsResponse",
     "PredictBatchRequest",
     "PredictBatchResponse",
     "PredictRequest",
     "PredictResponse",
+    "PutCourierConnectionsByIdRequest",
+    "PutCourierConnectionsByIdResponse",
     "ReasonEventsCheckpoint",
     "RetrackTrackingByIdResponse",
     "ShipmentWeightCreateTrackingResponse",
@@ -124,11 +137,11 @@ __all__ = [
     "ShipmentWeightRetrackTrackingByIdResponse",
     "ShipmentWeightTracking",
     "ShipmentWeightUpdateTrackingByIdResponse",
-    "SlugGroupV1",
-    "TagV1",
+    "SlugGroup",
+    "Tag",
     "Tracking",
-    "TrackingResponseGetMultipleV1",
-    "TrackingResponseV1",
+    "TrackingResponse",
+    "TrackingResponseForGetTrackings",
     "UpdateTrackingByIdRequest",
     "UpdateTrackingByIdResponse",
     "WeightEstimatedDeliveryDateRequest",
@@ -137,7 +150,7 @@ __all__ = [
     "WeightPredictResponse",
 ]
 
-from .additional_fields_v1 import AdditionalFieldsV1
+from .additional_fields import AdditionalFields
 from .aftership_estimated_delivery_date_create_tracking_response import (
     AftershipEstimatedDeliveryDateCreateTrackingResponse,
 )
@@ -175,6 +188,10 @@ from .carbon_emissions_update_tracking_by_id_response import (
 from .checkpoint import Checkpoint
 from .coordinate_checkpoint import CoordinateCheckpoint
 from .courier import Courier
+from .courier_connection import CourierConnection
+from .courier_connection_response_for_get_courier_connections import (
+    CourierConnectionResponseForGetCourierConnections,
+)
 from .courier_estimated_delivery_date_create_tracking_response import (
     CourierEstimatedDeliveryDateCreateTrackingResponse,
 )
@@ -194,9 +211,11 @@ from .courier_estimated_delivery_date_tracking import CourierEstimatedDeliveryDa
 from .courier_estimated_delivery_date_update_tracking_by_id_response import (
     CourierEstimatedDeliveryDateUpdateTrackingByIdResponse,
 )
-from .courier_response_v1 import CourierResponseV1
+from .courier_response import CourierResponse
 from .create_tracking_request import CreateTrackingRequest
 from .create_tracking_response import CreateTrackingResponse
+from .credential_field import CredentialField
+from .credentials_courier import CredentialsCourier
 from .custom_estimated_delivery_date_create_tracking_response import (
     CustomEstimatedDeliveryDateCreateTrackingResponse,
 )
@@ -227,8 +246,12 @@ from .customers_retrack_tracking_by_id_response import CustomersRetrackTrackingB
 from .customers_tracking import CustomersTracking
 from .customers_update_tracking_by_id_request import CustomersUpdateTrackingByIdRequest
 from .customers_update_tracking_by_id_response import CustomersUpdateTrackingByIdResponse
-from .data_courier_response_v1 import DataCourierResponseV1
-from .data_tracking_response_get_multiple_v1 import DataTrackingResponseGetMultipleV1
+from .data_courier_connection_response_for_get_courier_connections import (
+    DataCourierConnectionResponseForGetCourierConnections,
+)
+from .data_courier_response import DataCourierResponse
+from .data_tracking_response_for_get_trackings import DataTrackingResponseForGetTrackings
+from .delete_courier_connections_by_id_response import DeleteCourierConnectionsByIdResponse
 from .delete_tracking_by_id_response import DeleteTrackingByIdResponse
 from .destination_address_estimated_delivery_date_request import (
     DestinationAddressEstimatedDeliveryDateRequest,
@@ -279,10 +302,11 @@ from .first_mile_mark_tracking_completed_by_id_response import (
 from .first_mile_retrack_tracking_by_id_response import FirstMileRetrackTrackingByIdResponse
 from .first_mile_tracking import FirstMileTracking
 from .first_mile_update_tracking_by_id_response import FirstMileUpdateTrackingByIdResponse
-from .get_all_couriers_response import GetAllCouriersResponse
+from .get_courier_connections_by_id_response import GetCourierConnectionsByIdResponse
+from .get_courier_connections_response import GetCourierConnectionsResponse
+from .get_couriers_response import GetCouriersResponse
 from .get_tracking_by_id_response import GetTrackingByIdResponse
 from .get_trackings_response import GetTrackingsResponse
-from .get_user_couriers_response import GetUserCouriersResponse
 from .last_mile_create_tracking_request import LastMileCreateTrackingRequest
 from .last_mile_create_tracking_response import LastMileCreateTrackingResponse
 from .last_mile_delete_tracking_by_id_response import LastMileDeleteTrackingByIdResponse
@@ -314,7 +338,7 @@ from .latest_estimated_delivery_update_tracking_by_id_response import (
 )
 from .mark_tracking_completed_by_id_request import MarkTrackingCompletedByIdRequest
 from .mark_tracking_completed_by_id_response import MarkTrackingCompletedByIdResponse
-from .meta_v1 import MetaV1
+from .meta import Meta
 from .order_processing_time_estimated_pickup_estimated_delivery_date_request import (
     OrderProcessingTimeEstimatedPickupEstimatedDeliveryDateRequest,
 )
@@ -336,14 +360,22 @@ from .origin_address_estimated_delivery_date_response import (
 from .origin_address_predict_request import OriginAddressPredictRequest
 from .origin_address_predict_response import OriginAddressPredictResponse
 from .pagination import Pagination
-from .pagination_data_tracking_response_get_multiple_v1 import (
-    PaginationDataTrackingResponseGetMultipleV1,
+from .pagination_data_courier_connection_response_for_get_courier_connections import (
+    PaginationDataCourierConnectionResponseForGetCourierConnections,
 )
+from .pagination_data_tracking_response_for_get_trackings import (
+    PaginationDataTrackingResponseForGetTrackings,
+)
+from .pagination_get_courier_connections_response import PaginationGetCourierConnectionsResponse
 from .pagination_get_trackings_response import PaginationGetTrackingsResponse
+from .post_courier_connections_request import PostCourierConnectionsRequest
+from .post_courier_connections_response import PostCourierConnectionsResponse
 from .predict_batch_request import PredictBatchRequest
 from .predict_batch_response import PredictBatchResponse
 from .predict_request import PredictRequest
 from .predict_response import PredictResponse
+from .put_courier_connections_by_id_request import PutCourierConnectionsByIdRequest
+from .put_courier_connections_by_id_response import PutCourierConnectionsByIdResponse
 from .reason_events_checkpoint import ReasonEventsCheckpoint
 from .retrack_tracking_by_id_response import RetrackTrackingByIdResponse
 from .shipment_weight_create_tracking_response import ShipmentWeightCreateTrackingResponse
@@ -357,11 +389,11 @@ from .shipment_weight_retrack_tracking_by_id_response import (
 )
 from .shipment_weight_tracking import ShipmentWeightTracking
 from .shipment_weight_update_tracking_by_id_response import ShipmentWeightUpdateTrackingByIdResponse
-from .slug_group_v1 import SlugGroupV1
-from .tag_v1 import TagV1
+from .slug_group import SlugGroup
+from .tag import Tag
 from .tracking import Tracking
-from .tracking_response_get_multiple_v1 import TrackingResponseGetMultipleV1
-from .tracking_response_v1 import TrackingResponseV1
+from .tracking_response import TrackingResponse
+from .tracking_response_for_get_trackings import TrackingResponseForGetTrackings
 from .update_tracking_by_id_request import UpdateTrackingByIdRequest
 from .update_tracking_by_id_response import UpdateTrackingByIdResponse
 from .weight_estimated_delivery_date_request import WeightEstimatedDeliveryDateRequest

@@ -6,21 +6,20 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.meta_v1 import MetaV1
-from tracking.models.tracking import Tracking
+from tracking.models.courier import Courier
 
 
-class TrackingResponseV1(BaseModel):
+class GetCouriersResponse(BaseModel):
     """
-    Tracking response for returning single tracking
+    GetCouriersResponse
     """  # noqa: E501
 
-    meta: Optional[MetaV1] = None
-    data: Optional[Tracking] = None
+    total: Optional[int] = None
+    couriers: Optional[List[Courier]] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

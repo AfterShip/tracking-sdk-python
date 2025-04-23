@@ -41,7 +41,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2025-01/trackings"
+        url = "/tracking/2025-04/trackings"
 
         body = create_tracking_request
         if not isinstance(body, dict):
@@ -66,7 +66,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-01/trackings/{tracking_id}"
+        url = f"/tracking/2025-04/trackings/{tracking_id}"
 
         result = self._request("DELETE", url=url, **kwargs)
         return DeleteTrackingByIdResponse().from_dict(result)
@@ -86,10 +86,10 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
             query params:
-                **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `tracking_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `tracking_origin_country_region`, `tracking_destination_country_region`, `tracking_state`, `title`, `order_id`, `tag`, `checkpoints`
+                **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `destination_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `origin_country_region`, `destination_country_region`, `destination_state`, `title`, `order_id`, `tag`, `checkpoints`
                 **lang**: str. Translate checkpoint messages from the carrier’s provided language to the target language. Supported target languages include:</br>&nbsp;&nbsp;&nbsp;&nbsp;- English (en)</br>&nbsp;&nbsp;&nbsp;&nbsp;- French (fr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- French Canadian (fr-CA)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Arabic (ar)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Bulgarian (bg)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Catalan (ca)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Croatian (hr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Czech (cs)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Danish (da)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Dutch (nl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Estonian (et)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Filipino (tl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Finnish (fi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- German (de)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Greek (el)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hebrew (he)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hindi (hi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hungarian (hu)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Indonesian (id)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Italian (it)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Japanese (ja)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Korean (ko)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Latvian (lv)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Lithuanian (lt)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Malay (ms)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Polish (pl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Portuguese (pt)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Romanian (ro)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Russian (ru)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Serbian (sr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Slovak (sk)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Slovenian (sl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Spanish (es)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Swedish (sv)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Thai (th)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Turkish (tr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Ukrainian (uk)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Vietnamese (vi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Simplified Chinese (zh-Hans)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Traditional Chinese (zh-Hant)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Norwegian (nb)</br>
         """
-        url = f"/tracking/2025-01/trackings/{tracking_id}"
+        url = f"/tracking/2025-04/trackings/{tracking_id}"
         params_keys = {
             "fields",
             "lang",
@@ -130,7 +130,7 @@ class TrackingApi(ApiClient):
                 **shipment_tags**: str. Tags you added to your shipments to help categorize and filter them easily. Use a comma to separate multiple values (Example: a,b)
                 **order_id**: str. A globally-unique identifier for the order. Use comma for multiple values.(Example: 6845a095a27a4caeb27487806f058add,4845a095a27a4caeb27487806f058abc)
         """
-        url = "/tracking/2025-01/trackings"
+        url = "/tracking/2025-04/trackings"
         params_keys = {
             "cursor",
             "limit",
@@ -180,7 +180,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-01/trackings/{tracking_id}/mark-as-completed"
+        url = f"/tracking/2025-04/trackings/{tracking_id}/mark-as-completed"
 
         body = mark_tracking_completed_by_id_request
         if not isinstance(body, dict):
@@ -205,7 +205,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-01/trackings/{tracking_id}/retrack"
+        url = f"/tracking/2025-04/trackings/{tracking_id}/retrack"
 
         result = self._request("POST", url=url, **kwargs)
         return RetrackTrackingByIdResponse().from_dict(result)
@@ -229,7 +229,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-01/trackings/{tracking_id}"
+        url = f"/tracking/2025-04/trackings/{tracking_id}"
 
         body = update_tracking_by_id_request
         if not isinstance(body, dict):

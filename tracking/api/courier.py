@@ -4,15 +4,13 @@
 # Do not edit the class manually.
 
 import json
-from typing import Union, Annotated
+from typing import Union
 
-from pydantic import Field
 
 from tracking.models import (
     DetectCourierRequest,
     DetectCourierResponse,
-    GetAllCouriersResponse,
-    GetUserCouriersResponse,
+    GetCouriersResponse,
 )
 from tracking.request import ApiClient, validate_params
 
@@ -35,7 +33,7 @@ class CourierApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2025-01/couriers/detect"
+        url = "/tracking/2025-04/couriers/detect"
 
         body = detect_courier_request
         if not isinstance(body, dict):
@@ -46,9 +44,9 @@ class CourierApi(ApiClient):
         return DetectCourierResponse().from_dict(result)
 
     @validate_params
-    def get_all_couriers(self, **kwargs) -> GetAllCouriersResponse:
+    def get_couriers(self, **kwargs) -> GetCouriersResponse:
         """
-        Return a list of all couriers.
+        Return a list of couriers.
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -56,25 +54,16 @@ class CourierApi(ApiClient):
                     verify the identity of requested hosts. Either `True` (default CA bundle),
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
+            query params:
+                **active**: bool. get user activated couriers
+                **slug**: str. Unique courier code Use comma for multiple values. (Example: dhl,ups,usps)
         """
-        url = "/tracking/2025-01/couriers/all"
+        url = "/tracking/2025-04/couriers"
+        params_keys = {
+            "active",
+            "slug",
+        }
+        params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
-        result = self._request("GET", url=url, **kwargs)
-        return GetAllCouriersResponse().from_dict(result)
-
-    @validate_params
-    def get_user_couriers(self, **kwargs) -> GetUserCouriersResponse:
-        """
-        Return a list of .
-        :param kwargs:
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
-        """
-        url = "/tracking/2025-01/couriers"
-
-        result = self._request("GET", url=url, **kwargs)
-        return GetUserCouriersResponse().from_dict(result)
+        result = self._request("GET", url=url, params=params, **kwargs)
+        return GetCouriersResponse().from_dict(result)

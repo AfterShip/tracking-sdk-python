@@ -6,11 +6,11 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.slug_group_v1 import SlugGroupV1
+from tracking.models.slug_group import SlugGroup
 
 
 class DetectCourierRequest(BaseModel):
@@ -20,14 +20,12 @@ class DetectCourierRequest(BaseModel):
 
     tracking_number: Optional[str] = None
     slug: Optional[List[str]] = None
-    tracking_postal_code: Optional[str] = None
+    destination_postal_code: Optional[str] = None
     tracking_ship_date: Optional[str] = None
     tracking_account_number: Optional[str] = None
     tracking_key: Optional[str] = None
-    tracking_origin_country_region: Optional[str] = None
-    tracking_destination_country_region: Optional[str] = None
-    tracking_state: Optional[str] = None
-    slug_group: Optional[SlugGroupV1] = None
+    destination_state: Optional[str] = None
+    slug_group: Optional[SlugGroup] = None
     origin_country_region: Optional[str] = None
     destination_country_region: Optional[str] = None
 

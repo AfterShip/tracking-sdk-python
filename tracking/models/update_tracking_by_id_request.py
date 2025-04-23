@@ -6,7 +6,7 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
@@ -47,10 +47,6 @@ class UpdateTrackingByIdRequest(BaseModel):
     destination_city: Optional[str] = None
     destination_postal_code: Optional[str] = None
     destination_raw_location: Optional[str] = None
-    tracking_origin_country_region: Optional[str] = None
-    tracking_destination_country_region: Optional[str] = None
-    tracking_postal_code: Optional[str] = None
-    tracking_state: Optional[str] = None
     location_id: Optional[str] = None
     shipping_method: Optional[str] = None
     customers: Optional[List[CustomersUpdateTrackingByIdRequest]] = None

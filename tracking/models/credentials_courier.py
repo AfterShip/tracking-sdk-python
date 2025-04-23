@@ -6,21 +6,19 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.meta_v1 import MetaV1
-from tracking.models.data_tracking_response_get_multiple_v1 import DataTrackingResponseGetMultipleV1
+from tracking.models.credential_field import CredentialField
 
 
-class TrackingResponseGetMultipleV1(BaseModel):
+class CredentialsCourier(BaseModel):
     """
-    Tracking response for getting tracking
+    CredentialsCourier
     """  # noqa: E501
 
-    meta: Optional[MetaV1] = None
-    data: Optional[DataTrackingResponseGetMultipleV1] = None
+    fields: Optional[List[CredentialField]] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))
