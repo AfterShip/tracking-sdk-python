@@ -42,6 +42,7 @@ Each SDK version is designed to work with a specific API version. Please refer t
 
 | SDK Version | Supported API Version | Branch                                                        |
 | ----------- | --------------------- | ------------------------------------------------------------- |
+| 7.x.x      | 2025-07               | https://github.com/AfterShip/tracking-sdk-python/tree/2025-07 |
 | 6.x.x      | 2025-04               | https://github.com/AfterShip/tracking-sdk-python/tree/2025-04 |
 | 5.x.x      | 2025-01               | https://github.com/AfterShip/tracking-sdk-python/tree/2025-01 |
 | 4.x.x      | 2024-10               | https://github.com/AfterShip/tracking-sdk-python/tree/2024-10 |
@@ -98,7 +99,7 @@ except exceptions.RateLimitExceedError:
 
 ## Rate Limiter
 
-See the [Rate Limit](https://www.aftership.com/docs/tracking/2025-04/quickstart/api-quick-start) to understand the AfterShip rate limit policy.
+See the [Rate Limit](https://www.aftership.com/docs/tracking/2025-07/quickstart/api-quick-start) to understand the AfterShip rate limit policy.
 
 ## Error Handling
 

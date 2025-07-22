@@ -38,7 +38,7 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-04/courier-connections/{courier_connection_id}"
+        url = f"/tracking/2025-07/courier-connections/{courier_connection_id}"
 
         result = self._request("DELETE", url=url, **kwargs)
         return DeleteCourierConnectionsByIdResponse().from_dict(result)
@@ -59,7 +59,7 @@ class CourierConnectionApi(ApiClient):
                 **cursor**: str. A string representing the cursor value for the current page of results.
                 **limit**: str. Number of courier connections each page contain. (Default: 100, Max: 200)
         """
-        url = "/tracking/2025-04/courier-connections"
+        url = "/tracking/2025-07/courier-connections"
         params_keys = {
             "courier_slug",
             "cursor",
@@ -90,7 +90,7 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-04/courier-connections/{courier_connection_id}"
+        url = f"/tracking/2025-07/courier-connections/{courier_connection_id}"
 
         result = self._request("GET", url=url, **kwargs)
         return GetCourierConnectionsByIdResponse().from_dict(result)
@@ -110,7 +110,7 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2025-04/courier-connections"
+        url = "/tracking/2025-07/courier-connections"
 
         body = post_courier_connections_request
         if not isinstance(body, dict):
@@ -139,7 +139,7 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-04/courier-connections/{courier_connection_id}"
+        url = f"/tracking/2025-07/courier-connections/{courier_connection_id}"
 
         body = put_courier_connections_by_id_request
         if not isinstance(body, dict):
