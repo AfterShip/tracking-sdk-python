@@ -10,7 +10,6 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.slug_group import SlugGroup
 from tracking.models.last_mile_create_tracking_request import LastMileCreateTrackingRequest
 from tracking.models.customers_create_tracking_request import CustomersCreateTrackingRequest
 
@@ -46,7 +45,7 @@ class CreateTrackingRequest(BaseModel):
     destination_postal_code: Optional[str] = None
     destination_raw_location: Optional[str] = None
     note: Optional[str] = None
-    slug_group: Optional[SlugGroup] = None
+    slug_group: Optional[str] = None
     order_date: Optional[str] = None
     order_number: Optional[str] = None
     shipment_type: Optional[str] = None
