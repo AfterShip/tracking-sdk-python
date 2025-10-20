@@ -40,7 +40,6 @@ __all__ = [
     "Courier",
     "AdditionalFields",
     "CredentialField",
-    "SlugGroup",
     "CourierConnectionResponseForGetCourierConnectionsDataPagination",
     "CourierConnectionResponseForGetCourierConnectionsData",
     "CourierConnectionResponseForGetCourierConnections",
@@ -133,7 +132,6 @@ from .courier_credentials import CourierCredentials
 from .courier import Courier
 from .additional_fields import AdditionalFields
 from .credential_field import CredentialField
-from .slug_group import SlugGroup
 from .courier_connection_response_for_get_courier_connections_data_pagination import (
     CourierConnectionResponseForGetCourierConnectionsDataPagination,
 )
