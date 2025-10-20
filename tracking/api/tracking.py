@@ -9,95 +9,22 @@ from typing import Union, Annotated
 from pydantic import Field
 
 from tracking.models import (
+    GetTrackingsResponse,
     CreateTrackingRequest,
     CreateTrackingResponse,
-    DeleteTrackingByIdResponse,
     GetTrackingByIdResponse,
-    GetTrackingsResponse,
-    MarkTrackingCompletedByIdRequest,
-    MarkTrackingCompletedByIdResponse,
-    RetrackTrackingByIdResponse,
     UpdateTrackingByIdRequest,
     UpdateTrackingByIdResponse,
+    DeleteTrackingByIdResponse,
+    RetrackTrackingByIdResponse,
+    MarkTrackingCompletedByIdRequest,
+    MarkTrackingCompletedByIdResponse,
 )
 from tracking.request import ApiClient, validate_params
 
 
 class TrackingApi(ApiClient):
     """TrackingApi api implements"""
-
-    @validate_params
-    def create_tracking(
-        self, create_tracking_request: Union[CreateTrackingRequest, dict], **kwargs
-    ) -> CreateTrackingResponse:
-        """
-        Create a tracking.<div style="visibility:hidden; height: 0"></div>
-        :param create_tracking_request:
-        :param kwargs:
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
-        """
-        url = "/tracking/2025-07/trackings"
-
-        body = create_tracking_request
-        if not isinstance(body, dict):
-            body = create_tracking_request.model_dump(exclude_none=True)
-        body = json.dumps(body)
-
-        result = self._request("POST", url=url, body=body, **kwargs)
-        return CreateTrackingResponse().from_dict(result)
-
-    @validate_params
-    def delete_tracking_by_id(
-        self, tracking_id: Annotated[str, Field(min_length=1)], **kwargs
-    ) -> DeleteTrackingByIdResponse:
-        """
-        Delete a tracking.
-        :param tracking_id: str. tracking ID.
-        :param kwargs:
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
-        """
-        url = f"/tracking/2025-07/trackings/{tracking_id}"
-
-        result = self._request("DELETE", url=url, **kwargs)
-        return DeleteTrackingByIdResponse().from_dict(result)
-
-    @validate_params
-    def get_tracking_by_id(
-        self, tracking_id: Annotated[str, Field(min_length=1)], **kwargs
-    ) -> GetTrackingByIdResponse:
-        """
-        Get tracking results of a single tracking.
-        :param tracking_id: str. tracking ID.
-        :param kwargs:
-            request options:
-                **headers** (dict): support custom headers.
-                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
-                    verify the identity of requested hosts. Either `True` (default CA bundle),
-                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
-                    (which will disable verification).
-            query params:
-                **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `destination_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `origin_country_region`, `destination_country_region`, `destination_state`, `title`, `order_id`, `tag`, `checkpoints`
-                **lang**: str. Translate checkpoint messages from the carrier’s provided language to the target language. Supported target languages include:</br>&nbsp;&nbsp;&nbsp;&nbsp;- English (en)</br>&nbsp;&nbsp;&nbsp;&nbsp;- French (fr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- French Canadian (fr-CA)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Arabic (ar)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Bulgarian (bg)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Catalan (ca)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Croatian (hr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Czech (cs)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Danish (da)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Dutch (nl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Estonian (et)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Filipino (tl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Finnish (fi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- German (de)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Greek (el)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hebrew (he)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hindi (hi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Hungarian (hu)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Indonesian (id)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Italian (it)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Japanese (ja)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Korean (ko)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Latvian (lv)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Lithuanian (lt)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Malay (ms)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Polish (pl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Portuguese (pt)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Romanian (ro)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Russian (ru)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Serbian (sr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Slovak (sk)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Slovenian (sl)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Spanish (es)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Swedish (sv)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Thai (th)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Turkish (tr)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Ukrainian (uk)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Vietnamese (vi)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Simplified Chinese (zh-Hans)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Traditional Chinese (zh-Hant)</br>&nbsp;&nbsp;&nbsp;&nbsp;- Norwegian (nb)</br>
-        """
-        url = f"/tracking/2025-07/trackings/{tracking_id}"
-        params_keys = {
-            "fields",
-            "lang",
-        }
-        params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
-
-        result = self._request("GET", url=url, params=params, **kwargs)
-        return GetTrackingByIdResponse().from_dict(result)
 
     @validate_params
     def get_trackings(self, **kwargs) -> GetTrackingsResponse:
@@ -131,6 +58,7 @@ class TrackingApi(ApiClient):
                 **order_id**: str. A globally-unique identifier for the order. Use comma for multiple values.(Example: 6845a095a27a4caeb27487806f058add,4845a095a27a4caeb27487806f058abc)
         """
         url = "/tracking/2025-07/trackings"
+
         params_keys = {
             "cursor",
             "limit",
@@ -154,24 +82,15 @@ class TrackingApi(ApiClient):
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
         result = self._request("GET", url=url, params=params, **kwargs)
-        return GetTrackingsResponse().from_dict(
-            {
-                "pagination": result.get("pagination"),
-                "trackings": result.get("trackings"),
-            }
-        )
+        return GetTrackingsResponse.model_validate(result)
 
     @validate_params
-    def mark_tracking_completed_by_id(
-        self,
-        tracking_id: Annotated[str, Field(min_length=1)],
-        mark_tracking_completed_by_id_request: Union[MarkTrackingCompletedByIdRequest, dict],
-        **kwargs,
-    ) -> MarkTrackingCompletedByIdResponse:
+    def create_tracking(
+        self, create_tracking_request: Union[CreateTrackingRequest, dict], **kwargs
+    ) -> CreateTrackingResponse:
         """
-        Mark a tracking as completed. The tracking won't auto update until retrack it.
-        :param tracking_id: str. tracking id.
-        :param mark_tracking_completed_by_id_request:
+        Create a tracking.<div style="visibility:hidden; height: 0"></div>
+        :param create_tracking_request:
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -180,23 +99,23 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-07/trackings/{tracking_id}/mark-as-completed"
+        url = "/tracking/2025-07/trackings"
 
-        body = mark_tracking_completed_by_id_request
+        body = create_tracking_request
         if not isinstance(body, dict):
-            body = mark_tracking_completed_by_id_request.model_dump(exclude_none=True)
+            body = create_tracking_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
-        return MarkTrackingCompletedByIdResponse().from_dict(result)
+        return CreateTrackingResponse.model_validate(result)
 
     @validate_params
-    def retrack_tracking_by_id(
-        self, tracking_id: Annotated[str, Field(min_length=1)], **kwargs
-    ) -> RetrackTrackingByIdResponse:
+    def get_tracking_by_id(
+        self, id: Annotated[str, Field(min_length=1)], **kwargs
+    ) -> GetTrackingByIdResponse:
         """
-        Retrack an expired tracking. Max 3 times per tracking.
-        :param tracking_id: str. tracking id.
+        Get tracking results of a single tracking.
+        :param id: str. tracking ID
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -204,22 +123,31 @@ class TrackingApi(ApiClient):
                     verify the identity of requested hosts. Either `True` (default CA bundle),
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
+            query params:
+                **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `destination_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `origin_country_region`, `destination_country_region`, `destination_state`, `title`, `order_id`, `tag`, `checkpoints`
+                **lang**: str. Translate checkpoint messages from the carrier’s provided language to the target language. Supported target languages include:&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- English (en)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- French (fr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- French Canadian (fr-CA)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Arabic (ar)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Bulgarian (bg)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Catalan (ca)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Croatian (hr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Czech (cs)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Danish (da)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Dutch (nl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Estonian (et)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Filipino (tl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Finnish (fi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- German (de)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Greek (el)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hebrew (he)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hindi (hi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hungarian (hu)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Indonesian (id)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Italian (it)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Japanese (ja)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Korean (ko)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Latvian (lv)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Lithuanian (lt)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Malay (ms)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Polish (pl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Portuguese (pt)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Romanian (ro)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Russian (ru)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Serbian (sr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Slovak (sk)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Slovenian (sl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Spanish (es)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Swedish (sv)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Thai (th)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Turkish (tr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Ukrainian (uk)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Vietnamese (vi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Simplified Chinese (zh-Hans)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Traditional Chinese (zh-Hant)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Norwegian (nb)&lt;/br&gt;
         """
-        url = f"/tracking/2025-07/trackings/{tracking_id}/retrack"
+        url = f"/tracking/2025-07/trackings/{id}"
 
-        result = self._request("POST", url=url, **kwargs)
-        return RetrackTrackingByIdResponse().from_dict(result)
+        params_keys = {
+            "fields",
+            "lang",
+        }
+        params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
+
+        result = self._request("GET", url=url, params=params, **kwargs)
+        return GetTrackingByIdResponse.model_validate(result)
 
     @validate_params
     def update_tracking_by_id(
         self,
-        tracking_id: Annotated[str, Field(min_length=1)],
+        id: Annotated[str, Field(min_length=1)],
         update_tracking_by_id_request: Union[UpdateTrackingByIdRequest, dict],
         **kwargs,
     ) -> UpdateTrackingByIdResponse:
         """
         Update a tracking.
-        :param tracking_id: str. tracking ID.
+        :param id: str. tracking ID
         :param update_tracking_by_id_request:
         :param kwargs:
             request options:
@@ -229,12 +157,81 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2025-07/trackings/{tracking_id}"
+        url = f"/tracking/2025-07/trackings/{id}"
 
         body = update_tracking_by_id_request
         if not isinstance(body, dict):
-            body = update_tracking_by_id_request.model_dump(exclude_none=True)
+            body = update_tracking_by_id_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("PUT", url=url, body=body, **kwargs)
-        return UpdateTrackingByIdResponse().from_dict(result)
+        return UpdateTrackingByIdResponse.model_validate(result)
+
+    @validate_params
+    def delete_tracking_by_id(
+        self, id: Annotated[str, Field(min_length=1)], **kwargs
+    ) -> DeleteTrackingByIdResponse:
+        """
+        Delete a tracking.
+        :param id: str. tracking ID
+        :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
+        """
+        url = f"/tracking/2025-07/trackings/{id}"
+
+        result = self._request("DELETE", url=url, **kwargs)
+        return DeleteTrackingByIdResponse.model_validate(result)
+
+    @validate_params
+    def retrack_tracking_by_id(
+        self, id: Annotated[str, Field(min_length=1)], **kwargs
+    ) -> RetrackTrackingByIdResponse:
+        """
+        Retrack an expired tracking. Max 3 times per tracking.
+        :param id: str. tracking id
+        :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
+        """
+        url = f"/tracking/2025-07/trackings/{id}/retrack"
+
+        result = self._request("POST", url=url, **kwargs)
+        return RetrackTrackingByIdResponse.model_validate(result)
+
+    @validate_params
+    def mark_tracking_completed_by_id(
+        self,
+        id: Annotated[str, Field(min_length=1)],
+        mark_tracking_completed_by_id_request: Union[MarkTrackingCompletedByIdRequest, dict],
+        **kwargs,
+    ) -> MarkTrackingCompletedByIdResponse:
+        """
+        Mark a tracking as completed. The tracking won't auto update until retrack it.
+        :param id: str. tracking id
+        :param mark_tracking_completed_by_id_request:
+        :param kwargs:
+            request options:
+                **headers** (dict): support custom headers.
+                **verify** bool|str|SSLContext: SSL certificates (a.k.a CA bundle) used to
+                    verify the identity of requested hosts. Either `True` (default CA bundle),
+                    a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
+                    (which will disable verification).
+        """
+        url = f"/tracking/2025-07/trackings/{id}/mark-as-completed"
+
+        body = mark_tracking_completed_by_id_request
+        if not isinstance(body, dict):
+            body = mark_tracking_completed_by_id_request.model_dump(exclude_none=True, mode="json")
+        body = json.dumps(body)
+
+        result = self._request("POST", url=url, body=body, **kwargs)
+        return MarkTrackingCompletedByIdResponse.model_validate(result)

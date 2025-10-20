@@ -10,8 +10,9 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.last_mile_create_tracking_request import LastMileCreateTrackingRequest
-from tracking.models.customers_create_tracking_request import CustomersCreateTrackingRequest
+from tracking.models.create_tracking_request_delivery_type import CreateTrackingRequestDeliveryType
+from tracking.models.create_tracking_request_last_mile import CreateTrackingRequestLastMile
+from tracking.models.create_tracking_request_customers import CreateTrackingRequestCustomers
 
 
 class CreateTrackingRequest(BaseModel):
@@ -24,11 +25,11 @@ class CreateTrackingRequest(BaseModel):
     slug: Optional[str] = None
     title: Optional[str] = None
     order_id: Optional[str] = None
-    custom_fields: Optional[Any] = None
+    custom_fields: Optional[dict] = None
     order_id_path: Optional[str] = None
     language: Optional[str] = None
     order_promised_delivery_date: Optional[str] = None
-    delivery_type: Optional[str] = None
+    delivery_type: Optional[CreateTrackingRequestDeliveryType] = None
     pickup_location: Optional[str] = None
     pickup_note: Optional[str] = None
     tracking_account_number: Optional[str] = None
@@ -53,8 +54,8 @@ class CreateTrackingRequest(BaseModel):
     courier_connection_id: Optional[str] = None
     location_id: Optional[str] = None
     shipping_method: Optional[str] = None
-    last_mile: Optional[LastMileCreateTrackingRequest] = None
-    customers: Optional[List[CustomersCreateTrackingRequest]] = None
+    last_mile: Optional[CreateTrackingRequestLastMile] = None
+    customers: Optional[List[CreateTrackingRequestCustomers]] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

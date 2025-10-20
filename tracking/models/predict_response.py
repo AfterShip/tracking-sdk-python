@@ -7,33 +7,17 @@ from __future__ import annotations
 import pprint
 
 from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.origin_address_predict_response import OriginAddressPredictResponse
-from tracking.models.destination_address_predict_response import DestinationAddressPredictResponse
-from tracking.models.weight_predict_response import WeightPredictResponse
-from tracking.models.estimated_pickup_predict_response import EstimatedPickupPredictResponse
+from tracking.models.estimated_delivery_date_response import EstimatedDeliveryDateResponse
 
 
 class PredictResponse(BaseModel):
-    """
-    PredictResponse
-    """  # noqa: E501
+    """ """
 
-    id: Optional[str] = None
-    slug: Optional[str] = None
-    service_type_name: Optional[str] = None
-    origin_address: Optional[OriginAddressPredictResponse] = None
-    destination_address: Optional[DestinationAddressPredictResponse] = None
-    weight: Optional[WeightPredictResponse] = None
-    package_count: Optional[int] = None
-    pickup_time: Optional[str] = None
-    estimated_pickup: Optional[EstimatedPickupPredictResponse] = None
-    estimated_delivery_date: Optional[str] = None
-    confidence_code: Optional[float] = None
-    estimated_delivery_date_min: Optional[str] = None
-    estimated_delivery_date_max: Optional[str] = None
+    response_header: Dict[str, List[str]] = {}
+    data: Optional[EstimatedDeliveryDateResponse] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

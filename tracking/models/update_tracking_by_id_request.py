@@ -10,8 +10,11 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.customers_update_tracking_by_id_request import (
-    CustomersUpdateTrackingByIdRequest,
+from tracking.models.update_tracking_by_id_request_delivery_type import (
+    UpdateTrackingByIdRequestDeliveryType,
+)
+from tracking.models.update_tracking_by_id_request_customers import (
+    UpdateTrackingByIdRequestCustomers,
 )
 
 
@@ -23,11 +26,11 @@ class UpdateTrackingByIdRequest(BaseModel):
     title: Optional[str] = None
     order_id: Optional[str] = None
     order_id_path: Optional[str] = None
-    custom_fields: Optional[Any] = None
+    custom_fields: Optional[dict] = None
     note: Optional[str] = None
     language: Optional[str] = None
     order_promised_delivery_date: Optional[str] = None
-    delivery_type: Optional[str] = None
+    delivery_type: Optional[UpdateTrackingByIdRequestDeliveryType] = None
     pickup_location: Optional[str] = None
     pickup_note: Optional[str] = None
     slug: Optional[str] = None
@@ -49,7 +52,7 @@ class UpdateTrackingByIdRequest(BaseModel):
     destination_raw_location: Optional[str] = None
     location_id: Optional[str] = None
     shipping_method: Optional[str] = None
-    customers: Optional[List[CustomersUpdateTrackingByIdRequest]] = None
+    customers: Optional[List[UpdateTrackingByIdRequestCustomers]] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

@@ -10,16 +10,14 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.courier import Courier
+from tracking.models.detect_courier_response_data import DetectCourierResponseData
 
 
 class DetectCourierResponse(BaseModel):
-    """
-    DetectCourierResponse
-    """  # noqa: E501
+    """ """
 
-    total: Optional[int] = None
-    couriers: Optional[List[Courier]] = None
+    response_header: Dict[str, List[str]] = {}
+    data: Optional[DetectCourierResponseData] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

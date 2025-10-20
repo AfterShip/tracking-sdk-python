@@ -10,7 +10,8 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.credentials_courier import CredentialsCourier
+from tracking.models.additional_fields import AdditionalFields
+from tracking.models.courier_credentials import CourierCredentials
 
 
 class Courier(BaseModel):
@@ -23,12 +24,12 @@ class Courier(BaseModel):
     phone: Optional[str] = None
     other_name: Optional[str] = None
     web_url: Optional[str] = None
-    required_fields: Optional[List[str]] = None
-    optional_fields: Optional[List[str]] = None
+    required_fields: Optional[List[AdditionalFields]] = None
+    optional_fields: Optional[List[AdditionalFields]] = None
     default_language: Optional[str] = None
     support_languages: Optional[List[str]] = None
     service_from_country_regions: Optional[List[str]] = None
-    credentials: Optional[CredentialsCourier] = None
+    credentials: Optional[CourierCredentials] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

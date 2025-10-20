@@ -10,17 +10,14 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking import Tracking
-from tracking.models.pagination import Pagination
+from tracking.models.get_trackings_response_data import GetTrackingsResponseData
 
 
 class GetTrackingsResponse(BaseModel):
-    """
-    GetTrackingsResponse
-    """  # noqa: E501
+    """ """
 
-    pagination: Optional[Pagination] = None
-    trackings: Optional[List[Tracking]] = None
+    response_header: Dict[str, List[str]] = {}
+    data: Optional[GetTrackingsResponseData] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

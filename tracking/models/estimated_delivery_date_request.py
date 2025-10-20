@@ -10,17 +10,17 @@ from pydantic import BaseModel
 from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.origin_address_estimated_delivery_date_request import (
-    OriginAddressEstimatedDeliveryDateRequest,
+from tracking.models.estimated_delivery_date_request_origin_address import (
+    EstimatedDeliveryDateRequestOriginAddress,
 )
-from tracking.models.destination_address_estimated_delivery_date_request import (
-    DestinationAddressEstimatedDeliveryDateRequest,
+from tracking.models.estimated_delivery_date_request_destination_address import (
+    EstimatedDeliveryDateRequestDestinationAddress,
 )
-from tracking.models.weight_estimated_delivery_date_request import (
-    WeightEstimatedDeliveryDateRequest,
+from tracking.models.estimated_delivery_date_request_weight import (
+    EstimatedDeliveryDateRequestWeight,
 )
-from tracking.models.estimated_pickup_estimated_delivery_date_request import (
-    EstimatedPickupEstimatedDeliveryDateRequest,
+from tracking.models.estimated_delivery_date_request_estimated_pickup import (
+    EstimatedDeliveryDateRequestEstimatedPickup,
 )
 
 
@@ -31,12 +31,12 @@ class EstimatedDeliveryDateRequest(BaseModel):
 
     slug: Optional[str] = None
     service_type_name: Optional[str] = None
-    origin_address: Optional[OriginAddressEstimatedDeliveryDateRequest] = None
-    destination_address: Optional[DestinationAddressEstimatedDeliveryDateRequest] = None
-    weight: Optional[WeightEstimatedDeliveryDateRequest] = None
+    origin_address: Optional[EstimatedDeliveryDateRequestOriginAddress] = None
+    destination_address: Optional[EstimatedDeliveryDateRequestDestinationAddress] = None
+    weight: Optional[EstimatedDeliveryDateRequestWeight] = None
     package_count: Optional[int] = None
     pickup_time: Optional[str] = None
-    estimated_pickup: Optional[EstimatedPickupEstimatedDeliveryDateRequest] = None
+    estimated_pickup: Optional[EstimatedDeliveryDateRequestEstimatedPickup] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

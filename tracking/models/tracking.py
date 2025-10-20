@@ -10,24 +10,25 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.courier_estimated_delivery_date_tracking import (
-    CourierEstimatedDeliveryDateTracking,
+from tracking.models.tracking_courier_estimated_delivery_date import (
+    TrackingCourierEstimatedDeliveryDate,
 )
-from tracking.models.shipment_weight_tracking import ShipmentWeightTracking
+from tracking.models.tracking_shipment_weight import TrackingShipmentWeight
 from tracking.models.tag import Tag
 from tracking.models.checkpoint import Checkpoint
-from tracking.models.aftership_estimated_delivery_date_tracking import (
-    AftershipEstimatedDeliveryDateTracking,
+from tracking.models.tracking_aftership_estimated_delivery_date import (
+    TrackingAftershipEstimatedDeliveryDate,
 )
-from tracking.models.custom_estimated_delivery_date_tracking import (
-    CustomEstimatedDeliveryDateTracking,
+from tracking.models.tracking_custom_estimated_delivery_date import (
+    TrackingCustomEstimatedDeliveryDate,
 )
-from tracking.models.first_estimated_delivery_tracking import FirstEstimatedDeliveryTracking
-from tracking.models.latest_estimated_delivery_tracking import LatestEstimatedDeliveryTracking
-from tracking.models.carbon_emissions_tracking import CarbonEmissionsTracking
-from tracking.models.first_mile_tracking import FirstMileTracking
-from tracking.models.last_mile_tracking import LastMileTracking
-from tracking.models.customers_tracking import CustomersTracking
+from tracking.models.tracking_first_estimated_delivery import TrackingFirstEstimatedDelivery
+from tracking.models.tracking_latest_estimated_delivery import TrackingLatestEstimatedDelivery
+from tracking.models.tracking_carbon_emissions import TrackingCarbonEmissions
+from tracking.models.tracking_signature_requirement import TrackingSignatureRequirement
+from tracking.models.tracking_first_mile import TrackingFirstMile
+from tracking.models.tracking_last_mile import TrackingLastMile
+from tracking.models.tracking_customers import TrackingCustomers
 
 
 class Tracking(BaseModel):
@@ -42,7 +43,7 @@ class Tracking(BaseModel):
     tracking_number: Optional[str] = None
     slug: Optional[str] = None
     active: Optional[bool] = None
-    custom_fields: Optional[Any] = None
+    custom_fields: Optional[dict] = None
     transit_time: Optional[int] = None
     origin_country_region: Optional[str] = None
     origin_state: Optional[str] = None
@@ -55,7 +56,7 @@ class Tracking(BaseModel):
     destination_postal_code: Optional[str] = None
     destination_raw_location: Optional[str] = None
     courier_destination_country_region: Optional[str] = None
-    courier_estimated_delivery_date: Optional[CourierEstimatedDeliveryDateTracking] = None
+    courier_estimated_delivery_date: Optional[TrackingCourierEstimatedDeliveryDate] = None
     note: Optional[str] = None
     order_id: Optional[str] = None
     order_id_path: Optional[str] = None
@@ -64,7 +65,7 @@ class Tracking(BaseModel):
     shipment_pickup_date: Optional[str] = None
     shipment_delivery_date: Optional[str] = None
     shipment_type: Optional[str] = None
-    shipment_weight: Optional[ShipmentWeightTracking] = None
+    shipment_weight: Optional[TrackingShipmentWeight] = None
     signed_by: Optional[str] = None
     source: Optional[str] = None
     tag: Optional[Tag] = None
@@ -92,24 +93,24 @@ class Tracking(BaseModel):
     on_time_status: Optional[str] = None
     on_time_difference: Optional[float] = None
     order_tags: Optional[List[str]] = None
-    aftership_estimated_delivery_date: Optional[AftershipEstimatedDeliveryDateTracking] = None
-    custom_estimated_delivery_date: Optional[CustomEstimatedDeliveryDateTracking] = None
+    aftership_estimated_delivery_date: Optional[TrackingAftershipEstimatedDeliveryDate] = None
+    custom_estimated_delivery_date: Optional[TrackingCustomEstimatedDeliveryDate] = None
     order_number: Optional[str] = None
-    first_estimated_delivery: Optional[FirstEstimatedDeliveryTracking] = None
-    latest_estimated_delivery: Optional[LatestEstimatedDeliveryTracking] = None
+    first_estimated_delivery: Optional[TrackingFirstEstimatedDelivery] = None
+    latest_estimated_delivery: Optional[TrackingLatestEstimatedDelivery] = None
     shipment_tags: Optional[List[str]] = None
     courier_connection_id: Optional[str] = None
-    carbon_emissions: Optional[CarbonEmissionsTracking] = None
+    carbon_emissions: Optional[TrackingCarbonEmissions] = None
     location_id: Optional[str] = None
     shipping_method: Optional[str] = None
     failed_delivery_attempts: Optional[int] = None
-    signature_requirement: Optional[str] = None
+    signature_requirement: Optional[TrackingSignatureRequirement] = None
     delivery_location_type: Optional[str] = None
     aftership_tracking_url: Optional[str] = None
     aftership_tracking_order_url: Optional[str] = None
-    first_mile: Optional[FirstMileTracking] = None
-    last_mile: Optional[LastMileTracking] = None
-    customers: Optional[List[CustomersTracking]] = None
+    first_mile: Optional[TrackingFirstMile] = None
+    last_mile: Optional[TrackingLastMile] = None
+    customers: Optional[List[TrackingCustomers]] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

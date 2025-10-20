@@ -10,13 +10,17 @@ from pydantic import BaseModel
 from typing import Any, Dict, Optional
 from typing_extensions import Self
 
+from tracking.models.mark_tracking_completed_by_id_request_reason import (
+    MarkTrackingCompletedByIdRequestReason,
+)
+
 
 class MarkTrackingCompletedByIdRequest(BaseModel):
     """
     MarkTrackingCompletedByIdRequest
     """  # noqa: E501
 
-    reason: Optional[str] = None
+    reason: Optional[MarkTrackingCompletedByIdRequestReason] = None
     event_datetime: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
