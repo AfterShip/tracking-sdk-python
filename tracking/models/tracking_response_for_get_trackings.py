@@ -11,8 +11,8 @@ from typing import Any, Dict, Optional
 from typing_extensions import Self
 
 from tracking.models.meta import Meta
-from tracking.models.data_tracking_response_for_get_trackings import (
-    DataTrackingResponseForGetTrackings,
+from tracking.models.tracking_response_for_get_trackings_data import (
+    TrackingResponseForGetTrackingsData,
 )
 
 
@@ -22,7 +22,7 @@ class TrackingResponseForGetTrackings(BaseModel):
     """  # noqa: E501
 
     meta: Optional[Meta] = None
-    data: Optional[DataTrackingResponseForGetTrackings] = None
+    data: Optional[TrackingResponseForGetTrackingsData] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

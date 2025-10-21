@@ -16,7 +16,7 @@ class PutCourierConnectionsByIdRequest(BaseModel):
     PutCourierConnectionsByIdRequest
     """  # noqa: E501
 
-    credentials: Optional[Any] = None
+    credentials: Optional[dict] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

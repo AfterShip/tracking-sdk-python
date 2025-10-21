@@ -18,7 +18,7 @@ class CourierConnection(BaseModel):
 
     id: Optional[str] = None
     courier_slug: Optional[str] = None
-    credentials: Optional[Any] = None
+    credentials: Optional[dict] = None
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
 

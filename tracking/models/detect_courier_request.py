@@ -10,8 +10,6 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.slug_group import SlugGroup
-
 
 class DetectCourierRequest(BaseModel):
     """
@@ -25,7 +23,7 @@ class DetectCourierRequest(BaseModel):
     tracking_account_number: Optional[str] = None
     tracking_key: Optional[str] = None
     destination_state: Optional[str] = None
-    slug_group: Optional[SlugGroup] = None
+    slug_group: Optional[str] = None
     origin_country_region: Optional[str] = None
     destination_country_region: Optional[str] = None
 

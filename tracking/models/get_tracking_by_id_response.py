@@ -10,120 +10,16 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.courier_estimated_delivery_date_get_tracking_by_id_response import (
-    CourierEstimatedDeliveryDateGetTrackingByIdResponse,
-)
-from tracking.models.shipment_weight_get_tracking_by_id_response import (
-    ShipmentWeightGetTrackingByIdResponse,
-)
-from tracking.models.tag import Tag
-from tracking.models.checkpoint import Checkpoint
-from tracking.models.aftership_estimated_delivery_date_get_tracking_by_id_response import (
-    AftershipEstimatedDeliveryDateGetTrackingByIdResponse,
-)
-from tracking.models.custom_estimated_delivery_date_get_tracking_by_id_response import (
-    CustomEstimatedDeliveryDateGetTrackingByIdResponse,
-)
-from tracking.models.first_estimated_delivery_get_tracking_by_id_response import (
-    FirstEstimatedDeliveryGetTrackingByIdResponse,
-)
-from tracking.models.latest_estimated_delivery_get_tracking_by_id_response import (
-    LatestEstimatedDeliveryGetTrackingByIdResponse,
-)
-from tracking.models.carbon_emissions_get_tracking_by_id_response import (
-    CarbonEmissionsGetTrackingByIdResponse,
-)
-from tracking.models.first_mile_get_tracking_by_id_response import FirstMileGetTrackingByIdResponse
-from tracking.models.last_mile_get_tracking_by_id_response import LastMileGetTrackingByIdResponse
-from tracking.models.customers_get_tracking_by_id_response import CustomersGetTrackingByIdResponse
+from tracking.models.tracking import Tracking
 
 
 class GetTrackingByIdResponse(BaseModel):
     """
-    Object describes the tracking information.<div style="display:none; height: 0"></div>
-    """  # noqa: E501
+    Object describes the tracking information.&lt;div style=&#34;display:none; height: 0&#34;&gt;&lt;/div&gt;
+    """
 
-    id: Optional[str] = None
-    legacy_id: Optional[str] = None
-    created_at: Optional[str] = None
-    updated_at: Optional[str] = None
-    tracking_number: Optional[str] = None
-    slug: Optional[str] = None
-    active: Optional[bool] = None
-    custom_fields: Optional[Any] = None
-    transit_time: Optional[int] = None
-    origin_country_region: Optional[str] = None
-    origin_state: Optional[str] = None
-    origin_city: Optional[str] = None
-    origin_postal_code: Optional[str] = None
-    origin_raw_location: Optional[str] = None
-    destination_country_region: Optional[str] = None
-    destination_state: Optional[str] = None
-    destination_city: Optional[str] = None
-    destination_postal_code: Optional[str] = None
-    destination_raw_location: Optional[str] = None
-    courier_destination_country_region: Optional[str] = None
-    courier_estimated_delivery_date: Optional[
-        CourierEstimatedDeliveryDateGetTrackingByIdResponse
-    ] = None
-    note: Optional[str] = None
-    order_id: Optional[str] = None
-    order_id_path: Optional[str] = None
-    order_date: Optional[str] = None
-    shipment_package_count: Optional[float] = None
-    shipment_pickup_date: Optional[str] = None
-    shipment_delivery_date: Optional[str] = None
-    shipment_type: Optional[str] = None
-    shipment_weight: Optional[ShipmentWeightGetTrackingByIdResponse] = None
-    signed_by: Optional[str] = None
-    source: Optional[str] = None
-    tag: Optional[Tag] = None
-    subtag: Optional[str] = None
-    subtag_message: Optional[str] = None
-    title: Optional[str] = None
-    tracked_count: Optional[float] = None
-    last_mile_tracking_supported: Optional[bool] = None
-    language: Optional[str] = None
-    unique_token: Optional[str] = None
-    checkpoints: Optional[List[Checkpoint]] = None
-    subscribed_smses: Optional[List[str]] = None
-    subscribed_emails: Optional[List[str]] = None
-    return_to_sender: Optional[bool] = None
-    order_promised_delivery_date: Optional[str] = None
-    delivery_type: Optional[str] = None
-    pickup_location: Optional[str] = None
-    pickup_note: Optional[str] = None
-    courier_tracking_link: Optional[str] = None
-    first_attempted_at: Optional[str] = None
-    courier_redirect_link: Optional[str] = None
-    tracking_account_number: Optional[str] = None
-    tracking_key: Optional[str] = None
-    tracking_ship_date: Optional[str] = None
-    on_time_status: Optional[str] = None
-    on_time_difference: Optional[float] = None
-    order_tags: Optional[List[str]] = None
-    aftership_estimated_delivery_date: Optional[
-        AftershipEstimatedDeliveryDateGetTrackingByIdResponse
-    ] = None
-    custom_estimated_delivery_date: Optional[CustomEstimatedDeliveryDateGetTrackingByIdResponse] = (
-        None
-    )
-    order_number: Optional[str] = None
-    first_estimated_delivery: Optional[FirstEstimatedDeliveryGetTrackingByIdResponse] = None
-    latest_estimated_delivery: Optional[LatestEstimatedDeliveryGetTrackingByIdResponse] = None
-    shipment_tags: Optional[List[str]] = None
-    courier_connection_id: Optional[str] = None
-    carbon_emissions: Optional[CarbonEmissionsGetTrackingByIdResponse] = None
-    location_id: Optional[str] = None
-    shipping_method: Optional[str] = None
-    failed_delivery_attempts: Optional[int] = None
-    signature_requirement: Optional[str] = None
-    delivery_location_type: Optional[str] = None
-    aftership_tracking_url: Optional[str] = None
-    aftership_tracking_order_url: Optional[str] = None
-    first_mile: Optional[FirstMileGetTrackingByIdResponse] = None
-    last_mile: Optional[LastMileGetTrackingByIdResponse] = None
-    customers: Optional[List[CustomersGetTrackingByIdResponse]] = None
+    response_header: Dict[str, List[str]] = {}
+    data: Optional[Tracking] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

@@ -4,399 +4,207 @@
 # Do not edit the class manually.
 
 __all__ = [
-    "AdditionalFields",
-    "AftershipEstimatedDeliveryDateCreateTrackingResponse",
-    "AftershipEstimatedDeliveryDateDeleteTrackingByIdResponse",
-    "AftershipEstimatedDeliveryDateGetTrackingByIdResponse",
-    "AftershipEstimatedDeliveryDateMarkTrackingCompletedByIdResponse",
-    "AftershipEstimatedDeliveryDateRetrackTrackingByIdResponse",
-    "AftershipEstimatedDeliveryDateTracking",
-    "AftershipEstimatedDeliveryDateUpdateTrackingByIdResponse",
-    "CarbonEmissionsCreateTrackingResponse",
-    "CarbonEmissionsDeleteTrackingByIdResponse",
-    "CarbonEmissionsGetTrackingByIdResponse",
-    "CarbonEmissionsMarkTrackingCompletedByIdResponse",
-    "CarbonEmissionsRetrackTrackingByIdResponse",
-    "CarbonEmissionsTracking",
-    "CarbonEmissionsUpdateTrackingByIdResponse",
+    "TrackingResponseForGetTrackingsDataPagination",
+    "TrackingResponseForGetTrackingsData",
+    "TrackingResponseForGetTrackings",
+    "MetaType",
+    "Meta",
+    "TrackingCourierEstimatedDeliveryDate",
+    "TrackingShipmentWeight",
+    "TrackingAftershipEstimatedDeliveryDate",
+    "TrackingCustomEstimatedDeliveryDateType",
+    "TrackingCustomEstimatedDeliveryDate",
+    "TrackingFirstEstimatedDeliveryType",
+    "TrackingFirstEstimatedDeliverySource",
+    "TrackingFirstEstimatedDelivery",
+    "TrackingLatestEstimatedDeliveryType",
+    "TrackingLatestEstimatedDeliverySource",
+    "TrackingLatestEstimatedDelivery",
+    "TrackingCarbonEmissions",
+    "TrackingSignatureRequirement",
+    "TrackingFirstMile",
+    "TrackingLastMileSource",
+    "TrackingLastMile",
+    "TrackingCustomers",
+    "Tracking",
+    "Tag",
+    "CheckpointCoordinate",
+    "CheckpointEventsReason",
+    "CheckpointEvents",
+    "CheckpointSource",
     "Checkpoint",
-    "CoordinateCheckpoint",
-    "Courier",
-    "CourierConnection",
-    "CourierConnectionResponseForGetCourierConnections",
-    "CourierEstimatedDeliveryDateCreateTrackingResponse",
-    "CourierEstimatedDeliveryDateDeleteTrackingByIdResponse",
-    "CourierEstimatedDeliveryDateGetTrackingByIdResponse",
-    "CourierEstimatedDeliveryDateMarkTrackingCompletedByIdResponse",
-    "CourierEstimatedDeliveryDateRetrackTrackingByIdResponse",
-    "CourierEstimatedDeliveryDateTracking",
-    "CourierEstimatedDeliveryDateUpdateTrackingByIdResponse",
+    "TrackingResponse",
+    "CourierResponseData",
     "CourierResponse",
+    "CourierCredentials",
+    "Courier",
+    "AdditionalFields",
+    "CredentialField",
+    "CourierConnectionResponseForGetCourierConnectionsDataPagination",
+    "CourierConnectionResponseForGetCourierConnectionsData",
+    "CourierConnectionResponseForGetCourierConnections",
+    "CourierConnection",
+    "EstimatedDeliveryDateRequestOriginAddress",
+    "EstimatedDeliveryDateRequestDestinationAddress",
+    "EstimatedDeliveryDateRequestWeight",
+    "EstimatedDeliveryDateRequestEstimatedPickupOrderProcessingTime",
+    "EstimatedDeliveryDateRequestEstimatedPickup",
+    "EstimatedDeliveryDateRequest",
+    "EstimatedDeliveryDateResponseOriginAddress",
+    "EstimatedDeliveryDateResponseDestinationAddress",
+    "EstimatedDeliveryDateResponseWeight",
+    "EstimatedDeliveryDateResponseEstimatedPickupOrderProcessingTime",
+    "EstimatedDeliveryDateResponseEstimatedPickup",
+    "EstimatedDeliveryDateResponse",
+    "GetTrackingsResponseData",
+    "GetTrackingsResponseDataPagination",
+    "GetTrackingsResponse",
+    "CreateTrackingRequestDeliveryType",
+    "CreateTrackingRequestLastMile",
+    "CreateTrackingRequestCustomers",
     "CreateTrackingRequest",
     "CreateTrackingResponse",
-    "CredentialField",
-    "CredentialsCourier",
-    "CustomEstimatedDeliveryDateCreateTrackingResponse",
-    "CustomEstimatedDeliveryDateDeleteTrackingByIdResponse",
-    "CustomEstimatedDeliveryDateGetTrackingByIdResponse",
-    "CustomEstimatedDeliveryDateMarkTrackingCompletedByIdResponse",
-    "CustomEstimatedDeliveryDateRetrackTrackingByIdResponse",
-    "CustomEstimatedDeliveryDateTracking",
-    "CustomEstimatedDeliveryDateUpdateTrackingByIdResponse",
-    "CustomersCreateTrackingRequest",
-    "CustomersCreateTrackingResponse",
-    "CustomersDeleteTrackingByIdResponse",
-    "CustomersGetTrackingByIdResponse",
-    "CustomersMarkTrackingCompletedByIdResponse",
-    "CustomersRetrackTrackingByIdResponse",
-    "CustomersTracking",
-    "CustomersUpdateTrackingByIdRequest",
-    "CustomersUpdateTrackingByIdResponse",
-    "DataCourierConnectionResponseForGetCourierConnections",
-    "DataCourierResponse",
-    "DataTrackingResponseForGetTrackings",
-    "DeleteCourierConnectionsByIdResponse",
-    "DeleteTrackingByIdResponse",
-    "DestinationAddressEstimatedDeliveryDateRequest",
-    "DestinationAddressEstimatedDeliveryDateResponse",
-    "DestinationAddressPredictRequest",
-    "DestinationAddressPredictResponse",
-    "DetectCourierRequest",
-    "DetectCourierResponse",
-    "EstimatedDeliveryDateRequest",
-    "EstimatedDeliveryDateResponse",
-    "EstimatedPickupEstimatedDeliveryDateRequest",
-    "EstimatedPickupEstimatedDeliveryDateResponse",
-    "EstimatedPickupPredictRequest",
-    "EstimatedPickupPredictResponse",
-    "EventsCheckpoint",
-    "FirstEstimatedDeliveryCreateTrackingResponse",
-    "FirstEstimatedDeliveryDeleteTrackingByIdResponse",
-    "FirstEstimatedDeliveryGetTrackingByIdResponse",
-    "FirstEstimatedDeliveryMarkTrackingCompletedByIdResponse",
-    "FirstEstimatedDeliveryRetrackTrackingByIdResponse",
-    "FirstEstimatedDeliveryTracking",
-    "FirstEstimatedDeliveryUpdateTrackingByIdResponse",
-    "FirstMileCreateTrackingResponse",
-    "FirstMileDeleteTrackingByIdResponse",
-    "FirstMileGetTrackingByIdResponse",
-    "FirstMileMarkTrackingCompletedByIdResponse",
-    "FirstMileRetrackTrackingByIdResponse",
-    "FirstMileTracking",
-    "FirstMileUpdateTrackingByIdResponse",
-    "GetCourierConnectionsByIdResponse",
-    "GetCourierConnectionsResponse",
-    "GetCouriersResponse",
     "GetTrackingByIdResponse",
-    "GetTrackingsResponse",
-    "LastMileCreateTrackingRequest",
-    "LastMileCreateTrackingResponse",
-    "LastMileDeleteTrackingByIdResponse",
-    "LastMileGetTrackingByIdResponse",
-    "LastMileMarkTrackingCompletedByIdResponse",
-    "LastMileRetrackTrackingByIdResponse",
-    "LastMileTracking",
-    "LastMileUpdateTrackingByIdResponse",
-    "LatestEstimatedDeliveryCreateTrackingResponse",
-    "LatestEstimatedDeliveryDeleteTrackingByIdResponse",
-    "LatestEstimatedDeliveryGetTrackingByIdResponse",
-    "LatestEstimatedDeliveryMarkTrackingCompletedByIdResponse",
-    "LatestEstimatedDeliveryRetrackTrackingByIdResponse",
-    "LatestEstimatedDeliveryTracking",
-    "LatestEstimatedDeliveryUpdateTrackingByIdResponse",
-    "MarkTrackingCompletedByIdRequest",
-    "MarkTrackingCompletedByIdResponse",
-    "Meta",
-    "OrderProcessingTimeEstimatedPickupEstimatedDeliveryDateRequest",
-    "OrderProcessingTimeEstimatedPickupEstimatedDeliveryDateResponse",
-    "OrderProcessingTimeEstimatedPickupPredictRequest",
-    "OrderProcessingTimeEstimatedPickupPredictResponse",
-    "OriginAddressEstimatedDeliveryDateRequest",
-    "OriginAddressEstimatedDeliveryDateResponse",
-    "OriginAddressPredictRequest",
-    "OriginAddressPredictResponse",
-    "Pagination",
-    "PaginationDataCourierConnectionResponseForGetCourierConnections",
-    "PaginationDataTrackingResponseForGetTrackings",
-    "PaginationGetCourierConnectionsResponse",
-    "PaginationGetTrackingsResponse",
-    "PostCourierConnectionsRequest",
-    "PostCourierConnectionsResponse",
-    "PredictBatchRequest",
-    "PredictBatchResponse",
-    "PredictRequest",
-    "PredictResponse",
-    "PutCourierConnectionsByIdRequest",
-    "PutCourierConnectionsByIdResponse",
-    "ReasonEventsCheckpoint",
-    "RetrackTrackingByIdResponse",
-    "ShipmentWeightCreateTrackingResponse",
-    "ShipmentWeightDeleteTrackingByIdResponse",
-    "ShipmentWeightGetTrackingByIdResponse",
-    "ShipmentWeightMarkTrackingCompletedByIdResponse",
-    "ShipmentWeightRetrackTrackingByIdResponse",
-    "ShipmentWeightTracking",
-    "ShipmentWeightUpdateTrackingByIdResponse",
-    "SlugGroup",
-    "Tag",
-    "Tracking",
-    "TrackingResponse",
-    "TrackingResponseForGetTrackings",
+    "UpdateTrackingByIdRequestDeliveryType",
+    "UpdateTrackingByIdRequestCustomers",
     "UpdateTrackingByIdRequest",
     "UpdateTrackingByIdResponse",
-    "WeightEstimatedDeliveryDateRequest",
-    "WeightEstimatedDeliveryDateResponse",
-    "WeightPredictRequest",
-    "WeightPredictResponse",
+    "DeleteTrackingByIdResponse",
+    "RetrackTrackingByIdResponse",
+    "MarkTrackingCompletedByIdRequestReason",
+    "MarkTrackingCompletedByIdRequest",
+    "MarkTrackingCompletedByIdResponse",
+    "GetCouriersResponseData",
+    "GetCouriersResponse",
+    "DetectCourierRequest",
+    "DetectCourierResponseData",
+    "DetectCourierResponse",
+    "GetCourierConnectionsResponseData",
+    "GetCourierConnectionsResponseDataPagination",
+    "GetCourierConnectionsResponse",
+    "PostCourierConnectionsRequest",
+    "PostCourierConnectionsResponse",
+    "GetCourierConnectionsByIdResponse",
+    "PutCourierConnectionsByIdRequest",
+    "PutCourierConnectionsByIdResponse",
+    "DeleteCourierConnectionsByIdResponse",
+    "PredictResponse",
+    "PredictBatchRequest",
+    "PredictBatchResponseData",
+    "PredictBatchResponse",
 ]
 
-from .additional_fields import AdditionalFields
-from .aftership_estimated_delivery_date_create_tracking_response import (
-    AftershipEstimatedDeliveryDateCreateTrackingResponse,
+from .tracking_response_for_get_trackings_data_pagination import (
+    TrackingResponseForGetTrackingsDataPagination,
 )
-from .aftership_estimated_delivery_date_delete_tracking_by_id_response import (
-    AftershipEstimatedDeliveryDateDeleteTrackingByIdResponse,
-)
-from .aftership_estimated_delivery_date_get_tracking_by_id_response import (
-    AftershipEstimatedDeliveryDateGetTrackingByIdResponse,
-)
-from .aftership_estimated_delivery_date_mark_tracking_completed_by_id_response import (
-    AftershipEstimatedDeliveryDateMarkTrackingCompletedByIdResponse,
-)
-from .aftership_estimated_delivery_date_retrack_tracking_by_id_response import (
-    AftershipEstimatedDeliveryDateRetrackTrackingByIdResponse,
-)
-from .aftership_estimated_delivery_date_tracking import AftershipEstimatedDeliveryDateTracking
-from .aftership_estimated_delivery_date_update_tracking_by_id_response import (
-    AftershipEstimatedDeliveryDateUpdateTrackingByIdResponse,
-)
-from .carbon_emissions_create_tracking_response import CarbonEmissionsCreateTrackingResponse
-from .carbon_emissions_delete_tracking_by_id_response import (
-    CarbonEmissionsDeleteTrackingByIdResponse,
-)
-from .carbon_emissions_get_tracking_by_id_response import CarbonEmissionsGetTrackingByIdResponse
-from .carbon_emissions_mark_tracking_completed_by_id_response import (
-    CarbonEmissionsMarkTrackingCompletedByIdResponse,
-)
-from .carbon_emissions_retrack_tracking_by_id_response import (
-    CarbonEmissionsRetrackTrackingByIdResponse,
-)
-from .carbon_emissions_tracking import CarbonEmissionsTracking
-from .carbon_emissions_update_tracking_by_id_response import (
-    CarbonEmissionsUpdateTrackingByIdResponse,
-)
+from .tracking_response_for_get_trackings_data import TrackingResponseForGetTrackingsData
+from .tracking_response_for_get_trackings import TrackingResponseForGetTrackings
+from .meta_type import MetaType
+from .meta import Meta
+from .tracking_courier_estimated_delivery_date import TrackingCourierEstimatedDeliveryDate
+from .tracking_shipment_weight import TrackingShipmentWeight
+from .tracking_aftership_estimated_delivery_date import TrackingAftershipEstimatedDeliveryDate
+from .tracking_custom_estimated_delivery_date_type import TrackingCustomEstimatedDeliveryDateType
+from .tracking_custom_estimated_delivery_date import TrackingCustomEstimatedDeliveryDate
+from .tracking_first_estimated_delivery_type import TrackingFirstEstimatedDeliveryType
+from .tracking_first_estimated_delivery_source import TrackingFirstEstimatedDeliverySource
+from .tracking_first_estimated_delivery import TrackingFirstEstimatedDelivery
+from .tracking_latest_estimated_delivery_type import TrackingLatestEstimatedDeliveryType
+from .tracking_latest_estimated_delivery_source import TrackingLatestEstimatedDeliverySource
+from .tracking_latest_estimated_delivery import TrackingLatestEstimatedDelivery
+from .tracking_carbon_emissions import TrackingCarbonEmissions
+from .tracking_signature_requirement import TrackingSignatureRequirement
+from .tracking_first_mile import TrackingFirstMile
+from .tracking_last_mile_source import TrackingLastMileSource
+from .tracking_last_mile import TrackingLastMile
+from .tracking_customers import TrackingCustomers
+from .tracking import Tracking
+from .tag import Tag
+from .checkpoint_coordinate import CheckpointCoordinate
+from .checkpoint_events_reason import CheckpointEventsReason
+from .checkpoint_events import CheckpointEvents
+from .checkpoint_source import CheckpointSource
 from .checkpoint import Checkpoint
-from .coordinate_checkpoint import CoordinateCheckpoint
+from .tracking_response import TrackingResponse
+from .courier_response_data import CourierResponseData
+from .courier_response import CourierResponse
+from .courier_credentials import CourierCredentials
 from .courier import Courier
-from .courier_connection import CourierConnection
+from .additional_fields import AdditionalFields
+from .credential_field import CredentialField
+from .courier_connection_response_for_get_courier_connections_data_pagination import (
+    CourierConnectionResponseForGetCourierConnectionsDataPagination,
+)
+from .courier_connection_response_for_get_courier_connections_data import (
+    CourierConnectionResponseForGetCourierConnectionsData,
+)
 from .courier_connection_response_for_get_courier_connections import (
     CourierConnectionResponseForGetCourierConnections,
 )
-from .courier_estimated_delivery_date_create_tracking_response import (
-    CourierEstimatedDeliveryDateCreateTrackingResponse,
+from .courier_connection import CourierConnection
+from .estimated_delivery_date_request_origin_address import (
+    EstimatedDeliveryDateRequestOriginAddress,
 )
-from .courier_estimated_delivery_date_delete_tracking_by_id_response import (
-    CourierEstimatedDeliveryDateDeleteTrackingByIdResponse,
+from .estimated_delivery_date_request_destination_address import (
+    EstimatedDeliveryDateRequestDestinationAddress,
 )
-from .courier_estimated_delivery_date_get_tracking_by_id_response import (
-    CourierEstimatedDeliveryDateGetTrackingByIdResponse,
+from .estimated_delivery_date_request_weight import EstimatedDeliveryDateRequestWeight
+from .estimated_delivery_date_request_estimated_pickup_order_processing_time import (
+    EstimatedDeliveryDateRequestEstimatedPickupOrderProcessingTime,
 )
-from .courier_estimated_delivery_date_mark_tracking_completed_by_id_response import (
-    CourierEstimatedDeliveryDateMarkTrackingCompletedByIdResponse,
+from .estimated_delivery_date_request_estimated_pickup import (
+    EstimatedDeliveryDateRequestEstimatedPickup,
 )
-from .courier_estimated_delivery_date_retrack_tracking_by_id_response import (
-    CourierEstimatedDeliveryDateRetrackTrackingByIdResponse,
+from .estimated_delivery_date_request import EstimatedDeliveryDateRequest
+from .estimated_delivery_date_response_origin_address import (
+    EstimatedDeliveryDateResponseOriginAddress,
 )
-from .courier_estimated_delivery_date_tracking import CourierEstimatedDeliveryDateTracking
-from .courier_estimated_delivery_date_update_tracking_by_id_response import (
-    CourierEstimatedDeliveryDateUpdateTrackingByIdResponse,
+from .estimated_delivery_date_response_destination_address import (
+    EstimatedDeliveryDateResponseDestinationAddress,
 )
-from .courier_response import CourierResponse
+from .estimated_delivery_date_response_weight import EstimatedDeliveryDateResponseWeight
+from .estimated_delivery_date_response_estimated_pickup_order_processing_time import (
+    EstimatedDeliveryDateResponseEstimatedPickupOrderProcessingTime,
+)
+from .estimated_delivery_date_response_estimated_pickup import (
+    EstimatedDeliveryDateResponseEstimatedPickup,
+)
+from .estimated_delivery_date_response import EstimatedDeliveryDateResponse
+from .get_trackings_response_data import GetTrackingsResponseData
+from .get_trackings_response_data_pagination import GetTrackingsResponseDataPagination
+from .get_trackings_response import GetTrackingsResponse
+from .create_tracking_request_delivery_type import CreateTrackingRequestDeliveryType
+from .create_tracking_request_last_mile import CreateTrackingRequestLastMile
+from .create_tracking_request_customers import CreateTrackingRequestCustomers
 from .create_tracking_request import CreateTrackingRequest
 from .create_tracking_response import CreateTrackingResponse
-from .credential_field import CredentialField
-from .credentials_courier import CredentialsCourier
-from .custom_estimated_delivery_date_create_tracking_response import (
-    CustomEstimatedDeliveryDateCreateTrackingResponse,
-)
-from .custom_estimated_delivery_date_delete_tracking_by_id_response import (
-    CustomEstimatedDeliveryDateDeleteTrackingByIdResponse,
-)
-from .custom_estimated_delivery_date_get_tracking_by_id_response import (
-    CustomEstimatedDeliveryDateGetTrackingByIdResponse,
-)
-from .custom_estimated_delivery_date_mark_tracking_completed_by_id_response import (
-    CustomEstimatedDeliveryDateMarkTrackingCompletedByIdResponse,
-)
-from .custom_estimated_delivery_date_retrack_tracking_by_id_response import (
-    CustomEstimatedDeliveryDateRetrackTrackingByIdResponse,
-)
-from .custom_estimated_delivery_date_tracking import CustomEstimatedDeliveryDateTracking
-from .custom_estimated_delivery_date_update_tracking_by_id_response import (
-    CustomEstimatedDeliveryDateUpdateTrackingByIdResponse,
-)
-from .customers_create_tracking_request import CustomersCreateTrackingRequest
-from .customers_create_tracking_response import CustomersCreateTrackingResponse
-from .customers_delete_tracking_by_id_response import CustomersDeleteTrackingByIdResponse
-from .customers_get_tracking_by_id_response import CustomersGetTrackingByIdResponse
-from .customers_mark_tracking_completed_by_id_response import (
-    CustomersMarkTrackingCompletedByIdResponse,
-)
-from .customers_retrack_tracking_by_id_response import CustomersRetrackTrackingByIdResponse
-from .customers_tracking import CustomersTracking
-from .customers_update_tracking_by_id_request import CustomersUpdateTrackingByIdRequest
-from .customers_update_tracking_by_id_response import CustomersUpdateTrackingByIdResponse
-from .data_courier_connection_response_for_get_courier_connections import (
-    DataCourierConnectionResponseForGetCourierConnections,
-)
-from .data_courier_response import DataCourierResponse
-from .data_tracking_response_for_get_trackings import DataTrackingResponseForGetTrackings
-from .delete_courier_connections_by_id_response import DeleteCourierConnectionsByIdResponse
-from .delete_tracking_by_id_response import DeleteTrackingByIdResponse
-from .destination_address_estimated_delivery_date_request import (
-    DestinationAddressEstimatedDeliveryDateRequest,
-)
-from .destination_address_estimated_delivery_date_response import (
-    DestinationAddressEstimatedDeliveryDateResponse,
-)
-from .destination_address_predict_request import DestinationAddressPredictRequest
-from .destination_address_predict_response import DestinationAddressPredictResponse
-from .detect_courier_request import DetectCourierRequest
-from .detect_courier_response import DetectCourierResponse
-from .estimated_delivery_date_request import EstimatedDeliveryDateRequest
-from .estimated_delivery_date_response import EstimatedDeliveryDateResponse
-from .estimated_pickup_estimated_delivery_date_request import (
-    EstimatedPickupEstimatedDeliveryDateRequest,
-)
-from .estimated_pickup_estimated_delivery_date_response import (
-    EstimatedPickupEstimatedDeliveryDateResponse,
-)
-from .estimated_pickup_predict_request import EstimatedPickupPredictRequest
-from .estimated_pickup_predict_response import EstimatedPickupPredictResponse
-from .events_checkpoint import EventsCheckpoint
-from .first_estimated_delivery_create_tracking_response import (
-    FirstEstimatedDeliveryCreateTrackingResponse,
-)
-from .first_estimated_delivery_delete_tracking_by_id_response import (
-    FirstEstimatedDeliveryDeleteTrackingByIdResponse,
-)
-from .first_estimated_delivery_get_tracking_by_id_response import (
-    FirstEstimatedDeliveryGetTrackingByIdResponse,
-)
-from .first_estimated_delivery_mark_tracking_completed_by_id_response import (
-    FirstEstimatedDeliveryMarkTrackingCompletedByIdResponse,
-)
-from .first_estimated_delivery_retrack_tracking_by_id_response import (
-    FirstEstimatedDeliveryRetrackTrackingByIdResponse,
-)
-from .first_estimated_delivery_tracking import FirstEstimatedDeliveryTracking
-from .first_estimated_delivery_update_tracking_by_id_response import (
-    FirstEstimatedDeliveryUpdateTrackingByIdResponse,
-)
-from .first_mile_create_tracking_response import FirstMileCreateTrackingResponse
-from .first_mile_delete_tracking_by_id_response import FirstMileDeleteTrackingByIdResponse
-from .first_mile_get_tracking_by_id_response import FirstMileGetTrackingByIdResponse
-from .first_mile_mark_tracking_completed_by_id_response import (
-    FirstMileMarkTrackingCompletedByIdResponse,
-)
-from .first_mile_retrack_tracking_by_id_response import FirstMileRetrackTrackingByIdResponse
-from .first_mile_tracking import FirstMileTracking
-from .first_mile_update_tracking_by_id_response import FirstMileUpdateTrackingByIdResponse
-from .get_courier_connections_by_id_response import GetCourierConnectionsByIdResponse
-from .get_courier_connections_response import GetCourierConnectionsResponse
-from .get_couriers_response import GetCouriersResponse
 from .get_tracking_by_id_response import GetTrackingByIdResponse
-from .get_trackings_response import GetTrackingsResponse
-from .last_mile_create_tracking_request import LastMileCreateTrackingRequest
-from .last_mile_create_tracking_response import LastMileCreateTrackingResponse
-from .last_mile_delete_tracking_by_id_response import LastMileDeleteTrackingByIdResponse
-from .last_mile_get_tracking_by_id_response import LastMileGetTrackingByIdResponse
-from .last_mile_mark_tracking_completed_by_id_response import (
-    LastMileMarkTrackingCompletedByIdResponse,
-)
-from .last_mile_retrack_tracking_by_id_response import LastMileRetrackTrackingByIdResponse
-from .last_mile_tracking import LastMileTracking
-from .last_mile_update_tracking_by_id_response import LastMileUpdateTrackingByIdResponse
-from .latest_estimated_delivery_create_tracking_response import (
-    LatestEstimatedDeliveryCreateTrackingResponse,
-)
-from .latest_estimated_delivery_delete_tracking_by_id_response import (
-    LatestEstimatedDeliveryDeleteTrackingByIdResponse,
-)
-from .latest_estimated_delivery_get_tracking_by_id_response import (
-    LatestEstimatedDeliveryGetTrackingByIdResponse,
-)
-from .latest_estimated_delivery_mark_tracking_completed_by_id_response import (
-    LatestEstimatedDeliveryMarkTrackingCompletedByIdResponse,
-)
-from .latest_estimated_delivery_retrack_tracking_by_id_response import (
-    LatestEstimatedDeliveryRetrackTrackingByIdResponse,
-)
-from .latest_estimated_delivery_tracking import LatestEstimatedDeliveryTracking
-from .latest_estimated_delivery_update_tracking_by_id_response import (
-    LatestEstimatedDeliveryUpdateTrackingByIdResponse,
-)
-from .mark_tracking_completed_by_id_request import MarkTrackingCompletedByIdRequest
-from .mark_tracking_completed_by_id_response import MarkTrackingCompletedByIdResponse
-from .meta import Meta
-from .order_processing_time_estimated_pickup_estimated_delivery_date_request import (
-    OrderProcessingTimeEstimatedPickupEstimatedDeliveryDateRequest,
-)
-from .order_processing_time_estimated_pickup_estimated_delivery_date_response import (
-    OrderProcessingTimeEstimatedPickupEstimatedDeliveryDateResponse,
-)
-from .order_processing_time_estimated_pickup_predict_request import (
-    OrderProcessingTimeEstimatedPickupPredictRequest,
-)
-from .order_processing_time_estimated_pickup_predict_response import (
-    OrderProcessingTimeEstimatedPickupPredictResponse,
-)
-from .origin_address_estimated_delivery_date_request import (
-    OriginAddressEstimatedDeliveryDateRequest,
-)
-from .origin_address_estimated_delivery_date_response import (
-    OriginAddressEstimatedDeliveryDateResponse,
-)
-from .origin_address_predict_request import OriginAddressPredictRequest
-from .origin_address_predict_response import OriginAddressPredictResponse
-from .pagination import Pagination
-from .pagination_data_courier_connection_response_for_get_courier_connections import (
-    PaginationDataCourierConnectionResponseForGetCourierConnections,
-)
-from .pagination_data_tracking_response_for_get_trackings import (
-    PaginationDataTrackingResponseForGetTrackings,
-)
-from .pagination_get_courier_connections_response import PaginationGetCourierConnectionsResponse
-from .pagination_get_trackings_response import PaginationGetTrackingsResponse
-from .post_courier_connections_request import PostCourierConnectionsRequest
-from .post_courier_connections_response import PostCourierConnectionsResponse
-from .predict_batch_request import PredictBatchRequest
-from .predict_batch_response import PredictBatchResponse
-from .predict_request import PredictRequest
-from .predict_response import PredictResponse
-from .put_courier_connections_by_id_request import PutCourierConnectionsByIdRequest
-from .put_courier_connections_by_id_response import PutCourierConnectionsByIdResponse
-from .reason_events_checkpoint import ReasonEventsCheckpoint
-from .retrack_tracking_by_id_response import RetrackTrackingByIdResponse
-from .shipment_weight_create_tracking_response import ShipmentWeightCreateTrackingResponse
-from .shipment_weight_delete_tracking_by_id_response import ShipmentWeightDeleteTrackingByIdResponse
-from .shipment_weight_get_tracking_by_id_response import ShipmentWeightGetTrackingByIdResponse
-from .shipment_weight_mark_tracking_completed_by_id_response import (
-    ShipmentWeightMarkTrackingCompletedByIdResponse,
-)
-from .shipment_weight_retrack_tracking_by_id_response import (
-    ShipmentWeightRetrackTrackingByIdResponse,
-)
-from .shipment_weight_tracking import ShipmentWeightTracking
-from .shipment_weight_update_tracking_by_id_response import ShipmentWeightUpdateTrackingByIdResponse
-from .slug_group import SlugGroup
-from .tag import Tag
-from .tracking import Tracking
-from .tracking_response import TrackingResponse
-from .tracking_response_for_get_trackings import TrackingResponseForGetTrackings
+from .update_tracking_by_id_request_delivery_type import UpdateTrackingByIdRequestDeliveryType
+from .update_tracking_by_id_request_customers import UpdateTrackingByIdRequestCustomers
 from .update_tracking_by_id_request import UpdateTrackingByIdRequest
 from .update_tracking_by_id_response import UpdateTrackingByIdResponse
-from .weight_estimated_delivery_date_request import WeightEstimatedDeliveryDateRequest
-from .weight_estimated_delivery_date_response import WeightEstimatedDeliveryDateResponse
-from .weight_predict_request import WeightPredictRequest
-from .weight_predict_response import WeightPredictResponse
+from .delete_tracking_by_id_response import DeleteTrackingByIdResponse
+from .retrack_tracking_by_id_response import RetrackTrackingByIdResponse
+from .mark_tracking_completed_by_id_request_reason import MarkTrackingCompletedByIdRequestReason
+from .mark_tracking_completed_by_id_request import MarkTrackingCompletedByIdRequest
+from .mark_tracking_completed_by_id_response import MarkTrackingCompletedByIdResponse
+from .get_couriers_response_data import GetCouriersResponseData
+from .get_couriers_response import GetCouriersResponse
+from .detect_courier_request import DetectCourierRequest
+from .detect_courier_response_data import DetectCourierResponseData
+from .detect_courier_response import DetectCourierResponse
+from .get_courier_connections_response_data import GetCourierConnectionsResponseData
+from .get_courier_connections_response_data_pagination import (
+    GetCourierConnectionsResponseDataPagination,
+)
+from .get_courier_connections_response import GetCourierConnectionsResponse
+from .post_courier_connections_request import PostCourierConnectionsRequest
+from .post_courier_connections_response import PostCourierConnectionsResponse
+from .get_courier_connections_by_id_response import GetCourierConnectionsByIdResponse
+from .put_courier_connections_by_id_request import PutCourierConnectionsByIdRequest
+from .put_courier_connections_by_id_response import PutCourierConnectionsByIdResponse
+from .delete_courier_connections_by_id_response import DeleteCourierConnectionsByIdResponse
+from .predict_response import PredictResponse
+from .predict_batch_request import PredictBatchRequest
+from .predict_batch_response_data import PredictBatchResponseData
+from .predict_batch_response import PredictBatchResponse

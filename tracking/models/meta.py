@@ -10,6 +10,8 @@ from pydantic import BaseModel
 from typing import Any, Dict, Optional
 from typing_extensions import Self
 
+from tracking.models.meta_type import MetaType
+
 
 class Meta(BaseModel):
     """
@@ -18,7 +20,7 @@ class Meta(BaseModel):
 
     code: Optional[int] = None
     message: Optional[str] = None
-    type: Optional[str] = None
+    type: Optional[MetaType] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

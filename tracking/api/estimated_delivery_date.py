@@ -8,7 +8,7 @@ from typing import Union
 
 
 from tracking.models import (
-    PredictRequest,
+    EstimatedDeliveryDateRequest,
     PredictResponse,
     PredictBatchRequest,
     PredictBatchResponse,
@@ -20,7 +20,9 @@ class EstimatedDeliveryDateApi(ApiClient):
     """EstimatedDeliveryDateApi api implements"""
 
     @validate_params
-    def predict(self, predict_request: Union[PredictRequest, dict], **kwargs) -> PredictResponse:
+    def predict(
+        self, predict_request: Union[EstimatedDeliveryDateRequest, dict], **kwargs
+    ) -> PredictResponse:
         """
         > The estimated delivery date is provided by AfterShip, based on its AI-predictive model. You can display the EDD on the product page, cart, and order checkout page. It indicates when a customer will receive the order.You can use  to activate this feature.
         :param predict_request:
@@ -36,11 +38,11 @@ class EstimatedDeliveryDateApi(ApiClient):
 
         body = predict_request
         if not isinstance(body, dict):
-            body = predict_request.model_dump(exclude_none=True)
+            body = predict_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
-        return PredictResponse().from_dict(result)
+        return PredictResponse.model_validate(result)
 
     @validate_params
     def predict_batch(
@@ -61,8 +63,8 @@ class EstimatedDeliveryDateApi(ApiClient):
 
         body = predict_batch_request
         if not isinstance(body, dict):
-            body = predict_batch_request.model_dump(exclude_none=True)
+            body = predict_batch_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
-        return PredictBatchResponse().from_dict(result)
+        return PredictBatchResponse.model_validate(result)

@@ -11,8 +11,8 @@ from typing import Any, Dict, Optional
 from typing_extensions import Self
 
 from tracking.models.meta import Meta
-from tracking.models.data_courier_connection_response_for_get_courier_connections import (
-    DataCourierConnectionResponseForGetCourierConnections,
+from tracking.models.courier_connection_response_for_get_courier_connections_data import (
+    CourierConnectionResponseForGetCourierConnectionsData,
 )
 
 
@@ -22,7 +22,7 @@ class CourierConnectionResponseForGetCourierConnections(BaseModel):
     """  # noqa: E501
 
     meta: Optional[Meta] = None
-    data: Optional[DataCourierConnectionResponseForGetCourierConnections] = None
+    data: Optional[CourierConnectionResponseForGetCourierConnectionsData] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

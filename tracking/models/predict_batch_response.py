@@ -10,15 +10,14 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.estimated_delivery_date_response import EstimatedDeliveryDateResponse
+from tracking.models.predict_batch_response_data import PredictBatchResponseData
 
 
 class PredictBatchResponse(BaseModel):
-    """
-    PredictBatchResponse
-    """  # noqa: E501
+    """ """
 
-    estimated_delivery_dates: Optional[List[EstimatedDeliveryDateResponse]] = None
+    response_header: Dict[str, List[str]] = {}
+    data: Optional[PredictBatchResponseData] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

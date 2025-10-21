@@ -10,17 +10,17 @@ from pydantic import BaseModel
 from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.origin_address_estimated_delivery_date_response import (
-    OriginAddressEstimatedDeliveryDateResponse,
+from tracking.models.estimated_delivery_date_response_origin_address import (
+    EstimatedDeliveryDateResponseOriginAddress,
 )
-from tracking.models.destination_address_estimated_delivery_date_response import (
-    DestinationAddressEstimatedDeliveryDateResponse,
+from tracking.models.estimated_delivery_date_response_destination_address import (
+    EstimatedDeliveryDateResponseDestinationAddress,
 )
-from tracking.models.weight_estimated_delivery_date_response import (
-    WeightEstimatedDeliveryDateResponse,
+from tracking.models.estimated_delivery_date_response_weight import (
+    EstimatedDeliveryDateResponseWeight,
 )
-from tracking.models.estimated_pickup_estimated_delivery_date_response import (
-    EstimatedPickupEstimatedDeliveryDateResponse,
+from tracking.models.estimated_delivery_date_response_estimated_pickup import (
+    EstimatedDeliveryDateResponseEstimatedPickup,
 )
 
 
@@ -32,12 +32,12 @@ class EstimatedDeliveryDateResponse(BaseModel):
     id: Optional[str] = None
     slug: Optional[str] = None
     service_type_name: Optional[str] = None
-    origin_address: Optional[OriginAddressEstimatedDeliveryDateResponse] = None
-    destination_address: Optional[DestinationAddressEstimatedDeliveryDateResponse] = None
-    weight: Optional[WeightEstimatedDeliveryDateResponse] = None
+    origin_address: Optional[EstimatedDeliveryDateResponseOriginAddress] = None
+    destination_address: Optional[EstimatedDeliveryDateResponseDestinationAddress] = None
+    weight: Optional[EstimatedDeliveryDateResponseWeight] = None
     package_count: Optional[int] = None
     pickup_time: Optional[str] = None
-    estimated_pickup: Optional[EstimatedPickupEstimatedDeliveryDateResponse] = None
+    estimated_pickup: Optional[EstimatedDeliveryDateResponseEstimatedPickup] = None
     estimated_delivery_date: Optional[str] = None
     confidence_code: Optional[float] = None
     estimated_delivery_date_min: Optional[str] = None

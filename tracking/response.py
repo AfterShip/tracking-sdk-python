@@ -31,7 +31,7 @@ error_mapping = {
 }
 
 _error_meta_code_mapping = {
-    "400": ErrorCodeEnum.INTERNAL_ERROR,
+    "400": ErrorCodeEnum.INVALID_REQUEST,
     "4001": ErrorCodeEnum.INVALID_JSON,
     "4003": ErrorCodeEnum.TRACKING_ALREADY_EXIST,
     "4004": ErrorCodeEnum.TRACKING_DOES_NOT_EXIST,
@@ -44,7 +44,7 @@ _error_meta_code_mapping = {
     "4011": ErrorCodeEnum.MISSING_OR_INVALID_REQUIRED_FIELD,
     "4012": ErrorCodeEnum.BAD_COURIER,
     "4013": ErrorCodeEnum.INACTIVE_RETRACK_NOT_ALLOWED,
-    "4014": ErrorCodeEnum.NOTIFICATION_REUQIRED,
+    "4014": ErrorCodeEnum.NOTIFICATION_REQUIRED,
     "4015": ErrorCodeEnum.ID_INVALID,
     "4016": ErrorCodeEnum.RETRACK_ONCE_ALLOWED,
     "4017": ErrorCodeEnum.TRACKING_NUMBER_FORMAT_INVALID,
@@ -54,22 +54,21 @@ _error_meta_code_mapping = {
     "429": ErrorCodeEnum.TOO_MANY_REQUEST,
     "500": ErrorCodeEnum.INTERNAL_ERROR,
     "502": ErrorCodeEnum.INTERNAL_ERROR,
+    "503": ErrorCodeEnum.INTERNAL_ERROR,
     "504": ErrorCodeEnum.INTERNAL_ERROR,
 }
 
 
-def get_error_code(meta_code: int) -> str:
-    if _error_meta_code_mapping.get(str(meta_code)):
-        return str(_error_meta_code_mapping[str(meta_code)])
-    return str(ErrorCodeEnum.INTERNAL_ERROR)
-
-
 def parse_response(response: httpx.Response) -> Union[dict, None]:
+    headers = {k: response.headers.get_list(k) for k in response.headers.keys()}
     try:
         json_data = response.json()
 
         if response.status_code < 300:
-            return json_data["data"]
+            return {
+                "response_header": headers,
+                "data": json_data.get("data"),
+            }
 
         error_type = json_data["meta"]["type"]
         if error_type in error_mapping:
@@ -77,20 +76,29 @@ def parse_response(response: httpx.Response) -> Union[dict, None]:
         else:
             error_cls = UnknownError
 
+        meta_code = json_data["meta"]["code"]
+        error_code = _error_meta_code_mapping.get(str(meta_code))
+        if error_code is None:
+            if response.status_code >= 500:
+                error_code = ErrorCodeEnum.UNKNOWN_ERROR
+            elif response.status_code >= 400:
+                error_code = ErrorCodeEnum.BAD_REQUEST
+            else:
+                error_code = ErrorCodeEnum.UNKNOWN_ERROR
+
         raise error_cls(
-            code=get_error_code(json_data["meta"]["code"]),
-            meta_code=json_data["meta"]["code"],
+            code=error_code,
+            meta_code=meta_code,
             status_code=response.status_code,
             message=json_data["meta"]["message"],
             response_body=response.text,
-            response_header=response.headers,
+            response_header=headers,
         )
     except (json.JSONDecodeError, KeyError) as e:
         raise UnknownError(
-            code=ErrorCodeEnum.UNKNOW_ERROR,
-            meta_code=500,
+            code=ErrorCodeEnum.UNKNOWN_ERROR,
             status_code=response.status_code,
             message=f"{e.__module__}.{e.__class__.__name__}: {e}",
             response_body=response.text,
-            response_header=response.headers,
+            response_header=headers,
         )

@@ -17,7 +17,7 @@ class PostCourierConnectionsRequest(BaseModel):
     """  # noqa: E501
 
     courier_slug: Optional[str] = None
-    credentials: Optional[Any] = None
+    credentials: Optional[dict] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

@@ -10,9 +10,10 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.coordinate_checkpoint import CoordinateCheckpoint
+from tracking.models.checkpoint_coordinate import CheckpointCoordinate
 from tracking.models.tag import Tag
-from tracking.models.events_checkpoint import EventsCheckpoint
+from tracking.models.checkpoint_events import CheckpointEvents
+from tracking.models.checkpoint_source import CheckpointSource
 
 
 class Checkpoint(BaseModel):
@@ -27,7 +28,7 @@ class Checkpoint(BaseModel):
     city: Optional[str] = None
     state: Optional[str] = None
     zip: Optional[str] = None
-    coordinate: Optional[CoordinateCheckpoint] = None
+    coordinate: Optional[CheckpointCoordinate] = None
     country_region: Optional[str] = None
     country_region_name: Optional[str] = None
     message: Optional[str] = None
@@ -35,8 +36,8 @@ class Checkpoint(BaseModel):
     subtag: Optional[str] = None
     subtag_message: Optional[str] = None
     raw_tag: Optional[str] = None
-    events: Optional[List[EventsCheckpoint]] = None
-    source: Optional[str] = None
+    events: Optional[List[CheckpointEvents]] = None
+    source: Optional[CheckpointSource] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

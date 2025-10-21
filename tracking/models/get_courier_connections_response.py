@@ -10,17 +10,14 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.courier_connection import CourierConnection
-from tracking.models.pagination import Pagination
+from tracking.models.get_courier_connections_response_data import GetCourierConnectionsResponseData
 
 
 class GetCourierConnectionsResponse(BaseModel):
-    """
-    GetCourierConnectionsResponse
-    """  # noqa: E501
+    """ """
 
-    pagination: Optional[Pagination] = None
-    courier_connections: Optional[List[CourierConnection]] = None
+    response_header: Dict[str, List[str]] = {}
+    data: Optional[GetCourierConnectionsResponseData] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

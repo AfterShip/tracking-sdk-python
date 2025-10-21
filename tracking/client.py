@@ -8,7 +8,10 @@ __all__ = ["Client"]
 from typing import Optional
 
 from .configuration import Configuration
-from .api import CourierApi, CourierConnectionApi, EstimatedDeliveryDateApi, TrackingApi
+from .api import CourierConnectionApi
+from .api import EstimatedDeliveryDateApi
+from .api import TrackingApi
+from .api import CourierApi
 
 
 class Client:
@@ -16,7 +19,7 @@ class Client:
         if configuration is None:
             configuration = Configuration()
 
-        self.courier = CourierApi(configuration)
         self.courier_connection = CourierConnectionApi(configuration)
         self.estimated_delivery_date = EstimatedDeliveryDateApi(configuration)
         self.tracking = TrackingApi(configuration)
+        self.courier = CourierApi(configuration)
