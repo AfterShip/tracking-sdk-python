@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aftership-tracking-sdk"
-version = "8.0.0"
+version = "8.0.1"
 description = "The official AfterShip Tracking Python API library"
 authors = ["AfterShip <support@aftership.com>"]
 license = "MIT"
@@ -25,13 +25,14 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8"
 pycryptodome = ">= 3.9.0"
 pydantic = ">=2"
-httpx = ">=0.27.0"
+httpx = ">=0.28.0"
+h11 = ">=0.16.0"
 retrying = "^1.3.4"
 typing_extensions = ">=4.7.1"
-urllib3 = "^2.2.2"
+urllib3 = ">=2.2.2,<3.0.0"
 socksio = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]

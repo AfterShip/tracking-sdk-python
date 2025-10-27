@@ -4,13 +4,13 @@
 # Do not edit the class manually.
 
 __all__ = [
-    "CourierConnectionApi",
-    "EstimatedDeliveryDateApi",
     "TrackingApi",
     "CourierApi",
+    "CourierConnectionApi",
+    "EstimatedDeliveryDateApi",
 ]
 
-from .courier_connection import CourierConnectionApi
-from .estimated_delivery_date import EstimatedDeliveryDateApi
 from .tracking import TrackingApi
 from .courier import CourierApi
+from .courier_connection import CourierConnectionApi
+from .estimated_delivery_date import EstimatedDeliveryDateApi
