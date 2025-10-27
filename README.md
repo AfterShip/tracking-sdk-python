@@ -20,10 +20,10 @@ If you need support using AfterShip products, please contact support@aftership.c
   - [Error Handling](#error-handling)
     - [Error List](#error-list)
   - [Endpoints](#endpoints)
-    - [/courier-connections](#courier-connections)
-    - [/estimated-delivery-date](#estimated-delivery-date)
     - [/trackings](#trackings)
     - [/couriers](#couriers)
+    - [/courier-connections](#courier-connections)
+    - [/estimated-delivery-date](#estimated-delivery-date)
   - [Help](#help)
   - [License](#license)
 
@@ -145,15 +145,6 @@ The SDK will return an error object when there is any error during the request, 
 
 The AfterShip instance has the following properties which are exactly the same as the API endpoints:
 
-- courier_connection
-  - Get courier connections
-  - Create courier connections
-  - Get courier connection by id
-  - Update courier connection by id
-  - Delete courier connection by id
-- estimated_delivery_date
-  - Prediction for the Estimated Delivery Date
-  - Batch prediction for the Estimated Delivery Date
 - tracking
   - Get trackings
   - Create a tracking
@@ -165,119 +156,15 @@ The AfterShip instance has the following properties which are exactly the same a
 - courier
   - Get couriers
   - Detect courier
-
-### /courier-connections
-**GET** /courier-connections
-
-```python
-
-result = sdk.courier_connection.get_courier_connections(
-    
-    
-    
-)
-print(result)
-```
-
-**POST** /courier-connections
-
-```python
-req = tracking.PostCourierConnectionsRequest()
-
-
-req.courier_slug = 'valid_value'
-
-
-req.credentials = {}
-
-
-result = sdk.courier_connection.post_courier_connections(
-    
-    req,
-    
-)
-print(result)
-```
-
-**GET** /courier-connections/{id}
-
-```python
-
-result = sdk.courier_connection.get_courier_connections_by_id(
-    'valid_value',
-    
-    
-)
-print(result)
-```
-
-**PATCH** /courier-connections/{id}
-
-```python
-req = tracking.PutCourierConnectionsByIdRequest()
-
-
-req.credentials = {}
-
-
-result = sdk.courier_connection.put_courier_connections_by_id(
-    'valid_value',
-    req,
-    
-)
-print(result)
-```
-
-**DELETE** /courier-connections/{id}
-
-```python
-
-result = sdk.courier_connection.delete_courier_connections_by_id(
-    'valid_value',
-    
-    
-)
-print(result)
-```
-
-### /estimated-delivery-date
-**POST** /estimated-delivery-date/predict
-
-```python
-req = tracking.EstimatedDeliveryDateRequest()
-
-
-req.slug = 'valid_value'
-
-
-req.origin_address = tracking.EstimatedDeliveryDateRequestOriginAddress()
-
-
-req.destination_address = tracking.EstimatedDeliveryDateRequestDestinationAddress()
-
-
-result = sdk.estimated_delivery_date.predict(
-    
-    req,
-    
-)
-print(result)
-```
-
-**POST** /estimated-delivery-date/predict-batch
-
-```python
-req = tracking.PredictBatchRequest()
-
-
-
-result = sdk.estimated_delivery_date.predict_batch(
-    
-    req,
-    
-)
-print(result)
-```
+- courier_connection
+  - Get courier connections
+  - Create courier connections
+  - Get courier connection by id
+  - Update courier connection by id
+  - Delete courier connection by id
+- estimated_delivery_date
+  - Prediction for the Estimated Delivery Date
+  - Batch prediction for the Estimated Delivery Date
 
 ### /trackings
 **GET** /trackings
@@ -397,6 +284,119 @@ req.tracking_number = 'valid_value'
 
 
 result = sdk.courier.detect_courier(
+    
+    req,
+    
+)
+print(result)
+```
+
+### /courier-connections
+**GET** /courier-connections
+
+```python
+
+result = sdk.courier_connection.get_courier_connections(
+    
+    
+    
+)
+print(result)
+```
+
+**POST** /courier-connections
+
+```python
+req = tracking.PostCourierConnectionsRequest()
+
+
+req.courier_slug = 'valid_value'
+
+
+req.credentials = {}
+
+
+result = sdk.courier_connection.post_courier_connections(
+    
+    req,
+    
+)
+print(result)
+```
+
+**GET** /courier-connections/{id}
+
+```python
+
+result = sdk.courier_connection.get_courier_connections_by_id(
+    'valid_value',
+    
+    
+)
+print(result)
+```
+
+**PATCH** /courier-connections/{id}
+
+```python
+req = tracking.PutCourierConnectionsByIdRequest()
+
+
+req.credentials = {}
+
+
+result = sdk.courier_connection.put_courier_connections_by_id(
+    'valid_value',
+    req,
+    
+)
+print(result)
+```
+
+**DELETE** /courier-connections/{id}
+
+```python
+
+result = sdk.courier_connection.delete_courier_connections_by_id(
+    'valid_value',
+    
+    
+)
+print(result)
+```
+
+### /estimated-delivery-date
+**POST** /estimated-delivery-date/predict
+
+```python
+req = tracking.EstimatedDeliveryDateRequest()
+
+
+req.slug = 'valid_value'
+
+
+req.origin_address = tracking.EstimatedDeliveryDateRequestOriginAddress()
+
+
+req.destination_address = tracking.EstimatedDeliveryDateRequestDestinationAddress()
+
+
+result = sdk.estimated_delivery_date.predict(
+    
+    req,
+    
+)
+print(result)
+```
+
+**POST** /estimated-delivery-date/predict-batch
+
+```python
+req = tracking.PredictBatchRequest()
+
+
+
+result = sdk.estimated_delivery_date.predict_batch(
     
     req,
     
