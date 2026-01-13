@@ -16,6 +16,7 @@ from tracking.models.tracking_courier_estimated_delivery_date import (
 from tracking.models.tracking_shipment_weight import TrackingShipmentWeight
 from tracking.models.tag import Tag
 from tracking.models.checkpoint import Checkpoint
+from tracking.models.tracking_order_promised_delivery_date import TrackingOrderPromisedDeliveryDate
 from tracking.models.tracking_aftership_estimated_delivery_date import (
     TrackingAftershipEstimatedDeliveryDate,
 )
@@ -73,14 +74,13 @@ class Tracking(BaseModel):
     subtag_message: Optional[str] = None
     title: Optional[str] = None
     tracked_count: Optional[float] = None
-    last_mile_tracking_supported: Optional[bool] = None
     language: Optional[str] = None
     unique_token: Optional[str] = None
     checkpoints: Optional[List[Checkpoint]] = None
     subscribed_smses: Optional[List[str]] = None
     subscribed_emails: Optional[List[str]] = None
     return_to_sender: Optional[bool] = None
-    order_promised_delivery_date: Optional[str] = None
+    order_promised_delivery_date: Optional[TrackingOrderPromisedDeliveryDate] = None
     delivery_type: Optional[str] = None
     pickup_location: Optional[str] = None
     pickup_note: Optional[str] = None

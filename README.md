@@ -20,10 +20,10 @@ If you need support using AfterShip products, please contact support@aftership.c
   - [Error Handling](#error-handling)
     - [Error List](#error-list)
   - [Endpoints](#endpoints)
-    - [/estimated-delivery-date](#estimated-delivery-date)
     - [/trackings](#trackings)
     - [/couriers](#couriers)
     - [/courier-connections](#courier-connections)
+    - [/estimated-delivery-date](#estimated-delivery-date)
   - [Help](#help)
   - [License](#license)
 
@@ -39,7 +39,7 @@ Before you begin to integrate:
 ### API and SDK Version
 
 - SDK Version: 
-- API Version: 2025-07
+- API Version: 2026-01
 
 ## Quick Start
 
@@ -145,9 +145,6 @@ The SDK will return an error object when there is any error during the request, 
 
 The AfterShip instance has the following properties which are exactly the same as the API endpoints:
 
-- estimated_delivery_date
-  - Prediction for the Estimated Delivery Date
-  - Batch prediction for the Estimated Delivery Date
 - tracking
   - Get trackings
   - Create a tracking
@@ -165,45 +162,9 @@ The AfterShip instance has the following properties which are exactly the same a
   - Get courier connection by id
   - Update courier connection by id
   - Delete courier connection by id
-
-### /estimated-delivery-date
-**POST** /estimated-delivery-date/predict
-
-```python
-req = tracking.EstimatedDeliveryDateRequest()
-
-
-req.slug = 'valid_value'
-
-
-req.origin_address = tracking.EstimatedDeliveryDateRequestOriginAddress()
-
-
-req.destination_address = tracking.EstimatedDeliveryDateRequestDestinationAddress()
-
-
-result = sdk.estimated_delivery_date.predict(
-    
-    req,
-    
-)
-print(result)
-```
-
-**POST** /estimated-delivery-date/predict-batch
-
-```python
-req = tracking.PredictBatchRequest()
-
-
-
-result = sdk.estimated_delivery_date.predict_batch(
-    
-    req,
-    
-)
-print(result)
-```
+- estimated_delivery_date
+  - Prediction for the Estimated Delivery Date
+  - Batch prediction for the Estimated Delivery Date
 
 ### /trackings
 **GET** /trackings
@@ -399,6 +360,45 @@ print(result)
 result = sdk.courier_connection.delete_courier_connections_by_id(
     'valid_value',
     
+    
+)
+print(result)
+```
+
+### /estimated-delivery-date
+**POST** /estimated-delivery-date/predict
+
+```python
+req = tracking.EstimatedDeliveryDateRequest()
+
+
+req.slug = 'valid_value'
+
+
+req.origin_address = tracking.EstimatedDeliveryDateRequestOriginAddress()
+
+
+req.destination_address = tracking.EstimatedDeliveryDateRequestDestinationAddress()
+
+
+result = sdk.estimated_delivery_date.predict(
+    
+    req,
+    
+)
+print(result)
+```
+
+**POST** /estimated-delivery-date/predict-batch
+
+```python
+req = tracking.PredictBatchRequest()
+
+
+
+result = sdk.estimated_delivery_date.predict_batch(
+    
+    req,
     
 )
 print(result)

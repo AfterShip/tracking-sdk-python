@@ -10,6 +10,9 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
+from tracking.models.update_tracking_by_id_request_order_promised_delivery_date import (
+    UpdateTrackingByIdRequestOrderPromisedDeliveryDate,
+)
 from tracking.models.update_tracking_by_id_request_delivery_type import (
     UpdateTrackingByIdRequestDeliveryType,
 )
@@ -29,7 +32,9 @@ class UpdateTrackingByIdRequest(BaseModel):
     custom_fields: Optional[dict] = None
     note: Optional[str] = None
     language: Optional[str] = None
-    order_promised_delivery_date: Optional[str] = None
+    order_promised_delivery_date: Optional[UpdateTrackingByIdRequestOrderPromisedDeliveryDate] = (
+        None
+    )
     delivery_type: Optional[UpdateTrackingByIdRequestDeliveryType] = None
     pickup_location: Optional[str] = None
     pickup_note: Optional[str] = None

@@ -17,7 +17,7 @@ from tracking.configuration import Configuration
 from tracking.response import parse_response
 from tracking.exceptions import ApiException, TimedOutError, BadRequestError, ErrorCodeEnum
 
-_default_user_agent = "tracking-sdk-python/8.0.1 (https://www.aftership.com) httpx/0.19.0"
+_default_user_agent = "tracking-sdk-python/9.0.0 (https://www.aftership.com) httpx/0.19.0"
 
 
 def validate_params(func):

@@ -27,7 +27,7 @@ class Checkpoint(BaseModel):
     location: Optional[str] = None
     city: Optional[str] = None
     state: Optional[str] = None
-    zip: Optional[str] = None
+    postal_code: Optional[str] = None
     coordinate: Optional[CheckpointCoordinate] = None
     country_region: Optional[str] = None
     country_region_name: Optional[str] = None

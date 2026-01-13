@@ -11,6 +11,7 @@ __all__ = [
     "Meta",
     "TrackingCourierEstimatedDeliveryDate",
     "TrackingShipmentWeight",
+    "TrackingOrderPromisedDeliveryDate",
     "TrackingAftershipEstimatedDeliveryDate",
     "TrackingCustomEstimatedDeliveryDateType",
     "TrackingCustomEstimatedDeliveryDate",
@@ -59,12 +60,14 @@ __all__ = [
     "GetTrackingsResponseData",
     "GetTrackingsResponseDataPagination",
     "GetTrackingsResponse",
+    "CreateTrackingRequestOrderPromisedDeliveryDate",
     "CreateTrackingRequestDeliveryType",
     "CreateTrackingRequestLastMile",
     "CreateTrackingRequestCustomers",
     "CreateTrackingRequest",
     "CreateTrackingResponse",
     "GetTrackingByIdResponse",
+    "UpdateTrackingByIdRequestOrderPromisedDeliveryDate",
     "UpdateTrackingByIdRequestDeliveryType",
     "UpdateTrackingByIdRequestCustomers",
     "UpdateTrackingByIdRequest",
@@ -103,6 +106,7 @@ from .meta_type import MetaType
 from .meta import Meta
 from .tracking_courier_estimated_delivery_date import TrackingCourierEstimatedDeliveryDate
 from .tracking_shipment_weight import TrackingShipmentWeight
+from .tracking_order_promised_delivery_date import TrackingOrderPromisedDeliveryDate
 from .tracking_aftership_estimated_delivery_date import TrackingAftershipEstimatedDeliveryDate
 from .tracking_custom_estimated_delivery_date_type import TrackingCustomEstimatedDeliveryDateType
 from .tracking_custom_estimated_delivery_date import TrackingCustomEstimatedDeliveryDate
@@ -173,12 +177,18 @@ from .estimated_delivery_date_response import EstimatedDeliveryDateResponse
 from .get_trackings_response_data import GetTrackingsResponseData
 from .get_trackings_response_data_pagination import GetTrackingsResponseDataPagination
 from .get_trackings_response import GetTrackingsResponse
+from .create_tracking_request_order_promised_delivery_date import (
+    CreateTrackingRequestOrderPromisedDeliveryDate,
+)
 from .create_tracking_request_delivery_type import CreateTrackingRequestDeliveryType
 from .create_tracking_request_last_mile import CreateTrackingRequestLastMile
 from .create_tracking_request_customers import CreateTrackingRequestCustomers
 from .create_tracking_request import CreateTrackingRequest
 from .create_tracking_response import CreateTrackingResponse
 from .get_tracking_by_id_response import GetTrackingByIdResponse
+from .update_tracking_by_id_request_order_promised_delivery_date import (
+    UpdateTrackingByIdRequestOrderPromisedDeliveryDate,
+)
 from .update_tracking_by_id_request_delivery_type import UpdateTrackingByIdRequestDeliveryType
 from .update_tracking_by_id_request_customers import UpdateTrackingByIdRequestCustomers
 from .update_tracking_by_id_request import UpdateTrackingByIdRequest

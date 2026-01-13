@@ -7,25 +7,18 @@ from __future__ import annotations
 import pprint
 
 from pydantic import BaseModel
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.estimated_delivery_date_request_estimated_pickup_order_processing_time import (
-    EstimatedDeliveryDateRequestEstimatedPickupOrderProcessingTime,
-)
 
-
-class EstimatedDeliveryDateRequestEstimatedPickup(BaseModel):
+class CreateTrackingRequestOrderPromisedDeliveryDate(BaseModel):
     """
-    The local pickup time of the package.</br><span style=color:#ff6b2b;padding:2px>**Either `pickup_time` or `estimated_pickup` is required.**</span>
+    The promised delivery date of the order in shipment recipient’s timezone.
     """  # noqa: E501
 
-    order_time: Optional[str] = None
-    order_cutoff_time: Optional[str] = None
-    business_days: Optional[List[int]] = None
-    order_processing_time: Optional[
-        EstimatedDeliveryDateRequestEstimatedPickupOrderProcessingTime
-    ] = None
+    promised_delivery_date: Optional[str] = None
+    promised_delivery_date_min: Optional[str] = None
+    promised_delivery_date_max: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))
