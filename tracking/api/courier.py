@@ -33,7 +33,7 @@ class CourierApi(ApiClient):
                 **active**: bool. get user activated couriers
                 **slug**: str. Unique courier code Use comma for multiple values. (Example: dhl,ups,usps)
         """
-        url = "/tracking/2025-07/couriers"
+        url = "/tracking/2026-01/couriers"
 
         params_keys = {
             "active",
@@ -59,7 +59,7 @@ class CourierApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2025-07/couriers/detect"
+        url = "/tracking/2026-01/couriers/detect"
 
         body = detect_courier_request
         if not isinstance(body, dict):

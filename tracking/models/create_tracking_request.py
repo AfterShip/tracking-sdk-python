@@ -10,6 +10,9 @@ from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
+from tracking.models.create_tracking_request_order_promised_delivery_date import (
+    CreateTrackingRequestOrderPromisedDeliveryDate,
+)
 from tracking.models.create_tracking_request_delivery_type import CreateTrackingRequestDeliveryType
 from tracking.models.create_tracking_request_last_mile import CreateTrackingRequestLastMile
 from tracking.models.create_tracking_request_customers import CreateTrackingRequestCustomers
@@ -28,9 +31,9 @@ class CreateTrackingRequest(BaseModel):
     custom_fields: Optional[dict] = None
     order_id_path: Optional[str] = None
     language: Optional[str] = None
-    order_promised_delivery_date: Optional[str] = None
-    delivery_type: Optional[CreateTrackingRequestDeliveryType] = None
+    order_promised_delivery_date: Optional[CreateTrackingRequestOrderPromisedDeliveryDate] = None
     pickup_location: Optional[str] = None
+    delivery_type: Optional[CreateTrackingRequestDeliveryType] = None
     pickup_note: Optional[str] = None
     tracking_account_number: Optional[str] = None
     tracking_key: Optional[str] = None
