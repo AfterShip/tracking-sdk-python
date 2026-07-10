@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class CheckpointCoordinate(BaseModel):
     """
     The latitude and longitude coordinates indicate the precise location of the shipments that are currently in transit.
     """  # noqa: E501
+
     latitude: Optional[float] = None
     longitude: Optional[float] = None
 

@@ -6,16 +6,18 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 from tracking.models.courier_connection import CourierConnection
 
+
 class DeleteCourierConnectionsByIdResponse(BaseModel):
     """
     This model represents user-created courier connection details. AfterShip will use this information to retrieve tracking updates from carriers based on the provided tracking numbers.
     """
+
     response_header: Dict[str, List[str]] = {}
     data: Optional[CourierConnection] = None
 
@@ -34,4 +36,4 @@ class DeleteCourierConnectionsByIdResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]], **kwargs) -> Optional[Self]:
-        return cls.model_validate(obj, **kwargs) if isinstance(obj, Dict) else None 
+        return cls.model_validate(obj, **kwargs) if isinstance(obj, Dict) else None

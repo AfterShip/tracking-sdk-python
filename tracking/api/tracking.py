@@ -27,11 +27,7 @@ class TrackingApi(ApiClient):
     """TrackingApi api implements"""
 
     @validate_params
-    def get_trackings(
-        self,
-        
-        
-        **kwargs) -> GetTrackingsResponse:
+    def get_trackings(self, **kwargs) -> GetTrackingsResponse:
         """
         Get tracking results of multiple trackings.<div style="visibility:hidden; height: 0"></div>
         :param kwargs:
@@ -51,10 +47,10 @@ class TrackingApi(ApiClient):
                 **origin**: str. Origin country/region of trackings. Use ISO Alpha-3 (three letters). Use comma for multiple values. (Example: USA,HKG)
                 **destination**: str. Destination country/region of trackings. Use ISO Alpha-3 (three letters). Use comma for multiple values. (Example: USA,HKG)
                 **tag**: str. Current status of tracking. Values include `Pending`, `InfoReceived`, `InTransit`, `OutForDelivery`, `AttemptFail`, `Delivered`, `AvailableForPickup`, `Exception`, `Expired` (See tag definition)
-                **created_at_min**: str. Start date and time of trackings created. AfterShip only stores data of 120 days. Please make sure the value of the parameter is properly escaped in 
-                **created_at_max**: str. End date and time of trackings created. Please make sure the value of the parameter is properly escaped in 
-                **updated_at_min**: str. Start date and time of trackings updated. Please make sure the value of the parameter is properly escaped in 
-                **updated_at_max**: str. End date and time of trackings updated. Please make sure the value of the parameter is properly escaped in 
+                **created_at_min**: str. Start date and time of trackings created. AfterShip only stores data of 120 days. Please make sure the value of the parameter is properly escaped in
+                **created_at_max**: str. End date and time of trackings created. Please make sure the value of the parameter is properly escaped in
+                **updated_at_min**: str. Start date and time of trackings updated. Please make sure the value of the parameter is properly escaped in
+                **updated_at_max**: str. End date and time of trackings updated. Please make sure the value of the parameter is properly escaped in
                 **fields**: str. List of fields to include in the response. Use comma for multiple values. Available options: `title`, `order_id`, `tag`, `checkpoints`. Example: `title,order_id`
                 **return_to_sender**: str. Select return to sender, the value should be `true` or `false`, with optional comma separated.
                 **courier_destination_country_region**: str. Destination country/region of trackings returned by courier. Use ISO Alpha-3 (three letters). Use comma for multiple values. (Example: USA,HKG)
@@ -85,19 +81,16 @@ class TrackingApi(ApiClient):
         }
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
-
         result = self._request("GET", url=url, params=params, **kwargs)
         return GetTrackingsResponse.model_validate(result)
 
     @validate_params
     def create_tracking(
-        self,
-        
-        create_tracking_request: Union[CreateTrackingRequest, dict], 
-        **kwargs) -> CreateTrackingResponse:
+        self, create_tracking_request: Union[CreateTrackingRequest, dict], **kwargs
+    ) -> CreateTrackingResponse:
         """
         Create a tracking.<div style="visibility:hidden; height: 0"></div>
-        :param create_tracking_request: 
+        :param create_tracking_request:
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -108,10 +101,9 @@ class TrackingApi(ApiClient):
         """
         url = "/tracking/2026-07/trackings"
 
-
         body = create_tracking_request
         if not isinstance(body, dict):
-            body = create_tracking_request.model_dump(exclude_none=True, mode='json')
+            body = create_tracking_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
@@ -119,10 +111,8 @@ class TrackingApi(ApiClient):
 
     @validate_params
     def get_tracking_by_id(
-        self,
-        id: Annotated[str, Field(min_length=1)], 
-        
-        **kwargs) -> GetTrackingByIdResponse:
+        self, id: Annotated[str, Field(min_length=1)], **kwargs
+    ) -> GetTrackingByIdResponse:
         """
         Get tracking results of a single tracking.
         :param id: str. tracking ID
@@ -145,20 +135,20 @@ class TrackingApi(ApiClient):
         }
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
-
         result = self._request("GET", url=url, params=params, **kwargs)
         return GetTrackingByIdResponse.model_validate(result)
 
     @validate_params
     def update_tracking_by_id(
         self,
-        id: Annotated[str, Field(min_length=1)], 
-        update_tracking_by_id_request: Union[UpdateTrackingByIdRequest, dict], 
-        **kwargs) -> UpdateTrackingByIdResponse:
+        id: Annotated[str, Field(min_length=1)],
+        update_tracking_by_id_request: Union[UpdateTrackingByIdRequest, dict],
+        **kwargs,
+    ) -> UpdateTrackingByIdResponse:
         """
         Update a tracking.
         :param id: str. tracking ID
-        :param update_tracking_by_id_request: 
+        :param update_tracking_by_id_request:
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -169,10 +159,9 @@ class TrackingApi(ApiClient):
         """
         url = f"/tracking/2026-07/trackings/{id}"
 
-
         body = update_tracking_by_id_request
         if not isinstance(body, dict):
-            body = update_tracking_by_id_request.model_dump(exclude_none=True, mode='json')
+            body = update_tracking_by_id_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("PUT", url=url, body=body, **kwargs)
@@ -180,10 +169,8 @@ class TrackingApi(ApiClient):
 
     @validate_params
     def delete_tracking_by_id(
-        self,
-        id: Annotated[str, Field(min_length=1)], 
-        
-        **kwargs) -> DeleteTrackingByIdResponse:
+        self, id: Annotated[str, Field(min_length=1)], **kwargs
+    ) -> DeleteTrackingByIdResponse:
         """
         Delete a tracking.
         :param id: str. tracking ID
@@ -197,17 +184,13 @@ class TrackingApi(ApiClient):
         """
         url = f"/tracking/2026-07/trackings/{id}"
 
-
-
         result = self._request("DELETE", url=url, **kwargs)
         return DeleteTrackingByIdResponse.model_validate(result)
 
     @validate_params
     def retrack_tracking_by_id(
-        self,
-        id: Annotated[str, Field(min_length=1)], 
-        
-        **kwargs) -> RetrackTrackingByIdResponse:
+        self, id: Annotated[str, Field(min_length=1)], **kwargs
+    ) -> RetrackTrackingByIdResponse:
         """
         Retrack an expired tracking. Max 3 times per tracking.
         :param id: str. tracking id
@@ -221,21 +204,20 @@ class TrackingApi(ApiClient):
         """
         url = f"/tracking/2026-07/trackings/{id}/retrack"
 
-
-
         result = self._request("POST", url=url, **kwargs)
         return RetrackTrackingByIdResponse.model_validate(result)
 
     @validate_params
     def mark_tracking_completed_by_id(
         self,
-        id: Annotated[str, Field(min_length=1)], 
-        mark_tracking_completed_by_id_request: Union[MarkTrackingCompletedByIdRequest, dict], 
-        **kwargs) -> MarkTrackingCompletedByIdResponse:
+        id: Annotated[str, Field(min_length=1)],
+        mark_tracking_completed_by_id_request: Union[MarkTrackingCompletedByIdRequest, dict],
+        **kwargs,
+    ) -> MarkTrackingCompletedByIdResponse:
         """
         Mark a tracking as completed. The tracking won't auto update until retrack it.
         :param id: str. tracking id
-        :param mark_tracking_completed_by_id_request: 
+        :param mark_tracking_completed_by_id_request:
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -246,12 +228,10 @@ class TrackingApi(ApiClient):
         """
         url = f"/tracking/2026-07/trackings/{id}/mark-as-completed"
 
-
         body = mark_tracking_completed_by_id_request
         if not isinstance(body, dict):
-            body = mark_tracking_completed_by_id_request.model_dump(exclude_none=True, mode='json')
+            body = mark_tracking_completed_by_id_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
         return MarkTrackingCompletedByIdResponse.model_validate(result)
-

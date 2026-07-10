@@ -4,9 +4,8 @@
 # Do not edit the class manually.
 
 import json
-from typing import Union, Annotated
+from typing import Union
 
-from pydantic import Field
 
 from tracking.models import (
     GetCouriersResponse,
@@ -20,11 +19,7 @@ class CourierApi(ApiClient):
     """CourierApi api implements"""
 
     @validate_params
-    def get_couriers(
-        self,
-        
-        
-        **kwargs) -> GetCouriersResponse:
+    def get_couriers(self, **kwargs) -> GetCouriersResponse:
         """
         Return a list of couriers.
         :param kwargs:
@@ -46,19 +41,16 @@ class CourierApi(ApiClient):
         }
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
-
         result = self._request("GET", url=url, params=params, **kwargs)
         return GetCouriersResponse.model_validate(result)
 
     @validate_params
     def detect_courier(
-        self,
-        
-        detect_courier_request: Union[DetectCourierRequest, dict], 
-        **kwargs) -> DetectCourierResponse:
+        self, detect_courier_request: Union[DetectCourierRequest, dict], **kwargs
+    ) -> DetectCourierResponse:
         """
         Return a list of matched couriers based on tracking number format and  or a list of couriers.
-        :param detect_courier_request: 
+        :param detect_courier_request:
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -69,12 +61,10 @@ class CourierApi(ApiClient):
         """
         url = "/tracking/2026-07/couriers/detect"
 
-
         body = detect_courier_request
         if not isinstance(body, dict):
-            body = detect_courier_request.model_dump(exclude_none=True, mode='json')
+            body = detect_courier_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
         return DetectCourierResponse.model_validate(result)
-

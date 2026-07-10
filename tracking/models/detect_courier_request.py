@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
-
 
 
 class DetectCourierRequest(BaseModel):
     """
     DetectCourierRequest
     """  # noqa: E501
+
     tracking_number: Optional[str] = None
     slug: Optional[List[str]] = None
     destination_postal_code: Optional[str] = None

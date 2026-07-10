@@ -6,7 +6,7 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
@@ -18,6 +18,7 @@ class TrackingMultiPieceInfo(BaseModel):
     """
     Multi-piece shipment refers to a scenario where a single shipment order is fulfilled by multiple physical packages. Each piece has its own carrier-assigned tracking number, but all pieces belong to the same shipment. This commonly occurs when an order is too large to fit in one box, or when items are packed separately for handling reasons.This field contains multi-piece shipment metadata describing a group of packages that belong to the same shipment.This field returns a value only when your subscription plan includes a multi-piece feature. To enable, go to .
     """  # noqa: E501
+
     type: Optional[TrackingMultiPieceInfoType] = None
     pieces: Optional[List[TrackingMultiPieceInfoPieces]] = None
 

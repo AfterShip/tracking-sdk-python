@@ -6,18 +6,24 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking_courier_estimated_delivery_date import TrackingCourierEstimatedDeliveryDate
+from tracking.models.tracking_courier_estimated_delivery_date import (
+    TrackingCourierEstimatedDeliveryDate,
+)
 from tracking.models.tracking_shipment_weight import TrackingShipmentWeight
 from tracking.models.tracking_shipment_dimensions import TrackingShipmentDimensions
 from tracking.models.tag import Tag
 from tracking.models.checkpoint import Checkpoint
 from tracking.models.tracking_order_promised_delivery_date import TrackingOrderPromisedDeliveryDate
-from tracking.models.tracking_aftership_estimated_delivery_date import TrackingAftershipEstimatedDeliveryDate
-from tracking.models.tracking_custom_estimated_delivery_date import TrackingCustomEstimatedDeliveryDate
+from tracking.models.tracking_aftership_estimated_delivery_date import (
+    TrackingAftershipEstimatedDeliveryDate,
+)
+from tracking.models.tracking_custom_estimated_delivery_date import (
+    TrackingCustomEstimatedDeliveryDate,
+)
 from tracking.models.tracking_first_estimated_delivery import TrackingFirstEstimatedDelivery
 from tracking.models.tracking_latest_estimated_delivery import TrackingLatestEstimatedDelivery
 from tracking.models.tracking_carbon_emissions import TrackingCarbonEmissions
@@ -36,6 +42,7 @@ class Tracking(BaseModel):
     """
     Object describes the tracking information.<div style="visibility:hidden; height: 0"></div>
     """  # noqa: E501
+
     id: Optional[str] = None
     legacy_id: Optional[str] = None
     created_at: Optional[str] = None

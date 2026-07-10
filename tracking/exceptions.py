@@ -37,7 +37,7 @@ class ApiException(Exception):
         self.response_header = response_header
 
     def __str__(self):
-        return '{}: {}'.format(self.__class__.__name__, self.message)
+        return "{}: {}".format(self.__class__.__name__, self.message)
 
 
 class BadRequestError(ApiException):
@@ -91,6 +91,7 @@ class ErrorCodeEnum(Enum):
 
     allowed enum values
     """
+
     INVALID_API_KEY = "INVALID_API_KEY"
     INVALID_OPTION = "INVALID_OPTION"
     BAD_REQUEST = "BAD_REQUEST"

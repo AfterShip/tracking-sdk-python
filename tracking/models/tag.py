@@ -13,6 +13,7 @@ class Tag(Enum):
 
     allowed enum values
     """
+
     PENDING = "Pending"
     INFO_RECEIVED = "InfoReceived"
     IN_TRANSIT = "InTransit"

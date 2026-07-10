@@ -6,21 +6,26 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.create_tracking_request_order_promised_delivery_date import CreateTrackingRequestOrderPromisedDeliveryDate
+from tracking.models.create_tracking_request_order_promised_delivery_date import (
+    CreateTrackingRequestOrderPromisedDeliveryDate,
+)
 from tracking.models.create_tracking_request_delivery_type import CreateTrackingRequestDeliveryType
 from tracking.models.create_tracking_request_last_mile import CreateTrackingRequestLastMile
 from tracking.models.create_tracking_request_customers import CreateTrackingRequestCustomers
-from tracking.models.create_tracking_request_shipment_direction import CreateTrackingRequestShipmentDirection
+from tracking.models.create_tracking_request_shipment_direction import (
+    CreateTrackingRequestShipmentDirection,
+)
 
 
 class CreateTrackingRequest(BaseModel):
     """
     CreateTrackingRequest
     """  # noqa: E501
+
     id: Optional[str] = None
     tracking_number: Optional[str] = None
     slug: Optional[str] = None

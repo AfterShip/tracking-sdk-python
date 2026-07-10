@@ -6,18 +6,21 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
 from tracking.models.meta import Meta
-from tracking.models.courier_connection_response_for_get_courier_connections_data import CourierConnectionResponseForGetCourierConnectionsData
+from tracking.models.courier_connection_response_for_get_courier_connections_data import (
+    CourierConnectionResponseForGetCourierConnectionsData,
+)
 
 
 class CourierConnectionResponseForGetCourierConnections(BaseModel):
     """
     Courier connection response for getting courier connections
     """  # noqa: E501
+
     meta: Optional[Meta] = None
     data: Optional[CourierConnectionResponseForGetCourierConnectionsData] = None
 

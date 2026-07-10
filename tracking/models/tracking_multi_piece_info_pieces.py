@@ -6,8 +6,8 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
 from tracking.models.tracking_multi_piece_info_pieces_type import TrackingMultiPieceInfoPiecesType
@@ -17,6 +17,7 @@ class TrackingMultiPieceInfoPieces(BaseModel):
     """
     TrackingMultiPieceInfoPieces
     """  # noqa: E501
+
     tracking_id: Optional[str] = None
     tracking_number: Optional[str] = None
     type: Optional[TrackingMultiPieceInfoPiecesType] = None

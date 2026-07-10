@@ -6,11 +6,13 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking_response_for_get_trackings_data_pagination import TrackingResponseForGetTrackingsDataPagination
+from tracking.models.tracking_response_for_get_trackings_data_pagination import (
+    TrackingResponseForGetTrackingsDataPagination,
+)
 from tracking.models.tracking import Tracking
 
 
@@ -18,6 +20,7 @@ class TrackingResponseForGetTrackingsData(BaseModel):
     """
     TrackingResponseForGetTrackingsData
     """  # noqa: E501
+
     pagination: Optional[TrackingResponseForGetTrackingsDataPagination] = None
     trackings: Optional[List[Tracking]] = None
 

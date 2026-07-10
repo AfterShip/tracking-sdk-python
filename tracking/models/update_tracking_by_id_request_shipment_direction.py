@@ -13,5 +13,6 @@ class UpdateTrackingByIdRequestShipmentDirection(Enum):
 
     allowed enum values
     """
+
     FORWARD = "forward"
     RETURN = "return"

@@ -13,6 +13,7 @@ class TrackingShipmentDirection(Enum):
 
     allowed enum values
     """
+
     FORWARD = "forward"
     RETURN = "return"
     NULL = "null"

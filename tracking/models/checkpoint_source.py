@@ -13,5 +13,6 @@ class CheckpointSource(Enum):
 
     allowed enum values
     """
+
     CARRIER = "carrier"
     USER = "user"

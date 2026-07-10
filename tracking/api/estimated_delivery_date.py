@@ -4,9 +4,8 @@
 # Do not edit the class manually.
 
 import json
-from typing import Union, Annotated
+from typing import Union
 
-from pydantic import Field
 
 from tracking.models import (
     EstimatedDeliveryDateRequest,
@@ -22,13 +21,11 @@ class EstimatedDeliveryDateApi(ApiClient):
 
     @validate_params
     def predict(
-        self,
-        
-        predict_request: Union[EstimatedDeliveryDateRequest, dict], 
-        **kwargs) -> PredictResponse:
+        self, predict_request: Union[EstimatedDeliveryDateRequest, dict], **kwargs
+    ) -> PredictResponse:
         """
         > The estimated delivery date is provided by AfterShip, based on its AI-predictive model. You can display the EDD on the product page, cart, and order checkout page. It indicates when a customer will receive the order.You can use  to activate this feature.
-        :param predict_request: 
+        :param predict_request:
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -39,10 +36,9 @@ class EstimatedDeliveryDateApi(ApiClient):
         """
         url = "/tracking/2026-07/estimated-delivery-date/predict"
 
-
         body = predict_request
         if not isinstance(body, dict):
-            body = predict_request.model_dump(exclude_none=True, mode='json')
+            body = predict_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
@@ -50,13 +46,11 @@ class EstimatedDeliveryDateApi(ApiClient):
 
     @validate_params
     def predict_batch(
-        self,
-        
-        predict_batch_request: Union[PredictBatchRequest, dict], 
-        **kwargs) -> PredictBatchResponse:
+        self, predict_batch_request: Union[PredictBatchRequest, dict], **kwargs
+    ) -> PredictBatchResponse:
         """
         > The estimated delivery date is provided by AfterShip, based on its AI-predictive model. You can display the EDD on the product page, cart, and order checkout page. It indicates when a customer will receive the order.You can use  to activate this feature.Supported functionalities require:1. One `EstimatedDeliveryDate` object for one prediction result.2. Maximum 5 `EstimatedDeliveryDate` objects are allowed.3. API call will fail if any of the requests `EstimatedDeliveryDate` objects do not meet the specification requirement.
-        :param predict_batch_request: 
+        :param predict_batch_request:
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -67,12 +61,10 @@ class EstimatedDeliveryDateApi(ApiClient):
         """
         url = "/tracking/2026-07/estimated-delivery-date/predict-batch"
 
-
         body = predict_batch_request
         if not isinstance(body, dict):
-            body = predict_batch_request.model_dump(exclude_none=True, mode='json')
+            body = predict_batch_request.model_dump(exclude_none=True, mode="json")
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
         return PredictBatchResponse.model_validate(result)
-

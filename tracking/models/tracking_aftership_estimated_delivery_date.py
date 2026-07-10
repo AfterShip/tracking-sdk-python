@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class TrackingAftershipEstimatedDeliveryDate(BaseModel):
     """
     The estimated delivery date of the shipment provided by AfterShip’s AI and shown to the recipients. It uses the format `YYYY-MM-DD` based on the shipment recipient’s timezone.
     """  # noqa: E501
+
     estimated_delivery_date: Optional[str] = None
     confidence_code: Optional[float] = None
     estimated_delivery_date_min: Optional[str] = None

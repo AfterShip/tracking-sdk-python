@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class UpdateTrackingByIdRequestOrderPromisedDeliveryDate(BaseModel):
     """
     The promised delivery date of the order in shipment recipient’s timezone.
     """  # noqa: E501
+
     promised_delivery_date: Optional[str] = None
     promised_delivery_date_min: Optional[str] = None
     promised_delivery_date_max: Optional[str] = None

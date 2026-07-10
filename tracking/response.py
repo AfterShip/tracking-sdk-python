@@ -4,7 +4,7 @@
 # Do not edit the class manually.
 
 import json
-from typing import Dict, Union
+from typing import Union
 
 import httpx
 
@@ -17,17 +17,17 @@ from tracking.exceptions import (
     NotFoundError,
     InternalError,
     TooManyRequestsError,
-    TimedOutError
+    TimedOutError,
 )
 
 error_mapping = {
-    'BadRequest': BadRequestError,
-    'Unauthorized': UnauthorizedError,
-    'Forbidden': ForbiddenError,
-    'NotFound': NotFoundError,
-    'TooManyRequests': TooManyRequestsError,
-    'InternalError': InternalError,
-    'TimedOutError': TimedOutError,
+    "BadRequest": BadRequestError,
+    "Unauthorized": UnauthorizedError,
+    "Forbidden": ForbiddenError,
+    "NotFound": NotFoundError,
+    "TooManyRequests": TooManyRequestsError,
+    "InternalError": InternalError,
+    "TimedOutError": TimedOutError,
 }
 
 _error_meta_code_mapping = {
@@ -75,7 +75,7 @@ def parse_response(response: httpx.Response) -> Union[dict, None]:
             error_cls = error_mapping[error_type]
         else:
             error_cls = UnknownError
-        
+
         meta_code = json_data["meta"]["code"]
         error_code = _error_meta_code_mapping.get(str(meta_code))
         if error_code is None:

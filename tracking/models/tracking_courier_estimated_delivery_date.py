@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class TrackingCourierEstimatedDeliveryDate(BaseModel):
     """
     The field contains the estimated delivery date provided by the carrier.
     """  # noqa: E501
+
     estimated_delivery_date: Optional[str] = None
     estimated_delivery_date_min: Optional[str] = None
     estimated_delivery_date_max: Optional[str] = None

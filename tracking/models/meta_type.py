@@ -13,6 +13,7 @@ class MetaType(Enum):
 
     allowed enum values
     """
+
     BAD_REQUEST = "BadRequest"
     UNAUTHORIZED = "Unauthorized"
     FORBIDDEN = "Forbidden"

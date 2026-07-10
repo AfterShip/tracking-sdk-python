@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class PostCourierConnectionsRequest(BaseModel):
     """
     PostCourierConnectionsRequest
     """  # noqa: E501
+
     courier_slug: Optional[str] = None
     credentials: Optional[dict] = None
 

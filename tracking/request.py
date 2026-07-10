@@ -27,10 +27,8 @@ def validate_params(func):
             funcx = validate_call(func)
             return funcx(*args, **kwargs)
         except ValidationError as e:
-            raise BadRequestError(
-                code=ErrorCodeEnum.BAD_REQUEST,
-                message=e
-            )
+            raise BadRequestError(code=ErrorCodeEnum.BAD_REQUEST, message=e)
+
     return wrapper
 
 
@@ -39,6 +37,7 @@ class ApiClient:
 
     :param configuration: .Configuration object for this client
     """
+
     _client = httpx.Client()
 
     def __init__(self, configuration: Optional[Configuration] = None) -> None:
@@ -64,16 +63,17 @@ class ApiClient:
             kwargs["timeout"] = self._config.timeout / 1000.0
 
         request = self._client.build_request(
-            method=method, url=url, params=params, data=body, headers=user_headers, **kwargs)
+            method=method, url=url, params=params, data=body, headers=user_headers, **kwargs
+        )
         request.headers = Authenticator(
             api_key=self._config.api_key,
             api_secret=self._config.api_secret,
-            auth_type=self._config.authentication_type
+            auth_type=self._config.authentication_type,
         ).sign(
             method=request.method,
             uri=request.url.raw.raw_path.decode("utf-8"),
             headers=request.headers,
-            body=body
+            body=body,
         )
         return self._send_request_with_retry(ssl_ctx, request)
 

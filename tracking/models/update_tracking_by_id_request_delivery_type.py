@@ -13,6 +13,7 @@ class UpdateTrackingByIdRequestDeliveryType(Enum):
 
     allowed enum values
     """
+
     PICKUP_AT_STORE = "pickup_at_store"
     PICKUP_AT_COURIER = "pickup_at_courier"
     DOOR_TO_DOOR = "door_to_door"

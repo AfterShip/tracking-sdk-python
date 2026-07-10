@@ -6,11 +6,13 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.courier_connection_response_for_get_courier_connections_data_pagination import CourierConnectionResponseForGetCourierConnectionsDataPagination
+from tracking.models.courier_connection_response_for_get_courier_connections_data_pagination import (
+    CourierConnectionResponseForGetCourierConnectionsDataPagination,
+)
 from tracking.models.courier_connection import CourierConnection
 
 
@@ -18,6 +20,7 @@ class CourierConnectionResponseForGetCourierConnectionsData(BaseModel):
     """
     CourierConnectionResponseForGetCourierConnectionsData
     """  # noqa: E501
+
     pagination: Optional[CourierConnectionResponseForGetCourierConnectionsDataPagination] = None
     courier_connections: Optional[List[CourierConnection]] = None
 

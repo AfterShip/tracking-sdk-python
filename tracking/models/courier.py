@@ -6,7 +6,7 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
@@ -18,6 +18,7 @@ class Courier(BaseModel):
     """
     Courier object
     """  # noqa: E501
+
     slug: Optional[str] = None
     name: Optional[str] = None
     phone: Optional[str] = None

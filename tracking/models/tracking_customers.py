@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class TrackingCustomers(BaseModel):
     """
     TrackingCustomers
     """  # noqa: E501
+
     role: Optional[str] = None
     name: Optional[str] = None
     phone_number: Optional[str] = None

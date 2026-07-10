@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class TrackingForwardShipment(BaseModel):
     """
     The original outbound shipment linked to this return. Use this to trace a return back to its source delivery.This field is only present when `shipment_direction = "return"` and AfterShip has detected a linked forward shipment.
     """  # noqa: E501
+
     id: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:

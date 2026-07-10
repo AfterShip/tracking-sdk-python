@@ -6,20 +6,29 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.estimated_delivery_date_response_origin_address import EstimatedDeliveryDateResponseOriginAddress
-from tracking.models.estimated_delivery_date_response_destination_address import EstimatedDeliveryDateResponseDestinationAddress
-from tracking.models.estimated_delivery_date_response_weight import EstimatedDeliveryDateResponseWeight
-from tracking.models.estimated_delivery_date_response_estimated_pickup import EstimatedDeliveryDateResponseEstimatedPickup
+from tracking.models.estimated_delivery_date_response_origin_address import (
+    EstimatedDeliveryDateResponseOriginAddress,
+)
+from tracking.models.estimated_delivery_date_response_destination_address import (
+    EstimatedDeliveryDateResponseDestinationAddress,
+)
+from tracking.models.estimated_delivery_date_response_weight import (
+    EstimatedDeliveryDateResponseWeight,
+)
+from tracking.models.estimated_delivery_date_response_estimated_pickup import (
+    EstimatedDeliveryDateResponseEstimatedPickup,
+)
 
 
 class EstimatedDeliveryDateResponse(BaseModel):
     """
     EstimatedDeliveryDateResponse
     """  # noqa: E501
+
     id: Optional[str] = None
     slug: Optional[str] = None
     service_type_name: Optional[str] = None

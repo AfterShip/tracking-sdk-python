@@ -13,6 +13,7 @@ class MarkTrackingCompletedByIdRequestReason(Enum):
 
     allowed enum values
     """
+
     DELIVERED = "DELIVERED"
     LOST = "LOST"
     RETURNED_TO_SENDER = "RETURNED_TO_SENDER"

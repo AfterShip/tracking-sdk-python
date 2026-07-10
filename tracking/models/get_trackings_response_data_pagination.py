@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class GetTrackingsResponseDataPagination(BaseModel):
     """
     The Pagination holds the information for the pagination when the response contains multiple objects.
     """  # noqa: E501
+
     total: Optional[int] = None
     next_cursor: Optional[str] = None
     has_next_page: Optional[bool] = None

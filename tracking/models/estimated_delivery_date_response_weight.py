@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class EstimatedDeliveryDateResponseWeight(BaseModel):
     """
     AfterShip uses this object to calculate the total weight of the order.
     """  # noqa: E501
+
     unit: Optional[str] = None
     value: Optional[float] = None
 

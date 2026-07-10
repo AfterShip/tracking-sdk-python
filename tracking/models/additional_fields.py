@@ -13,6 +13,7 @@ class AdditionalFields(Enum):
 
     allowed enum values
     """
+
     TRACKING_ACCOUNT_NUMBER = "tracking_account_number"
     DESTINATION_POSTAL_CODE = "destination_postal_code"
     DESTINATION_STATE = "destination_state"

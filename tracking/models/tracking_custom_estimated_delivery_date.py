@@ -6,17 +6,20 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking_custom_estimated_delivery_date_type import TrackingCustomEstimatedDeliveryDateType
+from tracking.models.tracking_custom_estimated_delivery_date_type import (
+    TrackingCustomEstimatedDeliveryDateType,
+)
 
 
 class TrackingCustomEstimatedDeliveryDate(BaseModel):
     """
     Estimated delivery time of the shipment based on your . It uses the format `YYYY-MM-DD` based on the shipment recipient’s timezone.
     """  # noqa: E501
+
     type: Optional[TrackingCustomEstimatedDeliveryDateType] = None
     datetime: Optional[str] = None
     datetime_min: Optional[str] = None

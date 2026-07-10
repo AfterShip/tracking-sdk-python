@@ -6,8 +6,8 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
 from tracking.models.tracking_last_mile_source import TrackingLastMileSource
@@ -17,6 +17,7 @@ class TrackingLastMile(BaseModel):
     """
     This field contains information about the last leg of the shipment, starting from the carrier who hands it over to the last-mile carrier, all the way to delivery. Once AfterShip detects that the shipment involves multiple legs and identifies the last-mile carrier, we will populate the last-mile carrier information in this object. Alternatively, the user can provide this information in this field to specify the last-mile carrier, which is helpful if AfterShip is unable to detect it automatically.
     """  # noqa: E501
+
     tracking_number: Optional[str] = None
     slug: Optional[str] = None
     transit_time: Optional[int] = None

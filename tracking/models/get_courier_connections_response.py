@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 from tracking.models.get_courier_connections_response_data import GetCourierConnectionsResponseData
 
+
 class GetCourierConnectionsResponse(BaseModel):
-    """
-    
-    """
+    """ """
+
     response_header: Dict[str, List[str]] = {}
     data: Optional[GetCourierConnectionsResponseData] = None
 
@@ -34,4 +34,4 @@ class GetCourierConnectionsResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]], **kwargs) -> Optional[Self]:
-        return cls.model_validate(obj, **kwargs) if isinstance(obj, Dict) else None 
+        return cls.model_validate(obj, **kwargs) if isinstance(obj, Dict) else None

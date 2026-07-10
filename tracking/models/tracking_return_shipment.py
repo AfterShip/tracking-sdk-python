@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class TrackingReturnShipment(BaseModel):
     """
     The associated return shipment linked to the current outbound shipment.This field is only present when `shipment_direction = "forward"` and AfterShip has detected a linked return shipment.
     """  # noqa: E501
+
     id: Optional[str] = None
     tracking_number: Optional[str] = None
     slug: Optional[str] = None

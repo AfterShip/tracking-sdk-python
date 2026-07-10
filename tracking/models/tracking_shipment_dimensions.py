@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class TrackingShipmentDimensions(BaseModel):
     """
     Physical dimensions of the package (length, width and height).
     """  # noqa: E501
+
     unit: Optional[str] = None
     length: Optional[float] = None
     width: Optional[float] = None

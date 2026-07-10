@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
-
 
 
 class CheckpointEventsReason(BaseModel):
     """
     Describes the specific reason that led to the event.
     """  # noqa: E501
+
     code: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:

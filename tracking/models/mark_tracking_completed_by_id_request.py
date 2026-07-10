@@ -6,17 +6,20 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.mark_tracking_completed_by_id_request_reason import MarkTrackingCompletedByIdRequestReason
+from tracking.models.mark_tracking_completed_by_id_request_reason import (
+    MarkTrackingCompletedByIdRequestReason,
+)
 
 
 class MarkTrackingCompletedByIdRequest(BaseModel):
     """
     MarkTrackingCompletedByIdRequest
     """  # noqa: E501
+
     reason: Optional[MarkTrackingCompletedByIdRequestReason] = None
     event_datetime: Optional[str] = None
 

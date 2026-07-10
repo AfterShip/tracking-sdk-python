@@ -13,5 +13,6 @@ class TrackingCustomEstimatedDeliveryDateType(Enum):
 
     allowed enum values
     """
+
     RANGE = "range"
     SPECIFIC = "specific"

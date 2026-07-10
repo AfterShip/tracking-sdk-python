@@ -21,7 +21,6 @@ Rsa = "RSA"
 
 
 class Authenticator:
-
     def __init__(self, api_key: str, api_secret: str, auth_type: str):
         self._api_key: str = api_key
         self._api_secret: str = api_secret
@@ -42,14 +41,16 @@ class Authenticator:
             return headers
 
         if self._kind != ApiKey:
-            headers["date"] = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+            headers["date"] = datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT")
             concat_header = self.canonical_header(headers)
             concat_rs = self.canonical_resource(uri)
             request_date = headers.get("date")
             sign_str = self.sign_str(method, body, request_date, concat_header, concat_rs)
 
             if self._kind == Aes:
-                headers["as-signature-hmac-sha256"] = self.hmac_signature(sign_str, self._api_secret)
+                headers["as-signature-hmac-sha256"] = self.hmac_signature(
+                    sign_str, self._api_secret
+                )
 
             if self._kind == Rsa:
                 headers["as-signature-rsa-sha256"] = self.rsa_encrypt(sign_str, self._api_secret)
@@ -57,7 +58,9 @@ class Authenticator:
         return headers
 
     @classmethod
-    def sign_str(cls, method: str, body: str, date: str, concat_header: str, concat_resource: str) -> str:
+    def sign_str(
+        cls, method: str, body: str, date: str, concat_header: str, concat_resource: str
+    ) -> str:
         content_md5 = ""
         content_type = ""
 
@@ -65,14 +68,7 @@ class Authenticator:
             content_type = "application/json"
             content_md5 = cls.md5_encode(body)
 
-        return "\n".join([
-            method,
-            content_md5,
-            content_type,
-            date,
-            concat_header,
-            concat_resource
-        ])
+        return "\n".join([method, content_md5, content_type, date, concat_header, concat_resource])
 
     @classmethod
     def canonical_header(cls, headers: Dict) -> str:
@@ -119,9 +115,7 @@ class Authenticator:
 
     @staticmethod
     def md5_encode(source: str) -> str:
-        return hashlib.md5(
-            source.encode('utf-8')
-        ).hexdigest().upper()
+        return hashlib.md5(source.encode("utf-8")).hexdigest().upper()
 
     @staticmethod
     def rsa_encrypt(sign_str: str, api_secret: str) -> str:
@@ -135,9 +129,6 @@ class Authenticator:
     @staticmethod
     def hmac_signature(sign_str: str, api_secret: str) -> str:
         signature = hmac.new(
-            bytes(api_secret, 'utf-8'),
-            msg=bytes(sign_str, 'utf-8'),
-            digestmod=hashlib.sha256
+            bytes(api_secret, "utf-8"), msg=bytes(sign_str, "utf-8"), digestmod=hashlib.sha256
         ).digest()
         return base64.b64encode(signature).decode("utf-8")
-

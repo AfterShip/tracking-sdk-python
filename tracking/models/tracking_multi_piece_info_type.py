@@ -13,5 +13,6 @@ class TrackingMultiPieceInfoType(Enum):
 
     allowed enum values
     """
+
     MASTER = "master"
     CHILD = "child"
