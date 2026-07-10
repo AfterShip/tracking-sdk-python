@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
+
 
 
 class TrackingFirstMile(BaseModel):
     """
-    The field contains information about the first leg of the shipping starting from the carrier picking up the shipment from the shipper to the point where they hand it over to the last-mile carrier. Once AfterShip detects the shipment is multi-leg, we will populate the first-mile information under this object.
+    The field contains information about the first leg of the shipping starting from the carrier picking up the shipment from the shipper to the point where they hand it over to the last-mile carrier. Once AfterShip detects the shipment is multi-leg, we will populate the first-mile information under this object. 
     """  # noqa: E501
-
     tracking_number: Optional[str] = None
     slug: Optional[str] = None
     transit_time: Optional[int] = None

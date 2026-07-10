@@ -6,8 +6,8 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 from tracking.models.meta import Meta
@@ -18,7 +18,6 @@ class TrackingResponse(BaseModel):
     """
     Tracking response for returning single tracking
     """  # noqa: E501
-
     meta: Optional[Meta] = None
     data: Optional[Tracking] = None
 

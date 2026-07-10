@@ -13,6 +13,5 @@ class TrackingLatestEstimatedDeliveryType(Enum):
 
     allowed enum values
     """
-
     RANGE = "range"
     SPECIFIC = "specific"

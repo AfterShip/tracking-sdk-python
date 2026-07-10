@@ -6,8 +6,8 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 from tracking.models.meta_type import MetaType
@@ -17,7 +17,6 @@ class Meta(BaseModel):
     """
     Meta data
     """  # noqa: E501
-
     code: Optional[int] = None
     message: Optional[str] = None
     type: Optional[MetaType] = None

@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
+
 
 
 class CourierConnection(BaseModel):
     """
     This model represents user-created courier connection details. AfterShip will use this information to retrieve tracking updates from carriers based on the provided tracking numbers.
     """  # noqa: E501
-
     id: Optional[str] = None
     courier_slug: Optional[str] = None
     credentials: Optional[dict] = None

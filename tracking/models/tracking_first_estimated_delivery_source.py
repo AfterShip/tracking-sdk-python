@@ -13,7 +13,6 @@ class TrackingFirstEstimatedDeliverySource(Enum):
 
     allowed enum values
     """
-
     CARRIER_EDD = "Carrier EDD"
     AFTER_SHIP_EDD = "AfterShip EDD"
     CUSTOM_EDD = "Custom EDD"

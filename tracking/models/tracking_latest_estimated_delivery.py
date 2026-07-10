@@ -6,23 +6,18 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking_latest_estimated_delivery_type import (
-    TrackingLatestEstimatedDeliveryType,
-)
-from tracking.models.tracking_latest_estimated_delivery_source import (
-    TrackingLatestEstimatedDeliverySource,
-)
+from tracking.models.tracking_latest_estimated_delivery_type import TrackingLatestEstimatedDeliveryType
+from tracking.models.tracking_latest_estimated_delivery_source import TrackingLatestEstimatedDeliverySource
 
 
 class TrackingLatestEstimatedDelivery(BaseModel):
     """
     The most recently calculated estimated delivery date. It could be provided by the carrier, AfterShip AI, or based on your custom settings. The format of carrier EDDs may differ depending on how the carrier provides it:- YYYY-MM-DD- YYYY-MM-DDTHH:mm:ss- YYYY-MM-DDTHH:mm:ssZ AfterShip AI and custom EDDs always use the format `YYYY-MM-DD`. All EDDs use the shipment recipient’s timezone.
     """  # noqa: E501
-
     type: Optional[TrackingLatestEstimatedDeliveryType] = None
     source: Optional[TrackingLatestEstimatedDeliverySource] = None
     datetime: Optional[str] = None

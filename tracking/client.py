@@ -15,6 +15,7 @@ from .api import EstimatedDeliveryDateApi
 
 
 class Client:
+
     def __init__(self, configuration: Optional[Configuration] = None) -> None:
         if configuration is None:
             configuration = Configuration()
@@ -23,3 +24,4 @@ class Client:
         self.courier = CourierApi(configuration)
         self.courier_connection = CourierConnectionApi(configuration)
         self.estimated_delivery_date = EstimatedDeliveryDateApi(configuration)
+

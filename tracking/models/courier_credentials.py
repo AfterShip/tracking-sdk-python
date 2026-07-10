@@ -6,7 +6,7 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
@@ -17,7 +17,6 @@ class CourierCredentials(BaseModel):
     """
     Refers to the authentication details required for each specific carrier (such as API keys, username, password, etc.) that the user must provide to create a carrier connection. The content varies by carrier.
     """  # noqa: E501
-
     fields: Optional[List[CredentialField]] = None
 
     def to_str(self, **kwargs) -> str:

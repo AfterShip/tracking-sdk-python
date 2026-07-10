@@ -27,7 +27,11 @@ class TrackingApi(ApiClient):
     """TrackingApi api implements"""
 
     @validate_params
-    def get_trackings(self, **kwargs) -> GetTrackingsResponse:
+    def get_trackings(
+        self,
+        
+        
+        **kwargs) -> GetTrackingsResponse:
         """
         Get tracking results of multiple trackings.<div style="visibility:hidden; height: 0"></div>
         :param kwargs:
@@ -47,17 +51,17 @@ class TrackingApi(ApiClient):
                 **origin**: str. Origin country/region of trackings. Use ISO Alpha-3 (three letters). Use comma for multiple values. (Example: USA,HKG)
                 **destination**: str. Destination country/region of trackings. Use ISO Alpha-3 (three letters). Use comma for multiple values. (Example: USA,HKG)
                 **tag**: str. Current status of tracking. Values include `Pending`, `InfoReceived`, `InTransit`, `OutForDelivery`, `AttemptFail`, `Delivered`, `AvailableForPickup`, `Exception`, `Expired` (See tag definition)
-                **created_at_min**: str. Start date and time of trackings created. AfterShip only stores data of 120 days. Please make sure the value of the parameter is properly escaped in
-                **created_at_max**: str. End date and time of trackings created. Please make sure the value of the parameter is properly escaped in
-                **updated_at_min**: str. Start date and time of trackings updated. Please make sure the value of the parameter is properly escaped in
-                **updated_at_max**: str. End date and time of trackings updated. Please make sure the value of the parameter is properly escaped in
+                **created_at_min**: str. Start date and time of trackings created. AfterShip only stores data of 120 days. Please make sure the value of the parameter is properly escaped in 
+                **created_at_max**: str. End date and time of trackings created. Please make sure the value of the parameter is properly escaped in 
+                **updated_at_min**: str. Start date and time of trackings updated. Please make sure the value of the parameter is properly escaped in 
+                **updated_at_max**: str. End date and time of trackings updated. Please make sure the value of the parameter is properly escaped in 
                 **fields**: str. List of fields to include in the response. Use comma for multiple values. Available options: `title`, `order_id`, `tag`, `checkpoints`. Example: `title,order_id`
                 **return_to_sender**: str. Select return to sender, the value should be `true` or `false`, with optional comma separated.
                 **courier_destination_country_region**: str. Destination country/region of trackings returned by courier. Use ISO Alpha-3 (three letters). Use comma for multiple values. (Example: USA,HKG)
                 **shipment_tags**: str. Tags you added to your shipments to help categorize and filter them easily. Use a comma to separate multiple values (Example: a,b)
                 **order_id**: str. A globally-unique identifier for the order. Use comma for multiple values.(Example: 6845a095a27a4caeb27487806f058add,4845a095a27a4caeb27487806f058abc)
         """
-        url = "/tracking/2026-01/trackings"
+        url = "/tracking/2026-07/trackings"
 
         params_keys = {
             "cursor",
@@ -81,16 +85,19 @@ class TrackingApi(ApiClient):
         }
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
+
         result = self._request("GET", url=url, params=params, **kwargs)
         return GetTrackingsResponse.model_validate(result)
 
     @validate_params
     def create_tracking(
-        self, create_tracking_request: Union[CreateTrackingRequest, dict], **kwargs
-    ) -> CreateTrackingResponse:
+        self,
+        
+        create_tracking_request: Union[CreateTrackingRequest, dict], 
+        **kwargs) -> CreateTrackingResponse:
         """
         Create a tracking.<div style="visibility:hidden; height: 0"></div>
-        :param create_tracking_request:
+        :param create_tracking_request: 
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -99,11 +106,12 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2026-01/trackings"
+        url = "/tracking/2026-07/trackings"
+
 
         body = create_tracking_request
         if not isinstance(body, dict):
-            body = create_tracking_request.model_dump(exclude_none=True, mode="json")
+            body = create_tracking_request.model_dump(exclude_none=True, mode='json')
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
@@ -111,8 +119,10 @@ class TrackingApi(ApiClient):
 
     @validate_params
     def get_tracking_by_id(
-        self, id: Annotated[str, Field(min_length=1)], **kwargs
-    ) -> GetTrackingByIdResponse:
+        self,
+        id: Annotated[str, Field(min_length=1)], 
+        
+        **kwargs) -> GetTrackingByIdResponse:
         """
         Get tracking results of a single tracking.
         :param id: str. tracking ID
@@ -127,7 +137,7 @@ class TrackingApi(ApiClient):
                 **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `destination_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `origin_country_region`, `destination_country_region`, `destination_state`, `title`, `order_id`, `tag`, `checkpoints`
                 **lang**: str. Translate checkpoint messages from the carrier’s provided language to the target language. Supported target languages include:&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- English (en)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- French (fr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- French Canadian (fr-CA)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Arabic (ar)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Bulgarian (bg)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Catalan (ca)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Croatian (hr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Czech (cs)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Danish (da)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Dutch (nl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Estonian (et)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Filipino (tl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Finnish (fi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- German (de)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Greek (el)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hebrew (he)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hindi (hi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hungarian (hu)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Indonesian (id)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Italian (it)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Japanese (ja)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Korean (ko)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Latvian (lv)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Lithuanian (lt)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Malay (ms)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Polish (pl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Portuguese (pt)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Romanian (ro)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Russian (ru)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Serbian (sr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Slovak (sk)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Slovenian (sl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Spanish (es)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Swedish (sv)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Thai (th)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Turkish (tr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Ukrainian (uk)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Vietnamese (vi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Simplified Chinese (zh-Hans)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Traditional Chinese (zh-Hant)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Norwegian (nb)&lt;/br&gt;
         """
-        url = f"/tracking/2026-01/trackings/{id}"
+        url = f"/tracking/2026-07/trackings/{id}"
 
         params_keys = {
             "fields",
@@ -135,20 +145,20 @@ class TrackingApi(ApiClient):
         }
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
+
         result = self._request("GET", url=url, params=params, **kwargs)
         return GetTrackingByIdResponse.model_validate(result)
 
     @validate_params
     def update_tracking_by_id(
         self,
-        id: Annotated[str, Field(min_length=1)],
-        update_tracking_by_id_request: Union[UpdateTrackingByIdRequest, dict],
-        **kwargs,
-    ) -> UpdateTrackingByIdResponse:
+        id: Annotated[str, Field(min_length=1)], 
+        update_tracking_by_id_request: Union[UpdateTrackingByIdRequest, dict], 
+        **kwargs) -> UpdateTrackingByIdResponse:
         """
         Update a tracking.
         :param id: str. tracking ID
-        :param update_tracking_by_id_request:
+        :param update_tracking_by_id_request: 
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -157,11 +167,12 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/trackings/{id}"
+        url = f"/tracking/2026-07/trackings/{id}"
+
 
         body = update_tracking_by_id_request
         if not isinstance(body, dict):
-            body = update_tracking_by_id_request.model_dump(exclude_none=True, mode="json")
+            body = update_tracking_by_id_request.model_dump(exclude_none=True, mode='json')
         body = json.dumps(body)
 
         result = self._request("PUT", url=url, body=body, **kwargs)
@@ -169,8 +180,10 @@ class TrackingApi(ApiClient):
 
     @validate_params
     def delete_tracking_by_id(
-        self, id: Annotated[str, Field(min_length=1)], **kwargs
-    ) -> DeleteTrackingByIdResponse:
+        self,
+        id: Annotated[str, Field(min_length=1)], 
+        
+        **kwargs) -> DeleteTrackingByIdResponse:
         """
         Delete a tracking.
         :param id: str. tracking ID
@@ -182,15 +195,19 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/trackings/{id}"
+        url = f"/tracking/2026-07/trackings/{id}"
+
+
 
         result = self._request("DELETE", url=url, **kwargs)
         return DeleteTrackingByIdResponse.model_validate(result)
 
     @validate_params
     def retrack_tracking_by_id(
-        self, id: Annotated[str, Field(min_length=1)], **kwargs
-    ) -> RetrackTrackingByIdResponse:
+        self,
+        id: Annotated[str, Field(min_length=1)], 
+        
+        **kwargs) -> RetrackTrackingByIdResponse:
         """
         Retrack an expired tracking. Max 3 times per tracking.
         :param id: str. tracking id
@@ -202,7 +219,9 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/trackings/{id}/retrack"
+        url = f"/tracking/2026-07/trackings/{id}/retrack"
+
+
 
         result = self._request("POST", url=url, **kwargs)
         return RetrackTrackingByIdResponse.model_validate(result)
@@ -210,14 +229,13 @@ class TrackingApi(ApiClient):
     @validate_params
     def mark_tracking_completed_by_id(
         self,
-        id: Annotated[str, Field(min_length=1)],
-        mark_tracking_completed_by_id_request: Union[MarkTrackingCompletedByIdRequest, dict],
-        **kwargs,
-    ) -> MarkTrackingCompletedByIdResponse:
+        id: Annotated[str, Field(min_length=1)], 
+        mark_tracking_completed_by_id_request: Union[MarkTrackingCompletedByIdRequest, dict], 
+        **kwargs) -> MarkTrackingCompletedByIdResponse:
         """
         Mark a tracking as completed. The tracking won't auto update until retrack it.
         :param id: str. tracking id
-        :param mark_tracking_completed_by_id_request:
+        :param mark_tracking_completed_by_id_request: 
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -226,12 +244,14 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/trackings/{id}/mark-as-completed"
+        url = f"/tracking/2026-07/trackings/{id}/mark-as-completed"
+
 
         body = mark_tracking_completed_by_id_request
         if not isinstance(body, dict):
-            body = mark_tracking_completed_by_id_request.model_dump(exclude_none=True, mode="json")
+            body = mark_tracking_completed_by_id_request.model_dump(exclude_none=True, mode='json')
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
         return MarkTrackingCompletedByIdResponse.model_validate(result)
+

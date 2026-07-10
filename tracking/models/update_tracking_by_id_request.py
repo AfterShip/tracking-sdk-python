@@ -6,35 +6,27 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.update_tracking_by_id_request_order_promised_delivery_date import (
-    UpdateTrackingByIdRequestOrderPromisedDeliveryDate,
-)
-from tracking.models.update_tracking_by_id_request_delivery_type import (
-    UpdateTrackingByIdRequestDeliveryType,
-)
-from tracking.models.update_tracking_by_id_request_customers import (
-    UpdateTrackingByIdRequestCustomers,
-)
+from tracking.models.update_tracking_by_id_request_order_promised_delivery_date import UpdateTrackingByIdRequestOrderPromisedDeliveryDate
+from tracking.models.update_tracking_by_id_request_delivery_type import UpdateTrackingByIdRequestDeliveryType
+from tracking.models.update_tracking_by_id_request_customers import UpdateTrackingByIdRequestCustomers
+from tracking.models.update_tracking_by_id_request_shipment_direction import UpdateTrackingByIdRequestShipmentDirection
 
 
 class UpdateTrackingByIdRequest(BaseModel):
     """
     UpdateTrackingByIdRequest
     """  # noqa: E501
-
     title: Optional[str] = None
     order_id: Optional[str] = None
     order_id_path: Optional[str] = None
     custom_fields: Optional[dict] = None
     note: Optional[str] = None
     language: Optional[str] = None
-    order_promised_delivery_date: Optional[UpdateTrackingByIdRequestOrderPromisedDeliveryDate] = (
-        None
-    )
+    order_promised_delivery_date: Optional[UpdateTrackingByIdRequestOrderPromisedDeliveryDate] = None
     delivery_type: Optional[UpdateTrackingByIdRequestDeliveryType] = None
     pickup_location: Optional[str] = None
     pickup_note: Optional[str] = None
@@ -58,6 +50,7 @@ class UpdateTrackingByIdRequest(BaseModel):
     location_id: Optional[str] = None
     shipping_method: Optional[str] = None
     customers: Optional[List[UpdateTrackingByIdRequestCustomers]] = None
+    shipment_direction: Optional[UpdateTrackingByIdRequestShipmentDirection] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

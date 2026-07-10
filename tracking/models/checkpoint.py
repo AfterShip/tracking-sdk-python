@@ -6,7 +6,7 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
@@ -20,7 +20,6 @@ class Checkpoint(BaseModel):
     """
     Object describes checkpoint information.
     """  # noqa: E501
-
     created_at: Optional[str] = None
     slug: Optional[str] = None
     checkpoint_time: Optional[str] = None
@@ -38,6 +37,7 @@ class Checkpoint(BaseModel):
     raw_tag: Optional[str] = None
     events: Optional[List[CheckpointEvents]] = None
     source: Optional[CheckpointSource] = None
+    hash: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

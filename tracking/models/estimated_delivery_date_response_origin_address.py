@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
+
 
 
 class EstimatedDeliveryDateResponseOriginAddress(BaseModel):
     """
     The location from where the package is picked up by the carrier to be delivered to the final destination.
     """  # noqa: E501
-
     country_region: Optional[str] = None
     state: Optional[str] = None
     city: Optional[str] = None

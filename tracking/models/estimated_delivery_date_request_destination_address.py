@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
+
 
 
 class EstimatedDeliveryDateRequestDestinationAddress(BaseModel):
     """
     The final destination of the customer where the delivery will be made.
     """  # noqa: E501
-
     country_region: Optional[str] = None
     state: Optional[str] = None
     city: Optional[str] = None

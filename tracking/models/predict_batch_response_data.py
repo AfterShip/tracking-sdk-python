@@ -6,7 +6,7 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
@@ -17,7 +17,6 @@ class PredictBatchResponseData(BaseModel):
     """
     PredictBatchResponseData
     """  # noqa: E501
-
     estimated_delivery_dates: Optional[List[EstimatedDeliveryDateResponse]] = None
 
     def to_str(self, **kwargs) -> str:

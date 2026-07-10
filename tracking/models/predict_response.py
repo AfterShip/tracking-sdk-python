@@ -6,16 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 from tracking.models.estimated_delivery_date_response import EstimatedDeliveryDateResponse
 
-
 class PredictResponse(BaseModel):
-    """ """
-
+    """
+    
+    """
     response_header: Dict[str, List[str]] = {}
     data: Optional[EstimatedDeliveryDateResponse] = None
 
@@ -34,4 +34,4 @@ class PredictResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]], **kwargs) -> Optional[Self]:
-        return cls.model_validate(obj, **kwargs) if isinstance(obj, Dict) else None
+        return cls.model_validate(obj, **kwargs) if isinstance(obj, Dict) else None 

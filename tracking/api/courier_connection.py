@@ -24,7 +24,11 @@ class CourierConnectionApi(ApiClient):
     """CourierConnectionApi api implements"""
 
     @validate_params
-    def get_courier_connections(self, **kwargs) -> GetCourierConnectionsResponse:
+    def get_courier_connections(
+        self,
+        
+        
+        **kwargs) -> GetCourierConnectionsResponse:
         """
         Get courier connection results of multiple courier connections.
         :param kwargs:
@@ -39,7 +43,7 @@ class CourierConnectionApi(ApiClient):
                 **cursor**: str. A string representing the cursor value for the current page of results.
                 **limit**: str. Number of courier connections each page contain. (Default: 100, Max: 200)
         """
-        url = "/tracking/2026-01/courier-connections"
+        url = "/tracking/2026-07/courier-connections"
 
         params_keys = {
             "courier_slug",
@@ -48,16 +52,19 @@ class CourierConnectionApi(ApiClient):
         }
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
+
         result = self._request("GET", url=url, params=params, **kwargs)
         return GetCourierConnectionsResponse.model_validate(result)
 
     @validate_params
     def post_courier_connections(
-        self, post_courier_connections_request: Union[PostCourierConnectionsRequest, dict], **kwargs
-    ) -> PostCourierConnectionsResponse:
+        self,
+        
+        post_courier_connections_request: Union[PostCourierConnectionsRequest, dict], 
+        **kwargs) -> PostCourierConnectionsResponse:
         """
-
-        :param post_courier_connections_request:
+        
+        :param post_courier_connections_request: 
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -66,11 +73,12 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2026-01/courier-connections"
+        url = "/tracking/2026-07/courier-connections"
+
 
         body = post_courier_connections_request
         if not isinstance(body, dict):
-            body = post_courier_connections_request.model_dump(exclude_none=True, mode="json")
+            body = post_courier_connections_request.model_dump(exclude_none=True, mode='json')
         body = json.dumps(body)
 
         result = self._request("POST", url=url, body=body, **kwargs)
@@ -78,11 +86,13 @@ class CourierConnectionApi(ApiClient):
 
     @validate_params
     def get_courier_connections_by_id(
-        self, id: Annotated[str, Field(min_length=1)], **kwargs
-    ) -> GetCourierConnectionsByIdResponse:
+        self,
+        id: Annotated[str, Field(min_length=1)], 
+        
+        **kwargs) -> GetCourierConnectionsByIdResponse:
         """
         Get courier connection results of a single courier connection.
-        :param id: str.
+        :param id: str. 
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -91,7 +101,9 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/courier-connections/{id}"
+        url = f"/tracking/2026-07/courier-connections/{id}"
+
+
 
         result = self._request("GET", url=url, **kwargs)
         return GetCourierConnectionsByIdResponse.model_validate(result)
@@ -99,14 +111,13 @@ class CourierConnectionApi(ApiClient):
     @validate_params
     def put_courier_connections_by_id(
         self,
-        id: Annotated[str, Field(min_length=1)],
-        put_courier_connections_by_id_request: Union[PutCourierConnectionsByIdRequest, dict],
-        **kwargs,
-    ) -> PutCourierConnectionsByIdResponse:
+        id: Annotated[str, Field(min_length=1)], 
+        put_courier_connections_by_id_request: Union[PutCourierConnectionsByIdRequest, dict], 
+        **kwargs) -> PutCourierConnectionsByIdResponse:
         """
         Update a courier connection.
-        :param id: str.
-        :param put_courier_connections_by_id_request:
+        :param id: str. 
+        :param put_courier_connections_by_id_request: 
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -115,11 +126,12 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/courier-connections/{id}"
+        url = f"/tracking/2026-07/courier-connections/{id}"
+
 
         body = put_courier_connections_by_id_request
         if not isinstance(body, dict):
-            body = put_courier_connections_by_id_request.model_dump(exclude_none=True, mode="json")
+            body = put_courier_connections_by_id_request.model_dump(exclude_none=True, mode='json')
         body = json.dumps(body)
 
         result = self._request("PATCH", url=url, body=body, **kwargs)
@@ -127,11 +139,13 @@ class CourierConnectionApi(ApiClient):
 
     @validate_params
     def delete_courier_connections_by_id(
-        self, id: Annotated[str, Field(min_length=1)], **kwargs
-    ) -> DeleteCourierConnectionsByIdResponse:
+        self,
+        id: Annotated[str, Field(min_length=1)], 
+        
+        **kwargs) -> DeleteCourierConnectionsByIdResponse:
         """
         Delete a courier connection.
-        :param id: str.
+        :param id: str. 
         :param kwargs:
             request options:
                 **headers** (dict): support custom headers.
@@ -140,7 +154,10 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/courier-connections/{id}"
+        url = f"/tracking/2026-07/courier-connections/{id}"
+
+
 
         result = self._request("DELETE", url=url, **kwargs)
         return DeleteCourierConnectionsByIdResponse.model_validate(result)
+

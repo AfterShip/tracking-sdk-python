@@ -6,18 +6,16 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
 from tracking.models.tracking import Tracking
 
-
 class GetTrackingByIdResponse(BaseModel):
     """
-    Object describes the tracking information.&lt;div style=&#34;display:none; height: 0&#34;&gt;&lt;/div&gt;
+    Object describes the tracking information.&lt;div style=&#34;visibility:hidden; height: 0&#34;&gt;&lt;/div&gt;
     """
-
     response_header: Dict[str, List[str]] = {}
     data: Optional[Tracking] = None
 
@@ -36,4 +34,4 @@ class GetTrackingByIdResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]], **kwargs) -> Optional[Self]:
-        return cls.model_validate(obj, **kwargs) if isinstance(obj, Dict) else None
+        return cls.model_validate(obj, **kwargs) if isinstance(obj, Dict) else None 

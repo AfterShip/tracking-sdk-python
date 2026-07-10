@@ -13,6 +13,5 @@ class TrackingLastMileSource(Enum):
 
     allowed enum values
     """
-
     SYSTEM = "system"
     USER = "user"

@@ -6,23 +6,18 @@
 from __future__ import annotations
 import pprint
 
-from pydantic import BaseModel
-from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field
+from typing import Any, Dict, List, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking_first_estimated_delivery_type import (
-    TrackingFirstEstimatedDeliveryType,
-)
-from tracking.models.tracking_first_estimated_delivery_source import (
-    TrackingFirstEstimatedDeliverySource,
-)
+from tracking.models.tracking_first_estimated_delivery_type import TrackingFirstEstimatedDeliveryType
+from tracking.models.tracking_first_estimated_delivery_source import TrackingFirstEstimatedDeliverySource
 
 
 class TrackingFirstEstimatedDelivery(BaseModel):
     """
     The shipment’s original estimated delivery date. It could be provided by the carrier, AfterShip AI, or based on your custom settings. The format of carrier EDDs may differ depending on how the carrier provides it:- YYYY-MM-DD- YYYY-MM-DDTHH:mm:ss- YYYY-MM-DDTHH:mm:ssZ AfterShip AI and custom EDDs always use the format `YYYY-MM-DD`. All EDDs use the shipment recipient’s timezone.
     """  # noqa: E501
-
     type: Optional[TrackingFirstEstimatedDeliveryType] = None
     source: Optional[TrackingFirstEstimatedDeliverySource] = None
     datetime: Optional[str] = None

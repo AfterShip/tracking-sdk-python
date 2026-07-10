@@ -13,7 +13,6 @@ class TrackingSignatureRequirement(Enum):
 
     allowed enum values
     """
-
     SIGNATURE_REQUIRED = "signature_required"
     ADULT_SIGNATURE_REQUIRED = "adult_signature_required"
     INDIRECT_SIGNATURE_REQUIRED = "indirect_signature_required"

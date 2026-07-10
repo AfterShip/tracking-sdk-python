@@ -11,6 +11,7 @@ __all__ = [
     "Meta",
     "TrackingCourierEstimatedDeliveryDate",
     "TrackingShipmentWeight",
+    "TrackingShipmentDimensions",
     "TrackingOrderPromisedDeliveryDate",
     "TrackingAftershipEstimatedDeliveryDate",
     "TrackingCustomEstimatedDeliveryDateType",
@@ -27,6 +28,14 @@ __all__ = [
     "TrackingLastMileSource",
     "TrackingLastMile",
     "TrackingCustomers",
+    "TrackingProofOfDelivery",
+    "TrackingMultiPieceInfoType",
+    "TrackingMultiPieceInfoPiecesType",
+    "TrackingMultiPieceInfoPieces",
+    "TrackingMultiPieceInfo",
+    "TrackingShipmentDirection",
+    "TrackingReturnShipment",
+    "TrackingForwardShipment",
     "Tracking",
     "Tag",
     "CheckpointCoordinate",
@@ -64,12 +73,14 @@ __all__ = [
     "CreateTrackingRequestDeliveryType",
     "CreateTrackingRequestLastMile",
     "CreateTrackingRequestCustomers",
+    "CreateTrackingRequestShipmentDirection",
     "CreateTrackingRequest",
     "CreateTrackingResponse",
     "GetTrackingByIdResponse",
     "UpdateTrackingByIdRequestOrderPromisedDeliveryDate",
     "UpdateTrackingByIdRequestDeliveryType",
     "UpdateTrackingByIdRequestCustomers",
+    "UpdateTrackingByIdRequestShipmentDirection",
     "UpdateTrackingByIdRequest",
     "UpdateTrackingByIdResponse",
     "DeleteTrackingByIdResponse",
@@ -97,15 +108,14 @@ __all__ = [
     "PredictBatchResponse",
 ]
 
-from .tracking_response_for_get_trackings_data_pagination import (
-    TrackingResponseForGetTrackingsDataPagination,
-)
+from .tracking_response_for_get_trackings_data_pagination import TrackingResponseForGetTrackingsDataPagination
 from .tracking_response_for_get_trackings_data import TrackingResponseForGetTrackingsData
 from .tracking_response_for_get_trackings import TrackingResponseForGetTrackings
 from .meta_type import MetaType
 from .meta import Meta
 from .tracking_courier_estimated_delivery_date import TrackingCourierEstimatedDeliveryDate
 from .tracking_shipment_weight import TrackingShipmentWeight
+from .tracking_shipment_dimensions import TrackingShipmentDimensions
 from .tracking_order_promised_delivery_date import TrackingOrderPromisedDeliveryDate
 from .tracking_aftership_estimated_delivery_date import TrackingAftershipEstimatedDeliveryDate
 from .tracking_custom_estimated_delivery_date_type import TrackingCustomEstimatedDeliveryDateType
@@ -122,6 +132,14 @@ from .tracking_first_mile import TrackingFirstMile
 from .tracking_last_mile_source import TrackingLastMileSource
 from .tracking_last_mile import TrackingLastMile
 from .tracking_customers import TrackingCustomers
+from .tracking_proof_of_delivery import TrackingProofOfDelivery
+from .tracking_multi_piece_info_type import TrackingMultiPieceInfoType
+from .tracking_multi_piece_info_pieces_type import TrackingMultiPieceInfoPiecesType
+from .tracking_multi_piece_info_pieces import TrackingMultiPieceInfoPieces
+from .tracking_multi_piece_info import TrackingMultiPieceInfo
+from .tracking_shipment_direction import TrackingShipmentDirection
+from .tracking_return_shipment import TrackingReturnShipment
+from .tracking_forward_shipment import TrackingForwardShipment
 from .tracking import Tracking
 from .tag import Tag
 from .checkpoint_coordinate import CheckpointCoordinate
@@ -136,61 +154,37 @@ from .courier_credentials import CourierCredentials
 from .courier import Courier
 from .additional_fields import AdditionalFields
 from .credential_field import CredentialField
-from .courier_connection_response_for_get_courier_connections_data_pagination import (
-    CourierConnectionResponseForGetCourierConnectionsDataPagination,
-)
-from .courier_connection_response_for_get_courier_connections_data import (
-    CourierConnectionResponseForGetCourierConnectionsData,
-)
-from .courier_connection_response_for_get_courier_connections import (
-    CourierConnectionResponseForGetCourierConnections,
-)
+from .courier_connection_response_for_get_courier_connections_data_pagination import CourierConnectionResponseForGetCourierConnectionsDataPagination
+from .courier_connection_response_for_get_courier_connections_data import CourierConnectionResponseForGetCourierConnectionsData
+from .courier_connection_response_for_get_courier_connections import CourierConnectionResponseForGetCourierConnections
 from .courier_connection import CourierConnection
-from .estimated_delivery_date_request_origin_address import (
-    EstimatedDeliveryDateRequestOriginAddress,
-)
-from .estimated_delivery_date_request_destination_address import (
-    EstimatedDeliveryDateRequestDestinationAddress,
-)
+from .estimated_delivery_date_request_origin_address import EstimatedDeliveryDateRequestOriginAddress
+from .estimated_delivery_date_request_destination_address import EstimatedDeliveryDateRequestDestinationAddress
 from .estimated_delivery_date_request_weight import EstimatedDeliveryDateRequestWeight
-from .estimated_delivery_date_request_estimated_pickup_order_processing_time import (
-    EstimatedDeliveryDateRequestEstimatedPickupOrderProcessingTime,
-)
-from .estimated_delivery_date_request_estimated_pickup import (
-    EstimatedDeliveryDateRequestEstimatedPickup,
-)
+from .estimated_delivery_date_request_estimated_pickup_order_processing_time import EstimatedDeliveryDateRequestEstimatedPickupOrderProcessingTime
+from .estimated_delivery_date_request_estimated_pickup import EstimatedDeliveryDateRequestEstimatedPickup
 from .estimated_delivery_date_request import EstimatedDeliveryDateRequest
-from .estimated_delivery_date_response_origin_address import (
-    EstimatedDeliveryDateResponseOriginAddress,
-)
-from .estimated_delivery_date_response_destination_address import (
-    EstimatedDeliveryDateResponseDestinationAddress,
-)
+from .estimated_delivery_date_response_origin_address import EstimatedDeliveryDateResponseOriginAddress
+from .estimated_delivery_date_response_destination_address import EstimatedDeliveryDateResponseDestinationAddress
 from .estimated_delivery_date_response_weight import EstimatedDeliveryDateResponseWeight
-from .estimated_delivery_date_response_estimated_pickup_order_processing_time import (
-    EstimatedDeliveryDateResponseEstimatedPickupOrderProcessingTime,
-)
-from .estimated_delivery_date_response_estimated_pickup import (
-    EstimatedDeliveryDateResponseEstimatedPickup,
-)
+from .estimated_delivery_date_response_estimated_pickup_order_processing_time import EstimatedDeliveryDateResponseEstimatedPickupOrderProcessingTime
+from .estimated_delivery_date_response_estimated_pickup import EstimatedDeliveryDateResponseEstimatedPickup
 from .estimated_delivery_date_response import EstimatedDeliveryDateResponse
 from .get_trackings_response_data import GetTrackingsResponseData
 from .get_trackings_response_data_pagination import GetTrackingsResponseDataPagination
 from .get_trackings_response import GetTrackingsResponse
-from .create_tracking_request_order_promised_delivery_date import (
-    CreateTrackingRequestOrderPromisedDeliveryDate,
-)
+from .create_tracking_request_order_promised_delivery_date import CreateTrackingRequestOrderPromisedDeliveryDate
 from .create_tracking_request_delivery_type import CreateTrackingRequestDeliveryType
 from .create_tracking_request_last_mile import CreateTrackingRequestLastMile
 from .create_tracking_request_customers import CreateTrackingRequestCustomers
+from .create_tracking_request_shipment_direction import CreateTrackingRequestShipmentDirection
 from .create_tracking_request import CreateTrackingRequest
 from .create_tracking_response import CreateTrackingResponse
 from .get_tracking_by_id_response import GetTrackingByIdResponse
-from .update_tracking_by_id_request_order_promised_delivery_date import (
-    UpdateTrackingByIdRequestOrderPromisedDeliveryDate,
-)
+from .update_tracking_by_id_request_order_promised_delivery_date import UpdateTrackingByIdRequestOrderPromisedDeliveryDate
 from .update_tracking_by_id_request_delivery_type import UpdateTrackingByIdRequestDeliveryType
 from .update_tracking_by_id_request_customers import UpdateTrackingByIdRequestCustomers
+from .update_tracking_by_id_request_shipment_direction import UpdateTrackingByIdRequestShipmentDirection
 from .update_tracking_by_id_request import UpdateTrackingByIdRequest
 from .update_tracking_by_id_response import UpdateTrackingByIdResponse
 from .delete_tracking_by_id_response import DeleteTrackingByIdResponse
@@ -204,9 +198,7 @@ from .detect_courier_request import DetectCourierRequest
 from .detect_courier_response_data import DetectCourierResponseData
 from .detect_courier_response import DetectCourierResponse
 from .get_courier_connections_response_data import GetCourierConnectionsResponseData
-from .get_courier_connections_response_data_pagination import (
-    GetCourierConnectionsResponseDataPagination,
-)
+from .get_courier_connections_response_data_pagination import GetCourierConnectionsResponseDataPagination
 from .get_courier_connections_response import GetCourierConnectionsResponse
 from .post_courier_connections_request import PostCourierConnectionsRequest
 from .post_courier_connections_response import PostCourierConnectionsResponse
@@ -218,3 +210,4 @@ from .predict_response import PredictResponse
 from .predict_batch_request import PredictBatchRequest
 from .predict_batch_response_data import PredictBatchResponseData
 from .predict_batch_response import PredictBatchResponse
+
