@@ -34,7 +34,7 @@ class EstimatedDeliveryDateApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2026-01/estimated-delivery-date/predict"
+        url = "/tracking/2026-07/estimated-delivery-date/predict"
 
         body = predict_request
         if not isinstance(body, dict):
@@ -59,7 +59,7 @@ class EstimatedDeliveryDateApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2026-01/estimated-delivery-date/predict-batch"
+        url = "/tracking/2026-07/estimated-delivery-date/predict-batch"
 
         body = predict_batch_request
         if not isinstance(body, dict):

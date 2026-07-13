@@ -7,19 +7,19 @@ from __future__ import annotations
 import pprint
 
 from pydantic import BaseModel
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking import Tracking
 
-
-class DeleteTrackingByIdResponse(BaseModel):
+class TrackingShipmentDimensions(BaseModel):
     """
-    Object describes the tracking information.&lt;div style=&#34;visibility:hidden; height: 0&#34;&gt;&lt;/div&gt;
-    """
+    Physical dimensions of the package (length, width and height).
+    """  # noqa: E501
 
-    response_header: Dict[str, List[str]] = {}
-    data: Optional[Tracking] = None
+    unit: Optional[str] = None
+    length: Optional[float] = None
+    width: Optional[float] = None
+    height: Optional[float] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

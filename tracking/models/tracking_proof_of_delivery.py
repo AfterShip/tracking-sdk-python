@@ -7,19 +7,17 @@ from __future__ import annotations
 import pprint
 
 from pydantic import BaseModel
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking import Tracking
 
-
-class DeleteTrackingByIdResponse(BaseModel):
+class TrackingProofOfDelivery(BaseModel):
     """
-    Object describes the tracking information.&lt;div style=&#34;visibility:hidden; height: 0&#34;&gt;&lt;/div&gt;
-    """
+    TrackingProofOfDelivery
+    """  # noqa: E501
 
-    response_header: Dict[str, List[str]] = {}
-    data: Optional[Tracking] = None
+    type: Optional[str] = None
+    url: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

@@ -19,6 +19,9 @@ from tracking.models.update_tracking_by_id_request_delivery_type import (
 from tracking.models.update_tracking_by_id_request_customers import (
     UpdateTrackingByIdRequestCustomers,
 )
+from tracking.models.update_tracking_by_id_request_shipment_direction import (
+    UpdateTrackingByIdRequestShipmentDirection,
+)
 
 
 class UpdateTrackingByIdRequest(BaseModel):
@@ -58,6 +61,7 @@ class UpdateTrackingByIdRequest(BaseModel):
     location_id: Optional[str] = None
     shipping_method: Optional[str] = None
     customers: Optional[List[UpdateTrackingByIdRequestCustomers]] = None
+    shipment_direction: Optional[UpdateTrackingByIdRequestShipmentDirection] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

@@ -15,7 +15,7 @@ from tracking.models.tracking import Tracking
 
 class MarkTrackingCompletedByIdResponse(BaseModel):
     """
-    Object describes the tracking information.&lt;div style=&#34;display:none; height: 0&#34;&gt;&lt;/div&gt;
+    Object describes the tracking information.&lt;div style=&#34;visibility:hidden; height: 0&#34;&gt;&lt;/div&gt;
     """
 
     response_header: Dict[str, List[str]] = {}

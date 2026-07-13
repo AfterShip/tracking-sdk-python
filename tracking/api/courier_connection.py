@@ -39,7 +39,7 @@ class CourierConnectionApi(ApiClient):
                 **cursor**: str. A string representing the cursor value for the current page of results.
                 **limit**: str. Number of courier connections each page contain. (Default: 100, Max: 200)
         """
-        url = "/tracking/2026-01/courier-connections"
+        url = "/tracking/2026-07/courier-connections"
 
         params_keys = {
             "courier_slug",
@@ -66,7 +66,7 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2026-01/courier-connections"
+        url = "/tracking/2026-07/courier-connections"
 
         body = post_courier_connections_request
         if not isinstance(body, dict):
@@ -91,7 +91,7 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/courier-connections/{id}"
+        url = f"/tracking/2026-07/courier-connections/{id}"
 
         result = self._request("GET", url=url, **kwargs)
         return GetCourierConnectionsByIdResponse.model_validate(result)
@@ -115,7 +115,7 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/courier-connections/{id}"
+        url = f"/tracking/2026-07/courier-connections/{id}"
 
         body = put_courier_connections_by_id_request
         if not isinstance(body, dict):
@@ -140,7 +140,7 @@ class CourierConnectionApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/courier-connections/{id}"
+        url = f"/tracking/2026-07/courier-connections/{id}"
 
         result = self._request("DELETE", url=url, **kwargs)
         return DeleteCourierConnectionsByIdResponse.model_validate(result)

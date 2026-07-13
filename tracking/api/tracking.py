@@ -57,7 +57,7 @@ class TrackingApi(ApiClient):
                 **shipment_tags**: str. Tags you added to your shipments to help categorize and filter them easily. Use a comma to separate multiple values (Example: a,b)
                 **order_id**: str. A globally-unique identifier for the order. Use comma for multiple values.(Example: 6845a095a27a4caeb27487806f058add,4845a095a27a4caeb27487806f058abc)
         """
-        url = "/tracking/2026-01/trackings"
+        url = "/tracking/2026-07/trackings"
 
         params_keys = {
             "cursor",
@@ -99,7 +99,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = "/tracking/2026-01/trackings"
+        url = "/tracking/2026-07/trackings"
 
         body = create_tracking_request
         if not isinstance(body, dict):
@@ -127,7 +127,7 @@ class TrackingApi(ApiClient):
                 **fields**: str. List of fields to include in the response. Use comma for multiple values. Fields to include: `destination_postal_code`, `tracking_ship_date`, `tracking_account_number`, `tracking_key`, `origin_country_region`, `destination_country_region`, `destination_state`, `title`, `order_id`, `tag`, `checkpoints`
                 **lang**: str. Translate checkpoint messages from the carrier’s provided language to the target language. Supported target languages include:&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- English (en)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- French (fr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- French Canadian (fr-CA)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Arabic (ar)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Bulgarian (bg)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Catalan (ca)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Croatian (hr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Czech (cs)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Danish (da)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Dutch (nl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Estonian (et)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Filipino (tl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Finnish (fi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- German (de)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Greek (el)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hebrew (he)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hindi (hi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Hungarian (hu)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Indonesian (id)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Italian (it)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Japanese (ja)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Korean (ko)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Latvian (lv)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Lithuanian (lt)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Malay (ms)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Polish (pl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Portuguese (pt)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Romanian (ro)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Russian (ru)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Serbian (sr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Slovak (sk)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Slovenian (sl)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Spanish (es)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Swedish (sv)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Thai (th)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Turkish (tr)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Ukrainian (uk)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Vietnamese (vi)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Simplified Chinese (zh-Hans)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Traditional Chinese (zh-Hant)&lt;/br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Norwegian (nb)&lt;/br&gt;
         """
-        url = f"/tracking/2026-01/trackings/{id}"
+        url = f"/tracking/2026-07/trackings/{id}"
 
         params_keys = {
             "fields",
@@ -157,7 +157,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/trackings/{id}"
+        url = f"/tracking/2026-07/trackings/{id}"
 
         body = update_tracking_by_id_request
         if not isinstance(body, dict):
@@ -182,7 +182,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/trackings/{id}"
+        url = f"/tracking/2026-07/trackings/{id}"
 
         result = self._request("DELETE", url=url, **kwargs)
         return DeleteTrackingByIdResponse.model_validate(result)
@@ -202,7 +202,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/trackings/{id}/retrack"
+        url = f"/tracking/2026-07/trackings/{id}/retrack"
 
         result = self._request("POST", url=url, **kwargs)
         return RetrackTrackingByIdResponse.model_validate(result)
@@ -226,7 +226,7 @@ class TrackingApi(ApiClient):
                     a path to an SSL certificate file, an `ssl.SSLContext`, or `False`
                     (which will disable verification).
         """
-        url = f"/tracking/2026-01/trackings/{id}/mark-as-completed"
+        url = f"/tracking/2026-07/trackings/{id}/mark-as-completed"
 
         body = mark_tracking_completed_by_id_request
         if not isinstance(body, dict):

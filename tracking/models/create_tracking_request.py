@@ -16,6 +16,9 @@ from tracking.models.create_tracking_request_order_promised_delivery_date import
 from tracking.models.create_tracking_request_delivery_type import CreateTrackingRequestDeliveryType
 from tracking.models.create_tracking_request_last_mile import CreateTrackingRequestLastMile
 from tracking.models.create_tracking_request_customers import CreateTrackingRequestCustomers
+from tracking.models.create_tracking_request_shipment_direction import (
+    CreateTrackingRequestShipmentDirection,
+)
 
 
 class CreateTrackingRequest(BaseModel):
@@ -59,6 +62,7 @@ class CreateTrackingRequest(BaseModel):
     shipping_method: Optional[str] = None
     last_mile: Optional[CreateTrackingRequestLastMile] = None
     customers: Optional[List[CreateTrackingRequestCustomers]] = None
+    shipment_direction: Optional[CreateTrackingRequestShipmentDirection] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

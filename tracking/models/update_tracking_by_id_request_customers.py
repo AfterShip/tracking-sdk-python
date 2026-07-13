@@ -21,6 +21,7 @@ class UpdateTrackingByIdRequestCustomers(BaseModel):
     phone_number: Optional[str] = None
     email: Optional[str] = None
     language: Optional[str] = None
+    id: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

@@ -14,6 +14,7 @@ from tracking.models.tracking_courier_estimated_delivery_date import (
     TrackingCourierEstimatedDeliveryDate,
 )
 from tracking.models.tracking_shipment_weight import TrackingShipmentWeight
+from tracking.models.tracking_shipment_dimensions import TrackingShipmentDimensions
 from tracking.models.tag import Tag
 from tracking.models.checkpoint import Checkpoint
 from tracking.models.tracking_order_promised_delivery_date import TrackingOrderPromisedDeliveryDate
@@ -30,11 +31,16 @@ from tracking.models.tracking_signature_requirement import TrackingSignatureRequ
 from tracking.models.tracking_first_mile import TrackingFirstMile
 from tracking.models.tracking_last_mile import TrackingLastMile
 from tracking.models.tracking_customers import TrackingCustomers
+from tracking.models.tracking_proof_of_delivery import TrackingProofOfDelivery
+from tracking.models.tracking_multi_piece_info import TrackingMultiPieceInfo
+from tracking.models.tracking_shipment_direction import TrackingShipmentDirection
+from tracking.models.tracking_return_shipment import TrackingReturnShipment
+from tracking.models.tracking_forward_shipment import TrackingForwardShipment
 
 
 class Tracking(BaseModel):
     """
-    Object describes the tracking information.<div style="display:none; height: 0"></div>
+    Object describes the tracking information.<div style="visibility:hidden; height: 0"></div>
     """  # noqa: E501
 
     id: Optional[str] = None
@@ -67,6 +73,7 @@ class Tracking(BaseModel):
     shipment_delivery_date: Optional[str] = None
     shipment_type: Optional[str] = None
     shipment_weight: Optional[TrackingShipmentWeight] = None
+    shipment_dimensions: Optional[TrackingShipmentDimensions] = None
     signed_by: Optional[str] = None
     source: Optional[str] = None
     tag: Optional[Tag] = None
@@ -111,6 +118,11 @@ class Tracking(BaseModel):
     first_mile: Optional[TrackingFirstMile] = None
     last_mile: Optional[TrackingLastMile] = None
     customers: Optional[List[TrackingCustomers]] = None
+    proof_of_delivery: Optional[List[TrackingProofOfDelivery]] = None
+    multi_piece_info: Optional[TrackingMultiPieceInfo] = None
+    shipment_direction: Optional[TrackingShipmentDirection] = None
+    return_shipment: Optional[TrackingReturnShipment] = None
+    forward_shipment: Optional[TrackingForwardShipment] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

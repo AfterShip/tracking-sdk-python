@@ -11,6 +11,7 @@ __all__ = [
     "Meta",
     "TrackingCourierEstimatedDeliveryDate",
     "TrackingShipmentWeight",
+    "TrackingShipmentDimensions",
     "TrackingOrderPromisedDeliveryDate",
     "TrackingAftershipEstimatedDeliveryDate",
     "TrackingCustomEstimatedDeliveryDateType",
@@ -27,6 +28,14 @@ __all__ = [
     "TrackingLastMileSource",
     "TrackingLastMile",
     "TrackingCustomers",
+    "TrackingProofOfDelivery",
+    "TrackingMultiPieceInfoType",
+    "TrackingMultiPieceInfoPiecesType",
+    "TrackingMultiPieceInfoPieces",
+    "TrackingMultiPieceInfo",
+    "TrackingShipmentDirection",
+    "TrackingReturnShipment",
+    "TrackingForwardShipment",
     "Tracking",
     "Tag",
     "CheckpointCoordinate",
@@ -64,12 +73,14 @@ __all__ = [
     "CreateTrackingRequestDeliveryType",
     "CreateTrackingRequestLastMile",
     "CreateTrackingRequestCustomers",
+    "CreateTrackingRequestShipmentDirection",
     "CreateTrackingRequest",
     "CreateTrackingResponse",
     "GetTrackingByIdResponse",
     "UpdateTrackingByIdRequestOrderPromisedDeliveryDate",
     "UpdateTrackingByIdRequestDeliveryType",
     "UpdateTrackingByIdRequestCustomers",
+    "UpdateTrackingByIdRequestShipmentDirection",
     "UpdateTrackingByIdRequest",
     "UpdateTrackingByIdResponse",
     "DeleteTrackingByIdResponse",
@@ -106,6 +117,7 @@ from .meta_type import MetaType
 from .meta import Meta
 from .tracking_courier_estimated_delivery_date import TrackingCourierEstimatedDeliveryDate
 from .tracking_shipment_weight import TrackingShipmentWeight
+from .tracking_shipment_dimensions import TrackingShipmentDimensions
 from .tracking_order_promised_delivery_date import TrackingOrderPromisedDeliveryDate
 from .tracking_aftership_estimated_delivery_date import TrackingAftershipEstimatedDeliveryDate
 from .tracking_custom_estimated_delivery_date_type import TrackingCustomEstimatedDeliveryDateType
@@ -122,6 +134,14 @@ from .tracking_first_mile import TrackingFirstMile
 from .tracking_last_mile_source import TrackingLastMileSource
 from .tracking_last_mile import TrackingLastMile
 from .tracking_customers import TrackingCustomers
+from .tracking_proof_of_delivery import TrackingProofOfDelivery
+from .tracking_multi_piece_info_type import TrackingMultiPieceInfoType
+from .tracking_multi_piece_info_pieces_type import TrackingMultiPieceInfoPiecesType
+from .tracking_multi_piece_info_pieces import TrackingMultiPieceInfoPieces
+from .tracking_multi_piece_info import TrackingMultiPieceInfo
+from .tracking_shipment_direction import TrackingShipmentDirection
+from .tracking_return_shipment import TrackingReturnShipment
+from .tracking_forward_shipment import TrackingForwardShipment
 from .tracking import Tracking
 from .tag import Tag
 from .checkpoint_coordinate import CheckpointCoordinate
@@ -183,6 +203,7 @@ from .create_tracking_request_order_promised_delivery_date import (
 from .create_tracking_request_delivery_type import CreateTrackingRequestDeliveryType
 from .create_tracking_request_last_mile import CreateTrackingRequestLastMile
 from .create_tracking_request_customers import CreateTrackingRequestCustomers
+from .create_tracking_request_shipment_direction import CreateTrackingRequestShipmentDirection
 from .create_tracking_request import CreateTrackingRequest
 from .create_tracking_response import CreateTrackingResponse
 from .get_tracking_by_id_response import GetTrackingByIdResponse
@@ -191,6 +212,9 @@ from .update_tracking_by_id_request_order_promised_delivery_date import (
 )
 from .update_tracking_by_id_request_delivery_type import UpdateTrackingByIdRequestDeliveryType
 from .update_tracking_by_id_request_customers import UpdateTrackingByIdRequestCustomers
+from .update_tracking_by_id_request_shipment_direction import (
+    UpdateTrackingByIdRequestShipmentDirection,
+)
 from .update_tracking_by_id_request import UpdateTrackingByIdRequest
 from .update_tracking_by_id_response import UpdateTrackingByIdResponse
 from .delete_tracking_by_id_response import DeleteTrackingByIdResponse

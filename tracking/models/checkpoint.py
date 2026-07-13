@@ -38,6 +38,7 @@ class Checkpoint(BaseModel):
     raw_tag: Optional[str] = None
     events: Optional[List[CheckpointEvents]] = None
     source: Optional[CheckpointSource] = None
+    hash: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))

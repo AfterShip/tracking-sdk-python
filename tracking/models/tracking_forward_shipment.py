@@ -7,19 +7,16 @@ from __future__ import annotations
 import pprint
 
 from pydantic import BaseModel
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 from typing_extensions import Self
 
-from tracking.models.tracking import Tracking
 
-
-class DeleteTrackingByIdResponse(BaseModel):
+class TrackingForwardShipment(BaseModel):
     """
-    Object describes the tracking information.&lt;div style=&#34;visibility:hidden; height: 0&#34;&gt;&lt;/div&gt;
-    """
+    The original outbound shipment linked to this return. Use this to trace a return back to its source delivery.This field is only present when `shipment_direction = "return"` and AfterShip has detected a linked forward shipment.
+    """  # noqa: E501
 
-    response_header: Dict[str, List[str]] = {}
-    data: Optional[Tracking] = None
+    id: Optional[str] = None
 
     def to_str(self, **kwargs) -> str:
         return pprint.pformat(self.model_dump(**kwargs))
