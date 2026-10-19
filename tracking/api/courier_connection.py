@@ -41,11 +41,11 @@ class CourierConnectionApi(ApiClient):
         """
         url = "/tracking/2026-07/courier-connections"
 
-        params_keys = {
+        params_keys = [
             "courier_slug",
             "cursor",
             "limit",
-        }
+        ]
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
         result = self._request("GET", url=url, params=params, **kwargs)

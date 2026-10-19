@@ -59,7 +59,7 @@ class TrackingApi(ApiClient):
         """
         url = "/tracking/2026-07/trackings"
 
-        params_keys = {
+        params_keys = [
             "cursor",
             "limit",
             "keyword",
@@ -78,7 +78,7 @@ class TrackingApi(ApiClient):
             "courier_destination_country_region",
             "shipment_tags",
             "order_id",
-        }
+        ]
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
         result = self._request("GET", url=url, params=params, **kwargs)
@@ -129,10 +129,10 @@ class TrackingApi(ApiClient):
         """
         url = f"/tracking/2026-07/trackings/{id}"
 
-        params_keys = {
+        params_keys = [
             "fields",
             "lang",
-        }
+        ]
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
         result = self._request("GET", url=url, params=params, **kwargs)
