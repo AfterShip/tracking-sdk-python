@@ -35,10 +35,10 @@ class CourierApi(ApiClient):
         """
         url = "/tracking/2026-07/couriers"
 
-        params_keys = {
+        params_keys = [
             "active",
             "slug",
-        }
+        ]
         params = {key: kwargs.pop(key) for key in params_keys if key in kwargs}
 
         result = self._request("GET", url=url, params=params, **kwargs)

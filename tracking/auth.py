@@ -102,13 +102,17 @@ class Authenticator:
 
         :return canonical_url: str - canonical request url.
             Example :/tracking/2024-10/trackings?key1=value1&key2=value2
+
+        The query parameters MUST be sorted by parameter name, and parameters with an
+        empty value MUST be kept, to match the way the signature is recomputed on the
+        server side.
         """
         u = url.parse_url(raw_url)
         resource = u.path
 
         if u.query is not None and u.query != "":
-            query_dict = urllib.parse.parse_qs(u.query)
-            query_dict = {key: value[0] for key, value in query_dict.items()}
+            query_dict = urllib.parse.parse_qs(u.query, keep_blank_values=True)
+            query_dict = {key: value[0] for key, value in sorted(query_dict.items())}
             resource += "?" + urllib.parse.urlencode(query_dict)
 
         return resource
